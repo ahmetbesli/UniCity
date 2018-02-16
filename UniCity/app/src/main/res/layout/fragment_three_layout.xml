@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/registerUniversity"
+            android:focusableInTouchMode="false"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/university"/>
+        <EditText
+            android:id="@+id/registerFaculty"
+            android:focusableInTouchMode="false"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/faculty"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/arrowRight3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/check"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:id="@+id/arrowLeft3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/arrow_left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>
