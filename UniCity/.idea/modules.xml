@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UniCity.iml" filepath="$PROJECT_DIR$/UniCity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UniSocial.iml" filepath="$PROJECT_DIR$/UniSocial.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

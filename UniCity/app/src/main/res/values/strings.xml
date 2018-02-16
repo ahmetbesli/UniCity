@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UniSocial</string>
+    <string name="app_name">UniCity</string>
     <string name="button_login">SIGN IN</string>
     <string name="login_screen_no_account">Don\'t you have an account?</string>
     <string name="name">Name</string>

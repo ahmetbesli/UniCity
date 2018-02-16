@@ -5,7 +5,7 @@
     android:gravity="center_horizontal|center_vertical"
 
     android:orientation="vertical"
-    tools:context="com.ahmetgokhan.unisocial.activities.LoginActivity">
+    tools:context="com.ahmetgokhan.unicity.activities.LoginActivity">
 
     <EditText
         android:id="@+id/editTextLogin"
