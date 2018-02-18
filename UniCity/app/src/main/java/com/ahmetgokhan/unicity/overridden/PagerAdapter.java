@@ -1,9 +1,5 @@
 package com.ahmetgokhan.unicity.overridden;
 
-/**
- * Created by AhmetBesli on 16.02.2018.
- */
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;

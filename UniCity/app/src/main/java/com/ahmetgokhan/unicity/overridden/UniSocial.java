@@ -1,6 +1,5 @@
 package com.ahmetgokhan.unicity.overridden;
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -22,8 +21,7 @@ public class UniSocial {
     @Expose
     public String universities;
 
-
-
+    
     @SerializedName("faculty")
     @Expose
     public String faculty;
