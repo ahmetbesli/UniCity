@@ -32,7 +32,6 @@ public class createAdvertActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         university = findViewById(R.id.university);
         name = findViewById(R.id.name);
-        surname = findViewById(R.id.surname);
         createAdvertButton = findViewById(R.id.createAdvertButton);
 
 
