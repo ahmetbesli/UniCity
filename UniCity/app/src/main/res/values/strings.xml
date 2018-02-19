@@ -9,4 +9,5 @@
     <string name="university">University</string>
     <string name="department">Department</string>
     <string name="faculty">Faculty</string>
+    <string name="title_activity_create_advert">createAdvertActivity</string>
 </resources>
