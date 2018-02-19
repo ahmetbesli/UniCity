@@ -250,7 +250,8 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                     public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
 
 
-                        for(int i = 0; i < response.body().size(); i++) {
+
+                      for(int i = 0; i < response.body().size(); i++) {
 
                             universityArray.add(response.body().get(i).getUniversities());
                         }
