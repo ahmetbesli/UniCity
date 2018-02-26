@@ -18,8 +18,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class createAdvertActivity extends AppCompatActivity {
+public class AdvertActivity extends AppCompatActivity {
     EditText advertName,description,university,name,numbOfPerson;
+
+
+
+
     Button createAdvertButton;
 
 
@@ -33,6 +37,8 @@ public class createAdvertActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         university = findViewById(R.id.university);
         name = findViewById(R.id.name);
+
+
         createAdvertButton = findViewById(R.id.createAdvertButton);
         numbOfPerson = findViewById(R.id.numbOfPerson);
 
@@ -58,18 +64,18 @@ public class createAdvertActivity extends AppCompatActivity {
 
                 if(advertName_text.isEmpty()){
 
-                    Toast.makeText(createAdvertActivity.this, "Please enter a advert name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivity.this, "Please enter a advert name", Toast.LENGTH_SHORT).show();
 
                 }
                 else if(description_text.isEmpty()){
 
-                    Toast.makeText(createAdvertActivity.this, "Please enter a description", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivity.this, "Please enter a description", Toast.LENGTH_SHORT).show();
 
                 }
 
                 else if(String.valueOf(numberOfPerson).isEmpty() || numberOfPerson == 0){
 
-                    Toast.makeText(createAdvertActivity.this, "Please enter number of person", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivity.this, "Please enter number of person", Toast.LENGTH_SHORT).show();
 
                 }
 

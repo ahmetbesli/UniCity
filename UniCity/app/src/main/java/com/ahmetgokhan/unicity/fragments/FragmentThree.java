@@ -22,6 +22,7 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
@@ -279,9 +280,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                         for(int i = 0; i < response.body().size(); i++) {
                             facultyArray.add(response.body().get(i).getFaculty());
                         }
-
                         onCreateDialogFaculty();
-
                     }
 
                     @Override
@@ -291,6 +290,9 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                     }
 
                 });
+                break;
+            case R.id.arrowLeft3:
+                ((RegisterActivity)getActivity()).setCurrentItem (1, true);
                 break;
         }
     }
