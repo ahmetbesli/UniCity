@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -61,7 +60,6 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
 
                     editor.putString(Config.email, email);
                     editor.putString(Config.password, password);
-
                     editor.apply();
 
                     ((RegisterActivity) getActivity()).setCurrentItem(2, true);

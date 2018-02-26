@@ -34,7 +34,6 @@ public interface ApiInterface {
             @Field("name") String name,
             @Field("numbOfPerson") int numbOfPerson
 
-
     );
 
 

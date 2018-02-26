@@ -63,7 +63,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    ImageView finishTick;
+
     LinearLayout linearLayout;
 
 

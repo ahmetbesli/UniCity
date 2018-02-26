@@ -16,13 +16,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AdvertActivity extends AppCompatActivity {
+
     EditText advertName,description,university,name,numbOfPerson;
-
-
-
-
     Button createAdvertButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
