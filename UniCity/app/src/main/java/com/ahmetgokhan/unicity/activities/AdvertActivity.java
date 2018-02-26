@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class createAdvertActivity extends AppCompatActivity {
+public class AdvertActivity extends AppCompatActivity {
     EditText advertName,description,university,name,surname;
     Button createAdvertButton;
 
@@ -32,7 +32,7 @@ public class createAdvertActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         university = findViewById(R.id.university);
         name = findViewById(R.id.name);
-        surname = findViewById(R.id.surname);
+
         createAdvertButton = findViewById(R.id.createAdvertButton);
 
 
