@@ -396,7 +396,9 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                     editor.putString(Config.department, department);
                     editor.apply();
 
-                    Intent intent = Intent(getContext(), LoginActivity.class);
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+
                 }else{
                     Toast.makeText(getContext(),"Please fill the spaces with your Name and Surname!",Toast.LENGTH_SHORT).show();
                 }

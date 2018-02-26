@@ -31,7 +31,8 @@ public interface ApiInterface {
             @Field("advertName") String advertName,
             @Field("description") String description,
             @Field("university") String university,
-            @Field("name") String name
+            @Field("name") String name,
+            @Field("numbOfPerson") int numbOfPerson
 
 
     );
