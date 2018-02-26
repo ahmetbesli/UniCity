@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -53,21 +51,19 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.arrowRight2:
-                if(!registerEmail.getText().toString().trim().equals("") && !registerPassword.getText().toString().trim().equals("")) {
-                    editor = sharedPreferences.edit();
 
-                    String email = registerEmail.getText().toString().trim();
-                    String password = registerPassword.getText().toString().trim();
+                editor = sharedPreferences.edit();
 
-                    editor.putString(Config.email, email);
-                    editor.putString(Config.password, password);
+                String email = registerEmail.getText().toString().trim();
+                String password = registerPassword.getText().toString().trim();
 
-                    editor.apply();
+                editor.putString(Config.email,email);
+                editor.putString(Config.password,password);
 
-                    ((RegisterActivity) getActivity()).setCurrentItem(2, true);
-                }else{
-                    Toast.makeText(getContext(),"Please fill the spaces with Email and Password!",Toast.LENGTH_SHORT).show();
-                }
+                editor.apply();
+
+                ((RegisterActivity)getActivity()).setCurrentItem (2, true);
+
                 break;
             case R.id.arrowLeft2:
                 ((RegisterActivity)getActivity()).setCurrentItem (0, true);

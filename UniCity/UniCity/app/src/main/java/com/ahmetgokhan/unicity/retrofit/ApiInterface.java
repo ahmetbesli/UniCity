@@ -40,9 +40,6 @@ public interface ApiInterface {
     @GET("getUniversities/")
     Call<ArrayList<UniSocial>> getUniversities();
 
-    @FormUrlEncoded
-    @POST("getDepartment/")
-    Call<ArrayList<UniSocial>> getDeparment(@Field("faculty") String faculty, @Field("university") String university);
 
 }
 

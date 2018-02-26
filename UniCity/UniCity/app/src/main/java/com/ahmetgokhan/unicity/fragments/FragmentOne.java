@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -42,20 +40,16 @@ public class FragmentOne extends Fragment {
         arrowRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!registerName.getText().toString().trim().equals("") && !registerSurname.getText().toString().trim().equals("")) {
-                    editor = sharedPreferences.edit();
+                editor = sharedPreferences.edit();
 
-                    String name = registerName.getText().toString().trim();
-                    String surname = registerSurname.getText().toString().trim();
+                String name = registerName.getText().toString().trim();
+                String surname = registerSurname.getText().toString().trim();
 
-                    editor.putString(Config.name, name);
-                    editor.putString(Config.surname, surname);
-                    editor.apply();
+                editor.putString(Config.name,name);
+                editor.putString(Config.surname,surname);
+                editor.apply();
 
-                    ((RegisterActivity) getActivity()).setCurrentItem(1, true);
-                }else{
-                    Toast.makeText(getContext(),"Please fill the spaces with your Name and Surname!",Toast.LENGTH_SHORT).show();
-                }
+                ((RegisterActivity)getActivity()).setCurrentItem (1, true);
             }
         });
 
