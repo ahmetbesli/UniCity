@@ -54,7 +54,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
     LinearLayout linearLayout;
 
-
+    //Oncreate
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
