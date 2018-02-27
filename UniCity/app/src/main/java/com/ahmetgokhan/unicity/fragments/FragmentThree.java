@@ -51,7 +51,6 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
     NumberPicker universityPicker;
 
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     LinearLayout linearLayout;
 
@@ -66,9 +65,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
         registerUniversity = view.findViewById(R.id.registerUniversity);
 
-
         registerUniversity.setOnClickListener(this);
-
 
         ProgressBar progressBar = view.findViewById(R.id.progressBar3);
         ImageView arrowLeft = view.findViewById(R.id.arrowLeft3);
@@ -78,8 +75,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
         progressBar.setScaleY(2f);
         progressBar.setMax(4);
-        progressBar.getProgressDrawable().setColorFilter(
-                Color.WHITE, android.graphics.PorterDuff.Mode.SRC_IN);
+        progressBar.getProgressDrawable().setColorFilter(Color.WHITE, android.graphics.PorterDuff.Mode.SRC_IN);
         progressBar.setProgress(3);
 
 
@@ -201,9 +197,8 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                             universityArray.add(response.body().get(i).getUniversities());
                         }
                         onCreateDialog();
-                        
-                    }
 
+                    }
 
                     @Override
                     public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
