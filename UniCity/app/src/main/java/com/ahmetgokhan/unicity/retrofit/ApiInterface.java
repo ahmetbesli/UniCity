@@ -22,7 +22,13 @@ public interface ApiInterface {
     @POST("getFaculty/")
     Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
 
-
+    @FormUrlEncoded
+    @POST("register/")
+    Call<UniSocial> register(@Field("name") String name,
+                             @Field("surname") String surname,
+                             @Field("email") String email,
+                             @Field("password") String password,
+                             @Field("university") String university);
 
     @FormUrlEncoded
     @POST("createAdvert/")

@@ -14,8 +14,8 @@ public class RegisterActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         viewpager = findViewById(R.id.pager);
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewpager.beginFakeDrag();
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(pagerAdapter);
     }
 

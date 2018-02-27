@@ -39,27 +39,16 @@ import retrofit2.Callback;
 
 
 public class FragmentThree extends Fragment implements View.OnClickListener{
+
     String universitySelected;
-    String facultySelected;
-    String departmentSelected;
 
-    String[] faculties = null;
-    String[] departments = null;
-
-    int facultyValue = -1;
     int universityValue;
-    int deparmentValue = -1;
 
     EditText registerUniversity;
-    EditText registerFaculty;
-    EditText registerDepartment;
+
     ArrayList<String> universityArray = new ArrayList<>();
-    ArrayList<String> facultyArray = new ArrayList<>();
-    ArrayList<String> deparmentArray = new ArrayList<>();
 
     NumberPicker universityPicker;
-    NumberPicker facultyPicker;
-    NumberPicker departmentPicker;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -76,19 +65,16 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
         sharedPreferences = this.getActivity().getSharedPreferences(Config.app_name, Context.MODE_PRIVATE);
 
         registerUniversity = view.findViewById(R.id.registerUniversity);
-        registerFaculty = view.findViewById(R.id.registerFaculty);
-        registerDepartment = view.findViewById(R.id.registerDepartment);
+
 
         registerUniversity.setOnClickListener(this);
-        registerFaculty.setOnClickListener(this);
-        registerDepartment.setOnClickListener(this);
+
 
         ProgressBar progressBar = view.findViewById(R.id.progressBar3);
         ImageView arrowLeft = view.findViewById(R.id.arrowLeft3);
         ImageView arrowFinish = view.findViewById(R.id.arrowRight3);
         arrowLeft.setOnClickListener(this);
         arrowFinish.setOnClickListener(this);
-
 
         progressBar.setScaleY(2f);
         progressBar.setMax(4);
@@ -98,112 +84,6 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
 
         return view;
-    }
-
-    public Dialog onCreateDialogDepartment() {
-
-        departmentPicker = new NumberPicker(getContext());
-
-        if(facultyArray.size() != 0) {
-            departments = deparmentArray.toArray(new String[deparmentArray.size()]);
-
-            departmentPicker.setDisplayedValues(departments);
-
-            departmentPicker.setMinValue(0);
-            departmentPicker.setMaxValue(departments.length - 1);
-        }
-        departmentPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        setNumberPickerTextColor(departmentPicker, Color.WHITE);
-        departmentPicker.setValue(deparmentValue);
-
-        linearLayout = new LinearLayout(getContext());
-
-        linearLayout.addView(departmentPicker);
-        linearLayout.setGravity(Gravity.CENTER);
-
-
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Dialog_Alert);
-        builder.setView(linearLayout);
-        builder.setMessage("Deparment :");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                if(deparmentArray.size() != 0) {
-                    deparmentValue = departmentPicker.getValue();
-                    departmentSelected = departments[departmentPicker.getValue()];
-                    registerDepartment.setText(departmentSelected);
-                }
-
-
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Toast.makeText(getContext(),"Please select your university, If selected, you can complete your registration",Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.create();
-        return builder.show();
-    }
-    public Dialog onCreateDialogFaculty() {
-
-
-        facultyPicker = new NumberPicker(getContext());
-
-        if(facultyArray.size() != 0) {
-            faculties = facultyArray.toArray(new String[facultyArray.size()]);
-
-            facultyPicker.setDisplayedValues(faculties);
-
-            facultyPicker.setMinValue(0);
-            facultyPicker.setMaxValue(faculties.length - 1);
-        }
-        facultyPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        setNumberPickerTextColor(facultyPicker, Color.WHITE);
-        facultyPicker.setValue(facultyValue);
-
-        linearLayout = new LinearLayout(getContext());
-
-        linearLayout.addView(facultyPicker);
-        linearLayout.setGravity(Gravity.CENTER);
-
-
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Dialog_Alert);
-        builder.setView(linearLayout);
-        builder.setMessage("Faculty :");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                if(facultyArray.size() != 0) {
-                    facultyValue = facultyPicker.getValue();
-                    facultySelected = faculties[facultyPicker.getValue()];
-                    registerFaculty.setText(facultySelected);
-                }
-
-
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Toast.makeText(getContext(),"Please select your university, If selected, you can complete your registration",Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.create();
-        return builder.show();
     }
 
     public Dialog onCreateDialog() {
@@ -316,14 +196,12 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                     @Override
                     public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
 
-
                       for(int i = 0; i < response.body().size(); i++) {
 
                             universityArray.add(response.body().get(i).getUniversities());
                         }
                         onCreateDialog();
-
-
+                        
                     }
 
 
@@ -335,69 +213,40 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
                 });
                 break;
-            case R.id.registerFaculty:
-                ApiInterface apiInterface0 = ApiClient.getRetrofit().create(ApiInterface.class);
-                Call<ArrayList<UniSocial>> call0 = apiInterface0.getFaculty(universitySelected);
-                call0.enqueue(new Callback<ArrayList<UniSocial>>() {
-
-                    @Override
-                    public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
-                        for(int i = 0; i < response.body().size(); i++) {
-                            facultyArray.add(response.body().get(i).getFaculty());
-                        }
-                        onCreateDialogFaculty();
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
-                        t.printStackTrace();
-                        Toast.makeText(getContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
-                    }
-
-                });
-                break;
-            case R.id.registerDepartment:
-                ApiInterface apiInterface2 = ApiClient.getRetrofit().create(ApiInterface.class);
-                Call<ArrayList<UniSocial>> call2 = apiInterface2.getDeparment(facultySelected,universitySelected);
-                call2.enqueue(new Callback<ArrayList<UniSocial>>() {
-
-                    @Override
-                    public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
-                        for(int i = 0; i < response.body().size(); i++) {
-                            deparmentArray.add(response.body().get(i).getDepartment());
-                        }
-                        onCreateDialogDepartment();
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
-                        t.printStackTrace();
-                        Toast.makeText(getContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
-                    }
-
-                });
-                break;
-
-
-
-
             case R.id.arrowLeft3:
                 ((RegisterActivity)getActivity()).setCurrentItem (1, true);
                 break;
             case R.id.arrowRight3:
-                if (!registerUniversity.getText().toString().trim().equals("") && !registerFaculty.getText().toString().trim().equals("") && !registerDepartment.getText().toString().trim().equals("")) {
-                    editor = sharedPreferences.edit();
+                if (!registerUniversity.getText().toString().trim().equals("")) {
 
                     String university = registerUniversity.getText().toString().trim();
-                    String faculty = registerFaculty.getText().toString().trim();
-                    String department = registerDepartment.getText().toString().trim();
-                    editor.putString(Config.university, university);
-                    editor.putString(Config.faculty, faculty);
-                    editor.putString(Config.department, department);
-                    editor.apply();
 
-                    Intent intent = new Intent(getContext(), LoginActivity.class);
-                    startActivity(intent);
+                    ApiInterface apiInterface3 = ApiClient.getRetrofit().create(ApiInterface.class);
+                    Call<UniSocial> call3 = apiInterface3.register(sharedPreferences.getString(Config.name,"name"),
+                            sharedPreferences.getString(Config.surname,"name"),
+                            sharedPreferences.getString(Config.email,"name"),
+                            sharedPreferences.getString(Config.password,"name"),
+                            university);
+                    call3.enqueue(new Callback<UniSocial>() {
+
+                        @Override
+                        public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                            if(response.body().getMessage().equals("success")){
+                                Intent intent = new Intent(getContext(), LoginActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(getContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UniSocial> call, Throwable t) {
+                            t.printStackTrace();
+                            Toast.makeText(getContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
+                        }
+
+                    });
+
 
                 }else{
                     Toast.makeText(getContext(),"Please fill the spaces with your Name and Surname!",Toast.LENGTH_SHORT).show();

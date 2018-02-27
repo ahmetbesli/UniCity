@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     String emailText;
     String passwordText;
     TextView noAccount;
-
+    TextView createAdvert;
     Character[] bannedChars = {'[', ']', ':', ';', '|', '=', '+', '?', '<', '>', '*', '\'', '[', ']', '|', '=', '+',  '*', '\\', '"'};
     Character[] bannedNumbers = {'1','2','3','4','5','6','7','8','9','0'};
 
@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextRegister = findViewById(R.id.editTextRegister);
         buttonLogin = findViewById(R.id.button_login);
         noAccount = findViewById(R.id.text_no_account);
+        createAdvert = findViewById(R.id.createAdvert);
+        createAdvert.setOnClickListener(this);
         noAccount.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
     }
@@ -143,6 +145,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.text_no_account:
                 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.createAdvert:
+                Intent intq = new Intent(getApplicationContext(),AdvertActivity.class);
+                startActivity(intq);
                 break;
             default:
                 break;

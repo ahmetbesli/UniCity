@@ -38,4 +38,10 @@
         android:layout_height="wrap_content"
         android:text="@string/login_screen_no_account" />
 
+    <TextView
+        android:id="@+id/createAdvert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Advert"/>
+
 </LinearLayout>
