@@ -39,16 +39,20 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        Call<UniSocial> call = apiInterface.getProfile(token);
-        call.enqueue(new Callback<UniSocial>() {
+        Call<ArrayList<UniSocial>> call = apiInterface.getProfile(token);
+        call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
-            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
-                emailText = response.body().getEmail();
-                emailTextView.setText(emailText);
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>>response) {
+                for(int i = 0; i < response.body().size(); i++) {
+                    emailText = response.body().get(i).getEmail();
+                    emailTextView.setText(emailText);
+                }
             }
 
+
+
             @Override
-            public void onFailure(Call<UniSocial> call, Throwable t) {
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
 
             }
         });

@@ -16,7 +16,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("getProfile/")
-    Call<UniSocial> getProfile(@Field("token") String token);
+    Call<ArrayList<UniSocial>> getProfile(@Field("token") String token);
 
     @FormUrlEncoded
     @POST("login/")
