@@ -11,5 +11,6 @@ public class Config {
     public static final String university = "University";
     public static final String faculty = "Faculty";
     public static final String department = "Department";
+    public static final String token = "token";
 
 }

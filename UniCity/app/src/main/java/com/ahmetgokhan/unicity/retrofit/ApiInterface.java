@@ -15,6 +15,10 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @FormUrlEncoded
+    @POST("getProfile/")
+    Call<UniSocial> getProfile(@Field("token") String token);
+
+    @FormUrlEncoded
     @POST("login/")
     Call<UniSocial> login(@Field("username") String username, @Field("password") String password);
 
@@ -49,6 +53,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("getDepartment/")
     Call<ArrayList<UniSocial>> getDeparment(@Field("faculty") String faculty, @Field("university") String university);
+
+
 
 }
 
