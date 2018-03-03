@@ -21,6 +21,11 @@ public class UniSocial {
     @Expose
     public String universities;
 
+
+    @SerializedName("university")
+    @Expose
+    public String university;
+
     
     @SerializedName("faculty")
     @Expose
@@ -125,6 +130,9 @@ public class UniSocial {
 
     public void setEmail(String email) { this.email = email; }
 
+    public String getUniversity() { return university; }
+
+    public void setUniversity(String university) { this.university = university; }
 
 }
 

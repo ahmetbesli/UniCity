@@ -20,8 +20,8 @@ import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView emailTextView, userProfileNameTextView;
-    String emailText,userProfilNameText,token;
+    TextView emailTextView, userProfileNameTextView,userProfileShortBioTextView;
+    String emailText,userProfileNameText,token,userProfileShortBioText;
     SharedPreferences preferences;
     ApiInterface apiInterface;
 
@@ -32,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         emailTextView = findViewById(R.id.emailTextView);
         userProfileNameTextView = findViewById(R.id.user_profile_name);
+        userProfileShortBioTextView = findViewById(R.id.user_profile_short_bio);
+
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
 
         preferences = getSharedPreferences("Token", MODE_PRIVATE);
@@ -44,8 +46,25 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>>response) {
                 for(int i = 0; i < response.body().size(); i++) {
+
+                    System.out.println(response.body().size());
+                    System.out.println(response.body().get(i).getEmail());
+                    System.out.println(response.body().get(i).getName() + response.body().get(i).getSurname());
+                    System.out.println(response.body().get(i).getUniversity());
+
+                    userProfileNameText = response.body().get(i).getName() +" " + response.body().get(i).getSurname();
+                    userProfileShortBioText = response.body().get(i).getUniversity();
                     emailText = response.body().get(i).getEmail();
+
+                    userProfileNameTextView.setText(userProfileNameText);
+                    userProfileShortBioTextView.setText(userProfileShortBioText);
                     emailTextView.setText(emailText);
+
+
+
+
+
+
                 }
             }
 
