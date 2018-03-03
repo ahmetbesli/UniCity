@@ -38,12 +38,18 @@ public class UniSocial {
     @Expose
     public String department;
 
+    @SerializedName("surname")
+    @Expose
+    public String surname;
+
+    @SerializedName("email")
+    @Expose
+    public String email;
 
 
 
 
-
-    public UniSocial(String message, String name, String token, String universities, String faculty, String advertName, String description,String department) {
+    public UniSocial(String message, String name, String surname, String email, String token, String universities, String faculty, String advertName, String description, String department) {
         this.message = message;
         this.faculty = faculty;
         this.universities = universities;
@@ -52,6 +58,8 @@ public class UniSocial {
         this.advertName = advertName;
         this.description = description;
         this.department = department;
+        this.surname = surname;
+        this.email = email;
 
     }
 
@@ -75,9 +83,7 @@ public class UniSocial {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+    public void setToken(String token) { this.token = token; }
 
     public String getName() {
         return name;
@@ -110,5 +116,15 @@ public class UniSocial {
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    public String getSurname() { return surname; }
+
+    public void setSurname(String surname) {this.surname = surname;}
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
+
+
 }
 

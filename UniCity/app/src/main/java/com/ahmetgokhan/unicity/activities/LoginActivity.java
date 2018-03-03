@@ -1,6 +1,7 @@
 package com.ahmetgokhan.unicity.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
@@ -27,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView createAdvert;
     Character[] bannedChars = {'[', ']', ':', ';', '|', '=', '+', '?', '<', '>', '*', '\'', '[', ']', '|', '=', '+',  '*', '\\', '"'};
     Character[] bannedNumbers = {'1','2','3','4','5','6','7','8','9','0'};
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createAdvert.setOnClickListener(this);
         noAccount.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
+        editor = getSharedPreferences("Token", MODE_PRIVATE).edit();
     }
 
     private void attemptLogin() {
@@ -58,6 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                     if(response.body().getMessage().equals("true")){
                         Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                        editor.putString("token",response.body().getToken());
+                        editor.apply();
                         startActivity(intent);
                     }else{
                         Toast.makeText(getApplicationContext(),"Email or Password is not correct!",Toast.LENGTH_SHORT).show();
