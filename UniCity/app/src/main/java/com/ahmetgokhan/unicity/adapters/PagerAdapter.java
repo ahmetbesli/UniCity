@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.overridden;
+package com.ahmetgokhan.unicity.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

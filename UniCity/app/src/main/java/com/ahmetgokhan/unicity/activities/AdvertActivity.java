@@ -54,7 +54,7 @@ public class AdvertActivity extends AppCompatActivity {
 
                 if(advertName_text.isEmpty()){
 
-                    Toast.makeText(AdvertActivity.this, "Please enter a advert name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivity.this, "Please enter a advert NAME", Toast.LENGTH_SHORT).show();
 
                 }
                 else if(description_text.isEmpty()){

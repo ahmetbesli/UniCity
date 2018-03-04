@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createAdvert.setOnClickListener(this);
         noAccount.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
-        editor = getSharedPreferences("Token", MODE_PRIVATE).edit();
+
     }
 
     private void attemptLogin() {
@@ -62,7 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                     if(response.body().getMessage().equals("true")){
                         Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
-                        editor.putString("token",response.body().getToken());
+                        editor = getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).edit();
+                        editor.putString(Config.TOKEN,response.body().getToken());
                         editor.apply();
                         startActivity(intent);
                     }else{
@@ -89,15 +90,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(getApplicationContext(),"Email must contain '@' character!",Toast.LENGTH_SHORT).show();
             return false;
         }else if(email.indexOf("@") == email.length() - 1){
-            Toast.makeText(getApplicationContext(),"Please write your email in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Please write your EMAIL in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
         }else if(email.contains("@")){
             int x = email.indexOf("@");
             String y = email.substring(x,email.length());
             if(!y.contains(".")){
-                Toast.makeText(getApplicationContext(),"Please write your email in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Please write your EMAIL in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
                 return false;
             }else if(y.indexOf(".") == y.length() - 1){
-                Toast.makeText(getApplicationContext(),"Please write your email in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Please write your EMAIL in regular type: '*******@***.com / .de / .com.tr'",Toast.LENGTH_SHORT).show();
                 return false;
             }
         }

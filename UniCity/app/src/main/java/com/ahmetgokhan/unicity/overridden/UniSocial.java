@@ -21,27 +21,34 @@ public class UniSocial {
     @Expose
     public String universities;
 
-
     @SerializedName("university")
     @Expose
     public String university;
-
-    
-    @SerializedName("faculty")
-    @Expose
-    public String faculty;
 
     @SerializedName("advertName")
     @Expose
     private String advertName;
 
+    public String getCover_photo() {
+        return cover_photo;
+    }
+
+    public void setCover_photo(String cover_photo) {
+        this.cover_photo = cover_photo;
+    }
+
+    public String getProfile_photo() {
+        return profile_photo;
+    }
+
+    public void setProfile_photo(String profile_photo) {
+        this.profile_photo = profile_photo;
+    }
+
     @SerializedName("description")
     @Expose
-    private String description;
 
-    @SerializedName("department")
-    @Expose
-    public String department;
+    private String description;
 
     @SerializedName("surname")
     @Expose
@@ -51,30 +58,31 @@ public class UniSocial {
     @Expose
     public String email;
 
+    @SerializedName("cover_photo")
+    @Expose
+    public String cover_photo;
+
+    @SerializedName("profile_photo")
+    @Expose
+    public String profile_photo;
 
 
 
-    public UniSocial(String message, String name, String surname, String email, String token, String universities, String faculty, String advertName, String description, String department) {
+    public UniSocial(String message, String name, String surname, String email, String token, String universities, String advertName, String description,String cover_photo,String profile_photo) {
+
+        this.cover_photo = cover_photo;
+        this.profile_photo = profile_photo;
         this.message = message;
-        this.faculty = faculty;
         this.universities = universities;
         this.name = name;
         this.token = token;
         this.advertName = advertName;
         this.description = description;
-        this.department = department;
         this.surname = surname;
         this.email = email;
 
     }
 
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
 
     public String getUniversities() {
         return universities;
@@ -114,13 +122,6 @@ public class UniSocial {
 
     public void setDescription(String description) { this.description = description; }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 
     public String getSurname() { return surname; }
 

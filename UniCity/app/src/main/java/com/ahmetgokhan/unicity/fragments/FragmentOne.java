@@ -17,7 +17,6 @@ import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
 
-
 public class FragmentOne extends Fragment {
     EditText registerName;
     EditText registerSurname;
@@ -34,7 +33,7 @@ public class FragmentOne extends Fragment {
         registerSurname = view.findViewById(R.id.textRegisterSurname);
 
 
-        sharedPreferences = this.getActivity().getSharedPreferences(Config.app_name, Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE);
 
         ProgressBar progressBar = view.findViewById(R.id.progressBar0);
 
@@ -48,8 +47,8 @@ public class FragmentOne extends Fragment {
                     String name = registerName.getText().toString().trim();
                     String surname = registerSurname.getText().toString().trim();
 
-                    editor.putString(Config.name, name);
-                    editor.putString(Config.surname, surname);
+                    editor.putString(Config.NAME, name);
+                    editor.putString(Config.SURNAME, surname);
                     editor.apply();
 
                     ((RegisterActivity) getActivity()).setCurrentItem(1, true);

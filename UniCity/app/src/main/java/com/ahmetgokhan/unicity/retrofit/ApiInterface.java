@@ -16,15 +16,12 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("getProfile/")
-    Call<ArrayList<UniSocial>> getProfile(@Field("token") String token);
+    Call<UniSocial> getProfile(@Field("token") String token);
 
     @FormUrlEncoded
     @POST("login/")
     Call<UniSocial> login(@Field("username") String username, @Field("password") String password);
 
-    @FormUrlEncoded
-    @POST("getFaculty/")
-    Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
 
     @FormUrlEncoded
     @POST("register/")
@@ -50,9 +47,6 @@ public interface ApiInterface {
     @GET("getUniversities/")
     Call<ArrayList<UniSocial>> getUniversities();
 
-    @FormUrlEncoded
-    @POST("getDepartment/")
-    Call<ArrayList<UniSocial>> getDeparment(@Field("faculty") String faculty, @Field("university") String university);
 
 
 

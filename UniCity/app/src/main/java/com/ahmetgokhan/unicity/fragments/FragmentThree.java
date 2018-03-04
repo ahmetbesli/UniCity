@@ -26,7 +26,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.LoginActivity;
-import com.ahmetgokhan.unicity.activities.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
@@ -61,7 +60,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
         View view = inflater.inflate(R.layout.fragment_three_layout, container, false);
 
-        sharedPreferences = this.getActivity().getSharedPreferences(Config.app_name, Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE);
 
         registerUniversity = view.findViewById(R.id.registerUniversity);
 
@@ -217,10 +216,10 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
                     String university = registerUniversity.getText().toString().trim();
 
                     ApiInterface apiInterface3 = ApiClient.getRetrofit().create(ApiInterface.class);
-                    Call<UniSocial> call3 = apiInterface3.register(sharedPreferences.getString(Config.name,"name"),
-                            sharedPreferences.getString(Config.surname,"name"),
-                            sharedPreferences.getString(Config.email,"name"),
-                            sharedPreferences.getString(Config.password,"name"),
+                    Call<UniSocial> call3 = apiInterface3.register(sharedPreferences.getString(Config.NAME,"NAME"),
+                            sharedPreferences.getString(Config.SURNAME,"NAME"),
+                            sharedPreferences.getString(Config.EMAIL,"NAME"),
+                            sharedPreferences.getString(Config.PASSWORD,"NAME"),
                             university);
                     call3.enqueue(new Callback<UniSocial>() {
 

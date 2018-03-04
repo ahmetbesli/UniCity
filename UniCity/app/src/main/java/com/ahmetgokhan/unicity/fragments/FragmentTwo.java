@@ -31,7 +31,7 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
 
         registerEmail = view.findViewById(R.id.textRegisterEmail);
         registerPassword = view.findViewById(R.id.textRegisterPassword);
-        sharedPreferences = this.getActivity().getSharedPreferences(Config.app_name, Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE);
 
         ProgressBar progressBar = view.findViewById(R.id.progressBar2);
 
@@ -58,8 +58,8 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
                     String email = registerEmail.getText().toString().trim();
                     String password = registerPassword.getText().toString().trim();
 
-                    editor.putString(Config.email, email);
-                    editor.putString(Config.password, password);
+                    editor.putString(Config.EMAIL, email);
+                    editor.putString(Config.PASSWORD, password);
                     editor.apply();
 
                     ((RegisterActivity) getActivity()).setCurrentItem(2, true);
