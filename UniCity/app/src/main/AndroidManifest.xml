@@ -19,7 +19,8 @@
         android:theme="@style/NoActionBar">
         <activity
             android:name=".activities.SplashScreen"
-            android:label="@string/app_name">
+            android:configChanges="orientation|screenSize"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,15 +30,9 @@
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.AdvertActivity" />
-        <activity android:name=".activities.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activities.LoginActivity"/>
         <activity android:name=".activities.FullScreenImageActivity" />
-        <activity android:name=".activities.SubscribeActivity"></activity>
+        <activity android:name=".activities.SubscribeActivity"/>
     </application>
 
 </manifest>
