@@ -36,7 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.FullScreenImageActivity"></activity>
+        <activity android:name=".activities.FullScreenImageActivity" />
+        <activity android:name=".activities.SubscribeActivity"></activity>
     </application>
 
 </manifest>

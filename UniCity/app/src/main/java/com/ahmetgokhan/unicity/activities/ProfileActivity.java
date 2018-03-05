@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
@@ -32,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     CircleImageView profile_photo;
     TextView name_surname,textViewUniversity;
     ApiInterface apiInterface;
+    Button subscribeButton;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -42,10 +44,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         textViewUniversity = findViewById(R.id.textViewUniversity);
 
+        subscribeButton = findViewById(R.id.subscribeButton);
+
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
         profile_photo =  findViewById(R.id.circleImageView);
 
+        subscribeButton.setOnClickListener(this);
         cover_photo.setOnClickListener(this);
         profile_photo.setOnClickListener(this);
 
@@ -112,6 +117,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     startActivity(fullScreenIntent2);
                 }
                 break;
+            case R.id.subscribeButton:
+                Intent intent = new Intent(this,SubscribeActivity.class);
+                startActivity(intent);
             default:
                 break;
 

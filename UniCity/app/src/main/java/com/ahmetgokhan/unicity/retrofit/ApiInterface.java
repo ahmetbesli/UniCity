@@ -2,6 +2,7 @@ package com.ahmetgokhan.unicity.retrofit;
 
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -48,6 +49,9 @@ public interface ApiInterface {
     Call<ArrayList<UniSocial>> getUniversities();
 
 
+    @FormUrlEncoded
+    @POST("getFaculty/")
+    Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
 
 
 }

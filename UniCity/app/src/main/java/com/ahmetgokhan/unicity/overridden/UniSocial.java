@@ -29,22 +29,6 @@ public class UniSocial {
     @Expose
     private String advertName;
 
-    public String getCover_photo() {
-        return cover_photo;
-    }
-
-    public void setCover_photo(String cover_photo) {
-        this.cover_photo = cover_photo;
-    }
-
-    public String getProfile_photo() {
-        return profile_photo;
-    }
-
-    public void setProfile_photo(String profile_photo) {
-        this.profile_photo = profile_photo;
-    }
-
     @SerializedName("description")
     @Expose
 
@@ -66,10 +50,25 @@ public class UniSocial {
     @Expose
     public String profile_photo;
 
+    @SerializedName("faculty")
+    @Expose
+    public String faculty;
 
 
-    public UniSocial(String message, String name, String surname, String email, String token, String universities, String advertName, String description,String cover_photo,String profile_photo) {
 
+    public UniSocial(String message,
+                     String name,
+                     String surname,
+                     String email,
+                     String token,
+                     String universities,
+                     String advertName,
+                     String description,
+                     String cover_photo,
+                     String profile_photo,
+                     String faculty) {
+
+        this.faculty = faculty;
         this.cover_photo = cover_photo;
         this.profile_photo = profile_photo;
         this.message = message;
@@ -83,6 +82,30 @@ public class UniSocial {
 
     }
 
+
+    public String getCover_photo() {
+        return cover_photo;
+    }
+
+    public void setCover_photo(String cover_photo) {
+        this.cover_photo = cover_photo;
+    }
+
+    public String getProfile_photo() {
+        return profile_photo;
+    }
+
+    public void setProfile_photo(String profile_photo) {
+        this.profile_photo = profile_photo;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
 
     public String getUniversities() {
         return universities;
