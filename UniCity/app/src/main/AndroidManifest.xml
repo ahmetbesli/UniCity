@@ -33,6 +33,7 @@
         <activity android:name=".activities.LoginActivity"/>
         <activity android:name=".activities.FullScreenImageActivity" />
         <activity android:name=".activities.SubscribeActivity"/>
+        <activity android:name=".activities.AdvertActivity2"/>
     </application>
 
 </manifest>

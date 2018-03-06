@@ -20,6 +20,24 @@ public interface ApiInterface {
     Call<UniSocial> getProfile(@Field("token") String token);
 
     @FormUrlEncoded
+    @POST("getCourses/")
+    Call<ArrayList<UniSocial>> getCourses(@Field("universityName") String university,
+                                          @Field("facultyName") String facultyName,
+                                          @Field("departmentName") String departmentName
+    );
+
+    @FormUrlEncoded
+    @POST("createAdvert/")
+    Call<ArrayList<UniSocial>> createAdvert(
+
+            @Field("advertName") String advertName,
+            @Field("description") String description,
+            @Field("numbOfPerson") int numbOfPerson,
+            @Field("courseName")  String courseName
+
+    );
+
+    @FormUrlEncoded
     @POST("login/")
     Call<UniSocial> login(@Field("username") String username, @Field("password") String password);
 
@@ -32,17 +50,7 @@ public interface ApiInterface {
                              @Field("password") String password,
                              @Field("university") String university);
 
-    @FormUrlEncoded
-    @POST("createAdvert/")
-    Call<ArrayList<UniSocial>> createAdvert(
 
-            @Field("advertName") String advertName,
-            @Field("description") String description,
-            @Field("university") String university,
-            @Field("name") String name,
-            @Field("numbOfPerson") int numbOfPerson
-
-    );
 
 
     @GET("getUniversities/")

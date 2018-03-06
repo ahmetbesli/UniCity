@@ -1,5 +1,6 @@
 package com.ahmetgokhan.unicity.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +28,6 @@ public class AdvertActivity extends AppCompatActivity {
 
         advertName = findViewById(R.id.advertName);
         description = findViewById(R.id.description);
-        university = findViewById(R.id.university);
-        name = findViewById(R.id.name);
         createAdvertButton = findViewById(R.id.createAdvertButton);
         numbOfPerson = findViewById(R.id.numbOfPerson);
 
@@ -38,10 +37,9 @@ public class AdvertActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ApiInterface apiInterface3 = ApiClient.getRetrofit().create(ApiInterface.class);
+
                 String advertName_text = advertName.getText().toString().trim();
                 String description_text = description.getText().toString().trim();
-                String university_text = university.getText().toString().trim();
-                String name_text = name.getText().toString().trim();
                 int numberOfPerson = 0;
                 try {
                     numberOfPerson = Integer.parseInt(numbOfPerson.getText().toString());
@@ -71,20 +69,12 @@ public class AdvertActivity extends AppCompatActivity {
 
 
                 else {
+                        Intent intent = new Intent(getApplicationContext(), AdvertActivity2.class);
+                        intent.putExtra("advertName", advertName_text);
+                        intent.putExtra("description", description_text);
+                        intent.putExtra("numberOfPerson", numberOfPerson);
+                        startActivity(intent);
 
-
-                    Call<ArrayList<UniSocial>> call = apiInterface3.createAdvert(advertName_text, description_text, university_text, name_text, numberOfPerson);
-                    call.enqueue(new Callback<ArrayList<UniSocial>>() {
-                        @Override
-                        public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
-                           
-                        }
-
-                        @Override
-                        public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
-
-                        }
-                    });
                 }
             }
         });

@@ -11,10 +11,10 @@
         android:id="@+id/advertName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/numbOfPerson"
         android:layout_alignLeft="@+id/numbOfPerson"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/numbOfPerson"
-        android:layout_marginTop="46dp"
+        android:layout_marginBottom="14dp"
         android:ems="10"
         android:hint="Advert Name"
         android:inputType="textPersonName"
@@ -24,63 +24,34 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/advertName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
         android:textColor="@android:color/holo_green_dark" />
 
     <EditText
-        android:id="@+id/university"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/description"
-        android:layout_alignStart="@+id/description"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="University"
-        android:textColor="@android:color/holo_green_dark"
-     />
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/university"
-        android:layout_alignStart="@+id/university"
-        android:layout_below="@+id/university"
-        android:layout_marginTop="55dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:textColor="@android:color/holo_green_dark"
-         />
-
-    <Button
-        android:id="@+id/createAdvertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
-        android:text="Create Advert"
-        android:textColor="@android:color/holo_green_dark"
-        />
-
-    <EditText
         android:id="@+id/numbOfPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/university"
+        android:layout_above="@+id/description"
         android:layout_alignLeft="@+id/description"
         android:layout_alignStart="@+id/description"
         android:layout_marginBottom="12dp"
         android:ems="10"
         android:hint="Number of persons"
         android:inputType="number"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <Button
+        android:id="@+id/createAdvertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Next"
         android:textColor="@android:color/holo_green_dark" />
 
 </RelativeLayout>

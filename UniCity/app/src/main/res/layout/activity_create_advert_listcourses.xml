@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selectCourseLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/coursesListview"
+        android:layout_alignEnd="@+id/departmentsSpinner"
+        android:layout_alignRight="@+id/departmentsSpinner"
+        android:text="Please select your project course"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/departmentsSpinner"
+        android:layout_alignEnd="@+id/departmentsSpinner"
+        android:layout_alignRight="@+id/departmentsSpinner"
+        android:text="Please select your department"
+        android:textColor="@color/colorBlack" />
+
+    <ListView
+        android:id="@+id/coursesListview"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="131dp"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="258dp" />
+
+    <Spinner
+        android:id="@+id/facultiesSpinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <Spinner
+        android:id="@+id/departmentsSpinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/coursesListview"
+        android:layout_alignLeft="@+id/facultiesSpinner"
+        android:layout_alignStart="@+id/facultiesSpinner"
+        android:layout_marginBottom="42dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/facultiesSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="Please select your faculty"
+        android:textColor="@color/colorBlack" />
+
+    <Button
+        android:id="@+id/createAdvertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="69dp"
+        android:text="Create " />
+
+</RelativeLayout>

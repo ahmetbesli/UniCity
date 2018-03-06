@@ -50,9 +50,19 @@ public class UniSocial {
     @Expose
     public String profile_photo;
 
-    @SerializedName("faculty")
+    @SerializedName("faculties")
     @Expose
     public String faculty;
+
+
+
+    @SerializedName("departments")
+    @Expose
+    public String departments;
+
+    @SerializedName("courses")
+    @Expose
+    public String courses;
 
 
 
@@ -157,6 +167,14 @@ public class UniSocial {
     public String getUniversity() { return university; }
 
     public void setUniversity(String university) { this.university = university; }
+
+    public String getCourses() { return courses; }
+
+    public void setCourses(String courses) { this.courses = courses; }
+
+    public String getDepartments() { return departments; }
+
+    public void setDepartments(String departments) { this.departments = departments; }
 
 }
 
