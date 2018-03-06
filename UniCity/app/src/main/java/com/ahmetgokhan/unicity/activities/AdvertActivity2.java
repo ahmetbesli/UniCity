@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
@@ -28,7 +30,9 @@ import retrofit2.Response;
 
 public class AdvertActivity2 extends AppCompatActivity{
 
-    String description,advertName,selectedFaculty,selectedDepartment;
+    String description,advertName,selectedFaculty,selectedDepartment,courseName;
+    Button createAdvertButton;
+    TextView selectedCourseText;
     int numberOfPerson;
     ArrayList<String>faculties;
     ArrayList<String>departments;
@@ -55,6 +59,8 @@ public class AdvertActivity2 extends AppCompatActivity{
         facultiesSpinner = findViewById(R.id.facultiesSpinner);
         departmentsSpinner = findViewById(R.id.departmentsSpinner);
         coursesListView = findViewById(R.id.coursesListview);
+        selectedCourseText = findViewById(R.id.selectedCourseTextView);
+        createAdvertButton = findViewById(R.id.createAdvertButton);
 
 
         faculties = new ArrayList<>();
@@ -98,7 +104,7 @@ public class AdvertActivity2 extends AppCompatActivity{
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         selectedFaculty = parent.getSelectedItem().toString();
 
-                        System.out.println(selectedFaculty);
+
                         departments.clear();
 
 
@@ -112,7 +118,7 @@ public class AdvertActivity2 extends AppCompatActivity{
                                 for(int i = 0;i<response.body().size(); i++){
 
                                     departments.add(response.body().get(i).getDepartments());
-                                    System.out.println(departments.get(i));
+
 
 
                                 }
@@ -124,6 +130,7 @@ public class AdvertActivity2 extends AppCompatActivity{
 
                                         selectedDepartment = parent.getSelectedItem().toString();
 
+
                                         courses.clear();
 
                                         Call<ArrayList<UniSocial>> call2 = apiInterface.getCourses(null,null,selectedDepartment);
@@ -134,12 +141,63 @@ public class AdvertActivity2 extends AppCompatActivity{
                                                 for(int i = 0;i<response.body().size(); i++){
 
                                                     courses.add(response.body().get(i).getCourses());
-                                                    System.out.println(courses.get(i));
+
 
 
                                                 }
 
                                                 coursesListView.setAdapter(dataAdapterForCourses);
+
+                                                coursesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+
+
+
+                                                    @Override
+                                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+
+                                                       courseName = parent.getItemAtPosition(position).toString();
+                                                       selectedCourseText.setText(parent.getItemAtPosition(position).toString());
+
+                                                       createAdvertButton.setOnClickListener(new View.OnClickListener() {
+                                                           @Override
+                                                           public void onClick(View v) {
+
+
+
+
+                                                                   Call<UniSocial> call3 = apiInterface.createAdvert(advertName, description, numberOfPerson, courseName);
+                                                                   call3.enqueue(new Callback<UniSocial>() {
+                                                                       @Override
+                                                                       public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+                                                                           if (response.body().getMessage().equals("success")) {
+                                                                               Toast.makeText(AdvertActivity2.this, "Advert was created successfully", Toast.LENGTH_SHORT).show();
+                                                                               Intent intent1 = new Intent(getApplicationContext(), ProfileActivity.class);
+                                                                               startActivity(intent1);
+                                                                           } else {
+                                                                               Toast.makeText(getApplicationContext(), "Advert was not created ", Toast.LENGTH_SHORT).show();
+                                                                           }
+                                                                       }
+
+                                                                       @Override
+                                                                       public void onFailure(Call<UniSocial> call, Throwable t) {
+
+                                                                       }
+                                                                   });
+                                                               }
+
+
+                                                       });
+
+                                                    }
+                                                });
+
+
+
 
 
                                             }
@@ -154,6 +212,10 @@ public class AdvertActivity2 extends AppCompatActivity{
 
                                     @Override
                                     public void onNothingSelected(AdapterView<?> parent) {
+
+
+
+
 
                                     }
                                 });
@@ -192,7 +254,12 @@ public class AdvertActivity2 extends AppCompatActivity{
 
 
 
-
+        createAdvertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AdvertActivity2.this, "Please select a course", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

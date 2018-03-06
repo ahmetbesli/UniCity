@@ -28,11 +28,11 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("createAdvert/")
-    Call<ArrayList<UniSocial>> createAdvert(
+    Call<UniSocial> createAdvert(
 
             @Field("advertName") String advertName,
             @Field("description") String description,
-            @Field("numbOfPerson") int numbOfPerson,
+            @Field("numberOfPerson") int numbOfPerson,
             @Field("courseName")  String courseName
 
     );
