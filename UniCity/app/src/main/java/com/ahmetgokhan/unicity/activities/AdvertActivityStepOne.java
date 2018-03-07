@@ -8,15 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
-import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
-import java.util.ArrayList;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class AdvertActivity extends AppCompatActivity {
+public class AdvertActivityStepOne extends AppCompatActivity {
 
     EditText advertName,description,university,name,numbOfPerson;
     Button createAdvertButton;
@@ -52,24 +47,24 @@ public class AdvertActivity extends AppCompatActivity {
 
                 if(advertName_text.isEmpty()){
 
-                    Toast.makeText(AdvertActivity.this, "Please enter a advert NAME", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivityStepOne.this, "Please enter a advert NAME", Toast.LENGTH_SHORT).show();
 
                 }
                 else if(description_text.isEmpty()){
 
-                    Toast.makeText(AdvertActivity.this, "Please enter a description", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivityStepOne.this, "Please enter a description", Toast.LENGTH_SHORT).show();
 
                 }
 
                 else if(String.valueOf(numberOfPerson).isEmpty() || numberOfPerson == 0){
 
-                    Toast.makeText(AdvertActivity.this, "Please enter number of person", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvertActivityStepOne.this, "Please enter number of person", Toast.LENGTH_SHORT).show();
 
                 }
 
 
                 else {
-                        Intent intent = new Intent(getApplicationContext(), AdvertActivity2.class);
+                        Intent intent = new Intent(getApplicationContext(), AdvertActivityStepTwo.class);
                         intent.putExtra("advertName", advertName_text);
                         intent.putExtra("description", description_text);
                         intent.putExtra("numberOfPerson", numberOfPerson);

@@ -53,10 +53,9 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
     LinearLayout linearLayout;
 
-    //Oncreate
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_three_layout, container, false);
 

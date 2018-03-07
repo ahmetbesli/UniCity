@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.createAdvert:
-                Intent intq = new Intent(getApplicationContext(),AdvertActivity.class);
+                Intent intq = new Intent(getApplicationContext(),AdvertActivityStepOne.class);
                 startActivity(intq);
                 break;
             default:
