@@ -56,6 +56,9 @@ public interface ApiInterface {
     @GET("getUniversities/")
     Call<ArrayList<UniSocial>> getUniversities();
 
+    @GET("getAdverts/")
+    Call<ArrayList<UniSocial>> getAdverts();
+
 
     @FormUrlEncoded
     @POST("getFaculty/")

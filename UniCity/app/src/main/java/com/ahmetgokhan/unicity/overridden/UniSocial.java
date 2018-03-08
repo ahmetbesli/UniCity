@@ -3,6 +3,8 @@ package com.ahmetgokhan.unicity.overridden;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class UniSocial {
 
     @SerializedName("message")
@@ -31,8 +33,24 @@ public class UniSocial {
 
     @SerializedName("description")
     @Expose
-
     private String description;
+
+    @SerializedName("numberOfPerson")
+    @Expose
+    public int numberOfPerson;
+
+
+
+    @SerializedName("courseName")
+    @Expose
+    public String courseName;
+
+
+    @SerializedName("advert_date")
+    @Expose
+    public Date advertDate;
+
+
 
     @SerializedName("surname")
     @Expose
@@ -175,6 +193,18 @@ public class UniSocial {
     public String getDepartments() { return departments; }
 
     public void setDepartments(String departments) { this.departments = departments; }
+
+    public int getNumberOfPerson() { return numberOfPerson; }
+
+    public void setNumberOfPerson(int numberOfPerson) { this.numberOfPerson = numberOfPerson; }
+
+    public Date getAdvertDate() { return advertDate; }
+
+    public void setAdvertDate(Date advertDate) { this.advertDate = advertDate; }
+
+    public String getCourseName() { return courseName; }
+
+    public void setCourseName(String courseName) { this.courseName = courseName; }
 
 }
 

@@ -20,11 +20,15 @@ import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
@@ -37,6 +41,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private List<RecyclerViewListItem> listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
 
+
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        listItems =  new ArrayList<>();
+        loadRecyclerViewData();
 
 
 
@@ -139,6 +155,40 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 return null;
             }
         }
+    }
+
+    public void loadRecyclerViewData(){
+
+        Call<ArrayList<UniSocial>>call = apiInterface.getAdverts();
+        call.enqueue(new Callback<ArrayList<UniSocial>>() {
+            @Override
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+
+                for (int i = 0; i < response.body().size(); i++) {
+
+                    RecyclerViewListItem listItem = new RecyclerViewListItem(
+                        response.body().get(i).getAdvertName(),
+                        response.body().get(i).getDescription(),
+                        response.body().get(i).getNumberOfPerson(),
+                        response.body().get(i).getAdvertDate()
+                );
+
+                    listItems.add(listItem);
+
+                }
+
+                adapter = new RecyclerViewMyAdapter(listItems,getApplicationContext());
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 }
 
