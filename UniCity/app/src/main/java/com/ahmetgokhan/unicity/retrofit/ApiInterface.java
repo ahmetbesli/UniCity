@@ -15,9 +15,18 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+
     @FormUrlEncoded
     @POST("getProfile/")
     Call<UniSocial> getProfile(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("subscribe/")
+    Call<UniSocial> subscribe(@Field("token") String token, @Field("course_name") String course_name);
+
+    @FormUrlEncoded
+    @POST("unsubscribe/")
+    Call<UniSocial> unsubscribe(@Field("token") String token, @Field("course_name") String course_name);
 
     @FormUrlEncoded
     @POST("getCourses/")

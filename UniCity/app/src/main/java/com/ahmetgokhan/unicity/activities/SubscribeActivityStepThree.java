@@ -1,65 +1,68 @@
 package com.ahmetgokhan.unicity.activities;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.adapters.SubscribeAdapter;
+import com.ahmetgokhan.unicity.adapters.SubscribeAdapterWithButton;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class SubscribeActivity extends AppCompatActivity {
+public class SubscribeActivityStepThree extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<>();
     private ListView listView;
+    String department;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subscribe);
-        listView = findViewById(R.id.listViewSubscription1);
+        setContentView(R.layout.activity_subscribe_step_three);
+        department = getIntent().getStringExtra("department");
+
+        listView = findViewById(R.id.listViewSubscription3);
         generateListContent();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),SubscribeActivityStepTwo.class);
-                intent.putExtra("faculty",data.get(position));
-                startActivity(intent);
+               TextView text = (TextView)parent.getChildAt(position).findViewById(R.id.listViewText);
+               Log.e("text bastıkkkkkk", text.getText().toString());
             }
         });
+
+
+
+
     }
-
-
     private void generateListContent() {
-
         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        Call<ArrayList<UniSocial>> call = apiInterface.getCourses("Kadir Has Üniversitesi",null,null);
+        Call<ArrayList<UniSocial>> call = apiInterface.getCourses(null,null,department);
         call.enqueue(new Callback<ArrayList<UniSocial>>() {
 
             @Override
             public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
-
+                Log.e("hello",String.valueOf(response.body().size()));
                 for (int i = 0; i < response.body().size(); i++) {
 
-                    data.add(response.body().get(i).getFaculty());
+                    data.add(response.body().get(i).getCourses());
 
                 }
-                listView.setAdapter(new SubscribeAdapter(getApplicationContext(),R.layout.list_item,data));
-
+                listView.setAdapter(new SubscribeAdapterWithButton(getApplicationContext(),R.layout.list_item_with_button,data));
 
             }
 
@@ -71,6 +74,5 @@ public class SubscribeActivity extends AppCompatActivity {
         });
 
     }
-
 
 }

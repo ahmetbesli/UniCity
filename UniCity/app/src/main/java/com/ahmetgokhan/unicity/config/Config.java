@@ -12,6 +12,7 @@ public class Config {
     public static final String faculty = "Faculty";
     public static final String department = "Department";
     public static final String TOKEN = "TOKEN";
+    public static final String USER_ID = "User_id";
     public static final String BASE_URL = "http://94.54.213.189:5000";
 
 }

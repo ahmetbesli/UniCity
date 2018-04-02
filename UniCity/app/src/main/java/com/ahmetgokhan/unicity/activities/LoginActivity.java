@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                         editor = getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).edit();
                         editor.putString(Config.TOKEN,response.body().getToken());
+                        editor.putString(Config.USER_ID,response.body().getUser_id());
                         editor.apply();
                         startActivity(intent);
                     }else{

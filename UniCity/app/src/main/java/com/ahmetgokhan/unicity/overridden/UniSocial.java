@@ -51,7 +51,6 @@ public class UniSocial {
     public Date advertDate;
 
 
-
     @SerializedName("surname")
     @Expose
     public String surname;
@@ -72,6 +71,9 @@ public class UniSocial {
     @Expose
     public String faculty;
 
+    @SerializedName("user_id")
+    @Expose
+    public String user_id;
 
 
     @SerializedName("departments")
@@ -81,6 +83,7 @@ public class UniSocial {
     @SerializedName("courses")
     @Expose
     public String courses;
+
 
 
 
@@ -94,7 +97,8 @@ public class UniSocial {
                      String description,
                      String cover_photo,
                      String profile_photo,
-                     String faculty) {
+                     String faculty,
+                     String user_id) {
 
         this.faculty = faculty;
         this.cover_photo = cover_photo;
@@ -107,9 +111,18 @@ public class UniSocial {
         this.description = description;
         this.surname = surname;
         this.email = email;
+        this.user_id = user_id;
+
 
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getCover_photo() {
         return cover_photo;
