@@ -30,10 +30,15 @@
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.AdvertActivityStepOne" />
-        <activity android:name=".activities.LoginActivity"/>
+        <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.FullScreenImageActivity" />
-        <activity android:name=".activities.SubscribeActivity"/>
-        <activity android:name=".activities.AdvertActivityStepTwo"/>
+        <activity android:name=".activities.SubscribeActivity" />
+        <activity android:name=".activities.AdvertActivityStepTwo" />
+        <activity android:name=".activities.HomeActivity" android:theme="@style/AppTheme">
+
+        </activity>
+
     </application>
+
 
 </manifest>

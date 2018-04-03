@@ -90,7 +90,7 @@ public class FragmentThree extends Fragment implements View.OnClickListener{
 
         universityPicker.setDisplayedValues(universities);
         universityPicker.setMinValue(0);
-        universityPicker.setMaxValue(176);
+        universityPicker.setMaxValue(0);
 
         universityPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         setNumberPickerTextColor(universityPicker, Color.WHITE);

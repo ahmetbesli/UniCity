@@ -41,15 +41,18 @@ import java.util.List;
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-            RecyclerViewListItem list_item = listItems.get(position);
-            holder.textViewAdvertName.setText(list_item.getAdvertName());
-            holder.textViewDescription.setText(list_item.getDescription());
+            try {
+                RecyclerViewListItem list_item = listItems.get(position);
+                holder.textViewAdvertName.setText(list_item.getAdvertName());
+                holder.textViewDescription.setText(list_item.getDescription());
 
-            holder.textViewAdvertDate.setText(list_item.getAdvertDate().toString());
+                holder.textViewAdvertDate.setText(list_item.getAdvertDate().toString());
 
 
-            System.out.println(list_item.getNumberOfPerson());
-            holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson()  + "");
+                System.out.println(list_item.getNumberOfPerson());
+                holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson() + "");
+            }
+            catch (Exception e){};
 
 
 

@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     CircleImageView profile_photo;
     TextView name_surname,textViewUniversity;
     ApiInterface apiInterface;
-    Button subscribeButton;
+    Button subscribeButton,homeButton;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textViewUniversity = findViewById(R.id.textViewUniversity);
 
         subscribeButton = findViewById(R.id.subscribeButton);
+        homeButton = findViewById(R.id.homeButton);
 
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
@@ -76,7 +77,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         listItems =  new ArrayList<>();
         loadRecyclerViewData();
 
-
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         Call<UniSocial> call = apiInterface.getProfile(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
