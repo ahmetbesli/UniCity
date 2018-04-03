@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities;
+package com.ahmetgokhan.unicity.activities.Register;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;

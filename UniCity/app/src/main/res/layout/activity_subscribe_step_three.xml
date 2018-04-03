@@ -4,7 +4,7 @@
     android:background="@color/colorBlack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ahmetgokhan.unicity.activities.SubscribeActivityStepThree">
+    tools:context="com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivityStepThree">
     <ListView
         android:id="@+id/listViewSubscription3"
         android:layout_width="match_parent"

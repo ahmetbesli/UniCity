@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities;
+package com.ahmetgokhan.unicity.activities.Profile;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItem;
+import com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewMyAdapter;
+import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -35,9 +38,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     ImageView cover_photo;
     CircleImageView profile_photo;
-    TextView name_surname,textViewUniversity;
+    TextView name_surname,textViewUniversity,textViewDepartmant,subscribedCourses;
     ApiInterface apiInterface;
-    Button subscribeButton;
+
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -51,13 +54,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         textViewUniversity = findViewById(R.id.textViewUniversity);
 
-        subscribeButton = findViewById(R.id.subscribeButton);
+
 
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
         profile_photo =  findViewById(R.id.circleImageView);
+        textViewDepartmant = findViewById(R.id.textViewDepartment);
+        subscribedCourses = findViewById(R.id.textViewSubscribedCourses);
 
-        subscribeButton.setOnClickListener(this);
+
         cover_photo.setOnClickListener(this);
         profile_photo.setOnClickListener(this);
 
@@ -85,6 +90,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(Call<UniSocial> call, Response<UniSocial>response) {
                     name_surname.setText(response.body().getName() + " " + response.body().getSurname());
                     textViewUniversity.setText(response.body().getUniversity());
+                    textViewDepartmant.setText(response.body().getDepartment());
 
                     coverPhotoUrl = Config.BASE_URL + response.body().getCover_photo();
                     profilePhotoUrl = Config.BASE_URL + response.body().getProfile_photo();
@@ -133,9 +139,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     startActivity(fullScreenIntent2);
                 }
                 break;
-            case R.id.subscribeButton:
-                Intent intent = new Intent(this,SubscribeActivity.class);
-                startActivity(intent);
+
             default:
                 break;
 

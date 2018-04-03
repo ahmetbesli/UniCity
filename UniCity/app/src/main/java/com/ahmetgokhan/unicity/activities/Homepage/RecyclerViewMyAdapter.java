@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities;
+package com.ahmetgokhan.unicity.activities.Homepage;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -41,7 +41,7 @@ import java.util.List;
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-            RecyclerViewListItem list_item = listItems.get(position);
+          /*  RecyclerViewListItem list_item = listItems.get(position);
             holder.textViewAdvertName.setText(list_item.getAdvertName());
             holder.textViewDescription.setText(list_item.getDescription());
 
@@ -49,7 +49,7 @@ import java.util.List;
 
 
             System.out.println(list_item.getNumberOfPerson());
-            holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson()  + "");
+            holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson()  + "");*/
 
 
 

@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities;
+package com.ahmetgokhan.unicity.activities.Login;
 
 
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

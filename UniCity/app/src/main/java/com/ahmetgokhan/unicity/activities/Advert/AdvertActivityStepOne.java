@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities;
+package com.ahmetgokhan.unicity.activities.Advert;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

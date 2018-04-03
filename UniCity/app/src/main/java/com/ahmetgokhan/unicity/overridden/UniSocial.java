@@ -86,12 +86,20 @@ public class UniSocial {
 
 
 
+    @SerializedName("department")
+    @Expose
+    public String department;
+
+
+
+
 
     public UniSocial(String message,
                      String name,
                      String surname,
                      String email,
                      String token,
+                     String department,
                      String universities,
                      String advertName,
                      String description,
@@ -112,6 +120,7 @@ public class UniSocial {
         this.surname = surname;
         this.email = email;
         this.user_id = user_id;
+        this.department = department;
 
 
     }
@@ -218,6 +227,12 @@ public class UniSocial {
     public String getCourseName() { return courseName; }
 
     public void setCourseName(String courseName) { this.courseName = courseName; }
+
+    public String getDepartment() { return department; }
+
+    public void setDepartment(String department) { this.department = department; }
+
+
 
 }
 

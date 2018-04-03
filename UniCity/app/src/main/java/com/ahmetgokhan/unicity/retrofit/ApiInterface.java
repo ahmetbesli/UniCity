@@ -73,6 +73,11 @@ public interface ApiInterface {
     @POST("getFaculty/")
     Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
 
+    @FormUrlEncoded
+    @POST("updateUser/")
+    Call<UniSocial> updateUser(@Field("department") String department,
+                               @Field("token") String token);
+
 
 }
 

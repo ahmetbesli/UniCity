@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
-import com.ahmetgokhan.unicity.activities.RegisterActivity;
+import com.ahmetgokhan.unicity.activities.Register.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
 
 public class FragmentOne extends Fragment {
