@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                     if(response.body().getMessage().equals("true")){
-                        Intent intent = new Intent(getApplicationContext(),SubscribeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                         editor = getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).edit();
                         editor.putString(Config.TOKEN,response.body().getToken());
                         editor.apply();

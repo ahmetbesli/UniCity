@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     ImageView cover_photo;
     CircleImageView profile_photo;
     TextView name_surname,textViewUniversity,textViewDepartmant,subscribedCourses;
+    TextView profile_working_adverts,profile_subscribed_courses;
     ApiInterface apiInterface;
 
 
@@ -59,8 +60,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
         profile_photo =  findViewById(R.id.circleImageView);
+        profile_working_adverts = findViewById(R.id.profile_working_adverts);
+        profile_subscribed_courses = findViewById(R.id.profile_subscribed_courses);
         textViewDepartmant = findViewById(R.id.textViewDepartment);
-        subscribedCourses = findViewById(R.id.textViewSubscribedCourses);
+
+
 
 
         cover_photo.setOnClickListener(this);
@@ -91,6 +95,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     name_surname.setText(response.body().getName() + " " + response.body().getSurname());
                     textViewUniversity.setText(response.body().getUniversity());
                     textViewDepartmant.setText(response.body().getDepartment());
+                    profile_working_adverts.setText("Projects\n" + response.body().getNumber_adverts());
+                    profile_subscribed_courses.setText("Subscriptions\n" + response.body().getNumber_subs());
 
                     coverPhotoUrl = Config.BASE_URL + response.body().getCover_photo();
                     profilePhotoUrl = Config.BASE_URL + response.body().getProfile_photo();

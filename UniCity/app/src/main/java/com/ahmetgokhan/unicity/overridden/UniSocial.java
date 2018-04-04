@@ -40,7 +40,6 @@ public class UniSocial {
     public int numberOfPerson;
 
 
-
     @SerializedName("courseName")
     @Expose
     public String courseName;
@@ -71,11 +70,6 @@ public class UniSocial {
     @Expose
     public String faculty;
 
-    @SerializedName("user_id")
-    @Expose
-    public String user_id;
-
-
     @SerializedName("departments")
     @Expose
     public String departments;
@@ -84,13 +78,17 @@ public class UniSocial {
     @Expose
     public String courses;
 
-
-
     @SerializedName("department")
     @Expose
     public String department;
 
+    @SerializedName("number_subs")
+    @Expose
+    public String number_subs;
 
+    @SerializedName("number_adverts")
+    @Expose
+    public String number_adverts;
 
 
 
@@ -106,7 +104,8 @@ public class UniSocial {
                      String cover_photo,
                      String profile_photo,
                      String faculty,
-                     String user_id) {
+                     String number_adverts,
+                     String number_subs) {
 
         this.faculty = faculty;
         this.cover_photo = cover_photo;
@@ -119,19 +118,30 @@ public class UniSocial {
         this.description = description;
         this.surname = surname;
         this.email = email;
-        this.user_id = user_id;
         this.department = department;
+        this.number_adverts = number_adverts;
+        this.number_subs = number_subs;
 
 
     }
 
-    public String getUser_id() {
-        return user_id;
+
+    public String getNumber_subs() {
+        return number_subs;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setNumber_subs(String number_subs) {
+        this.number_subs = number_subs;
     }
+
+    public String getNumber_adverts() {
+        return number_adverts;
+    }
+
+    public void setNumber_adverts(String number_adverts) {
+        this.number_adverts = number_adverts;
+    }
+
 
     public String getCover_photo() {
         return cover_photo;

@@ -1,5 +1,6 @@
 package com.ahmetgokhan.unicity.activities.Advert;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
+import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
@@ -148,7 +150,7 @@ public class AdvertActivityStepTwo extends AppCompatActivity {
                                                             public void onClick(View v) {
 
 
-                                                                Call<UniSocial> call3 = apiInterface.createAdvert(advertName, description, numberOfPerson, courseName);
+                                                                Call<UniSocial> call3 = apiInterface.createAdvert(getApplicationContext().getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""),advertName, description, numberOfPerson, courseName);
                                                                 call3.enqueue(new Callback<UniSocial>() {
                                                                     @Override
                                                                     public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {

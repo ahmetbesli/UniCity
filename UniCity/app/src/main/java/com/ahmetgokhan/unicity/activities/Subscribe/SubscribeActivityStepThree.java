@@ -41,15 +41,15 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
         department = getIntent().getStringExtra("department");
 
         listView = findViewById(R.id.listViewSubscription3);
-        profileComplateButton = findViewById(R.id.profileComplateButton);
+        //profileComplateButton = findViewById(R.id.profileComplateButton);
 
-        profileComplateButton.setOnClickListener(new View.OnClickListener() {
+        /*profileComplateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         generateListContent();
 
 
