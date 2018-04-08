@@ -77,6 +77,10 @@ public interface ApiInterface {
     @POST("updateUser/")
     Call<UniSocial> updateUser(@Field("department") String department,
                                @Field("token") String token);
+    @FormUrlEncoded
+    @POST("getHomepageAdverts/")
+    Call<ArrayList<UniSocial>> getHomepageAdverts(@Field("token") String token);
+
 
 
 }

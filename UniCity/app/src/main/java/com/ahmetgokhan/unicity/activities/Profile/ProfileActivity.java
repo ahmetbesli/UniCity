@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItem;
 import com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewMyAdapter;
 import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
@@ -41,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     TextView name_surname,textViewUniversity,textViewDepartmant,subscribedCourses;
     TextView profile_working_adverts,profile_subscribed_courses;
     ApiInterface apiInterface;
+    Button homeBtn;
 
 
     private String coverPhotoUrl;
@@ -53,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         textViewUniversity = findViewById(R.id.textViewUniversity);
 
 
@@ -63,6 +66,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_working_adverts = findViewById(R.id.profile_working_adverts);
         profile_subscribed_courses = findViewById(R.id.profile_subscribed_courses);
         textViewDepartmant = findViewById(R.id.textViewDepartment);
+        homeBtn = findViewById(R.id.home_button);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -177,6 +188,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 for (int i = 0; i < response.body().size(); i++) {
 
                     RecyclerViewListItem listItem = new RecyclerViewListItem(
+                        response.body().get(i).getCourseName(),
                         response.body().get(i).getAdvertName(),
                         response.body().get(i).getDescription(),
                         response.body().get(i).getNumberOfPerson(),

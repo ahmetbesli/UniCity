@@ -47,7 +47,7 @@ public class UniSocial {
 
     @SerializedName("advert_date")
     @Expose
-    public Date advertDate;
+    public String advertDate;
 
 
     @SerializedName("surname")
@@ -92,6 +92,8 @@ public class UniSocial {
 
 
 
+
+
     public UniSocial(String message,
                      String name,
                      String surname,
@@ -105,7 +107,10 @@ public class UniSocial {
                      String profile_photo,
                      String faculty,
                      String number_adverts,
-                     String number_subs) {
+                     String advertDate,
+                     String number_subs,
+                     String courseName
+    ) {
 
         this.faculty = faculty;
         this.cover_photo = cover_photo;
@@ -121,6 +126,7 @@ public class UniSocial {
         this.department = department;
         this.number_adverts = number_adverts;
         this.number_subs = number_subs;
+        this.courseName = courseName;
 
 
     }
@@ -230,9 +236,9 @@ public class UniSocial {
 
     public void setNumberOfPerson(int numberOfPerson) { this.numberOfPerson = numberOfPerson; }
 
-    public Date getAdvertDate() { return advertDate; }
+    public String getAdvertDate() { return advertDate; }
 
-    public void setAdvertDate(Date advertDate) { this.advertDate = advertDate; }
+    public void setAdvertDate(String advertDate) { this.advertDate = advertDate; }
 
     public String getCourseName() { return courseName; }
 

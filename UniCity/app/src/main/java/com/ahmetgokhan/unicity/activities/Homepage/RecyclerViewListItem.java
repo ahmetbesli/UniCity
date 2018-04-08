@@ -8,18 +8,24 @@ import java.util.Date;
  */
 
 public class RecyclerViewListItem {
+    private String courseName;
     private String advertName;
     private String description;
     private int numberOfPerson;
-    private Date advertDate;
+    private String advertDate;
 
 
-    public RecyclerViewListItem(String advertName, String description, int numberOfPerson, Date advertDate) {
+
+
+    public RecyclerViewListItem(String courseName, String advertName, String description, int numberOfPerson, String advertDate) {
+        this.courseName = courseName;
         this.advertName = advertName;
         this.description = description;
         this.numberOfPerson = numberOfPerson;
         this.advertDate = advertDate;
     }
+    public String getCourseName() {  return courseName; }
+
 
     public String getAdvertName() {
         return advertName;
@@ -33,7 +39,7 @@ public class RecyclerViewListItem {
         return numberOfPerson;
     }
 
-    public Date getAdvertDate() {
+    public String getAdvertDate() {
         return advertDate;
     }
 
