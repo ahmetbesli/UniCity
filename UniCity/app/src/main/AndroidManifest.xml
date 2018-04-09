@@ -35,7 +35,11 @@
         <activity android:name=".activities.Subscribe.SubscribeActivity" />
         <activity android:name=".activities.Advert.AdvertActivityStepTwo" />
         <activity android:name=".activities.Subscribe.SubscribeActivityStepTwo" />
-        <activity android:name=".activities.Subscribe.SubscribeActivityStepThree"></activity>
+        <activity android:name=".activities.Subscribe.SubscribeActivityStepThree" />
+        <activity
+            android:name=".activities.Homepage.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/NoActionBar"/>
     </application>
 
 </manifest>

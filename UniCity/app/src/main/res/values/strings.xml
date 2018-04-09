@@ -10,5 +10,11 @@
     <string name="department">Department</string>
     <string name="faculty">Faculty</string>
     <string name="title_activity_create_advert">createAdvertActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>
