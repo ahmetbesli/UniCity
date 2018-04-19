@@ -34,6 +34,7 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
     String department;
     ImageButton profileComplateButton;
     ArrayList<String> equals = new ArrayList<>();
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +50,11 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });*/         //AIzaSyBhyh7MUcYAq7NRs3h9ceoicOv79CKgTYw                FCM
         generateListContent();
 
 
-        System.out.println(department);
+
         System.out.println("TOKEEEN" + getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<UniSocial> call = apiInterface.updateUser(department, getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
