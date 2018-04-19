@@ -43,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     TextView profile_working_adverts,profile_subscribed_courses;
     ApiInterface apiInterface;
     ImageView go_back_image;
-
+    Button button;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -57,7 +57,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
 
         textViewUniversity = findViewById(R.id.textViewUniversity);
-
+        button = findViewById(R.id.button_subs);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intt = new Intent(getApplicationContext(),SubscribeActivity.class);
+                startActivity(intt);
+            }
+        });
 
 
         name_surname = findViewById(R.id.textViewName);

@@ -92,6 +92,12 @@ public class UniSocial {
 
 
 
+    @SerializedName("course_name")
+    @Expose
+    public String course_name;
+
+
+
 
 
     public UniSocial(String message,
@@ -109,9 +115,10 @@ public class UniSocial {
                      String number_adverts,
                      String advertDate,
                      String number_subs,
-                     String courseName
+                     String courseName,
+                     String course_name
     ) {
-
+        this.course_name = course_name;
         this.faculty = faculty;
         this.cover_photo = cover_photo;
         this.profile_photo = profile_photo;
@@ -131,6 +138,14 @@ public class UniSocial {
 
     }
 
+
+    public String getCourse_name() {
+        return course_name;
+    }
+
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
+    }
 
     public String getNumber_subs() {
         return number_subs;

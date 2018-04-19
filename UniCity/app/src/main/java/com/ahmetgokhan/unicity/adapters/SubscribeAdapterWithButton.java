@@ -1,5 +1,6 @@
 package com.ahmetgokhan.unicity.adapters;
 
+import java.util.ArrayList;
 import java.util.List;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -20,14 +21,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class SubscribeAdapterWithButton extends ArrayAdapter<String> {
-
+    static int x = 0;
     private int layout;
+    ArrayList<String> equals = new ArrayList<>();
     private List<String> mObjects;
     ViewHolder mainViewholder;
+
     public SubscribeAdapterWithButton(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
         mObjects = objects;
         layout = resource;
+
     }
 
     @Override
@@ -35,17 +39,19 @@ public class SubscribeAdapterWithButton extends ArrayAdapter<String> {
 
 
 
-        if (convertView == null) {
+        if (convertView == null && x == 0) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(layout, parent, false);
             ViewHolder viewHolder = new ViewHolder();
             //viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.list_item_thumbnail);
+
             viewHolder.button = convertView.findViewById(R.id.list_view_button_subscribe);
             viewHolder.title = convertView.findViewById(R.id.listViewText);
             convertView.setTag(viewHolder);
+            mainViewholder = (ViewHolder) convertView.getTag();
+
         }
 
-        mainViewholder = (ViewHolder) convertView.getTag();
 
         mainViewholder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +103,17 @@ public class SubscribeAdapterWithButton extends ArrayAdapter<String> {
 
         mainViewholder.title.setText(getItem(position));
 
+
+
+
+
+
         return convertView;
     }
+
+
+
+
 
     public class ViewHolder {
 

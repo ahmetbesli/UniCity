@@ -33,7 +33,7 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
     private ListView listView;
     String department;
     ImageButton profileComplateButton;
-
+    ArrayList<String> equals = new ArrayList<>();
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,11 +91,10 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
             public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
                 Log.e("hello",String.valueOf(response.body().size()));
                 for (int i = 0; i < response.body().size(); i++) {
-
                     data.add(response.body().get(i).getCourses());
-
                 }
                 listView.setAdapter(new SubscribeAdapterWithButton(getApplicationContext(),R.layout.list_item_with_button,data));
+                checkSituationOfButton();
 
             }
 
@@ -107,6 +106,46 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
         });
 
     }
+
+    public void checkSituationOfButton(){
+        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+        Call<ArrayList<UniSocial>> call0 = apiInterface.isSubscribed(getApplicationContext().getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""));
+        call0.enqueue(new Callback<ArrayList<UniSocial>>() {
+
+            @Override
+            public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
+                for(int i = 0; i < data.size(); i++){
+                    Button b = getViewByPosition(i,listView).findViewById(R.id.list_view_button_subscribe);
+                    for(int j = 0; j < response.body().size(); j++){
+                        if(b.getText().toString().equals(response.body().get(j).getCourse_name())){
+                            b.setText("Unsubscribe");
+                        }else{
+                            b.setText("Subscribe");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
+    }
+
 
 
 }
