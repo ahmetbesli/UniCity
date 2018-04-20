@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
+import com.ahmetgokhan.unicity.activities.Search.SearchActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -45,7 +46,6 @@ public class HomeActivity extends AppCompatActivity
     ApiInterface apiInterface;
     TextView emailText,name_surnameText;
     ImageView profilePhoto;
-    String profilePhotoUrl;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome> listItems;
@@ -183,6 +183,8 @@ public class HomeActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_search) {
+            Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_create_advert) {
             Intent intent = new Intent(getApplicationContext(),AdvertActivityStepOne.class);

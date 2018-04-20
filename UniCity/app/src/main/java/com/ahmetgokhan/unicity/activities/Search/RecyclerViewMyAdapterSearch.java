@@ -42,7 +42,7 @@ import java.util.concurrent.ExecutionException;
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_advert, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_search_profiles, parent, false);
 
             return new ViewHolder(v);
         }
@@ -51,26 +51,34 @@ import java.util.concurrent.ExecutionException;
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
             RecyclerViewListItemSearch list_item = listItems.get(position);
-            holder.nameSurnameTextView.setText(list_item.getNameSurname());
+
             holder.uniNameTextView.setText(list_item.getUniName());
             holder.departmentNameTextView.setText(list_item.getDepartmentName());
             holder.userNameHiddenTextView.setText(list_item.getUserNameHidden());
+            holder.nameSurnameTextView.setText(list_item.getNameSurname());
 
 
 
+            if(list_item.getProfilePhotoUrl() == ""|| list_item.getProfilePhotoUrl() == null){
 
-            AsyncTask<String, Void, Bitmap> profileTask = new RecyclerViewMyAdapterSearch.BitmapTask().execute(list_item.getProfilePhotoUrl());
+                System.out.println("Bos yapma");
 
-
-            try {
-
-                holder.profilePhotoImageView.setImageBitmap(profileTask.get());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
             }
-            catch (Exception e){}
+            else {
+                AsyncTask<String, Void, Bitmap> profileTask = new RecyclerViewMyAdapterSearch.BitmapTask().execute(list_item.getProfilePhotoUrl());
+
+
+                try {
+
+                    holder.profilePhotoImageView.setImageBitmap(profileTask.get());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                }
+
+            }
 
 
 

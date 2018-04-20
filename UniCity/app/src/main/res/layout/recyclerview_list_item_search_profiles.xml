@@ -3,21 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/uniTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/nameSurnameTextView"
-        android:layout_centerVertical="true"
-        android:layout_weight="1"
-        android:text="Kadir Has Üniversitesi"
-        android:textColor="@color/colorBlack"
-        android:textSize="18sp" />
+    android:layout_height="150dp">
 
     <android.support.v7.widget.CardView
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="132dp"
         android:layout_margin="10dp">
 
@@ -25,13 +14,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/cardview_light_background"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="horizontal"
+           >
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profilePhotoImageView"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="0.9dp"></de.hdodenhof.circleimageview.CircleImageView>
 
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
                 android:layout_gravity="center">
 
                 <TextView
@@ -50,15 +51,6 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="22sp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profilePhotoImageView"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center"
-                    app:civ_border_color="@color/colorAccent"
-                    app:civ_border_width="0.9dp"></de.hdodenhof.circleimageview.CircleImageView>
 
                 <TextView
                     android:id="@+id/departmentNameTextView"
@@ -81,7 +73,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </LinearLayout>

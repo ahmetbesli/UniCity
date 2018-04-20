@@ -85,6 +85,10 @@ public interface ApiInterface {
     @POST("getHomepageAdverts/")
     Call<ArrayList<UniSocial>> getHomepageAdverts(@Field("token") String token);
 
+    @FormUrlEncoded
+    @POST("getProfileSearch/")
+    Call<ArrayList<UniSocial>> getProfileSearch(@Field("nameSurname") String nameSurname);
+
 
 
 }
