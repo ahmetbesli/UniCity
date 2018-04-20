@@ -57,7 +57,9 @@
             android:value="true" />
 
         <activity android:name=".activities.Search.SearchActivity" />
-        <activity android:name=".activities.Search.UsersProfileActivity"></activity>
+        <activity android:name=".activities.Search.UsersProfileActivity" />
+        <activity android:name=".activities.AdvertPage.AdvertPageActivity" />
+        <activity android:name=".activities.RequestsPage.RequestsActivity"></activity>
     </application>
 
 </manifest>
