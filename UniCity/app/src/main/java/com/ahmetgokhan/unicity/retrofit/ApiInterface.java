@@ -89,7 +89,9 @@ public interface ApiInterface {
     @POST("getProfileSearch/")
     Call<ArrayList<UniSocial>> getProfileSearch(@Field("nameSurname") String nameSurname);
 
-
+    @FormUrlEncoded
+    @POST("getUsersProfile/")
+    Call<UniSocial> getUsersProfile(@Field("username") String username);
 
 }
 

@@ -1,6 +1,7 @@
 package com.ahmetgokhan.unicity.activities.Search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,21 +53,30 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems =  new ArrayList<>();
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+            @Override public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getApplicationContext(),UsersProfileActivity.class);
+                intent.putExtra("username", listItems.get(position).getUserNameHidden());
+                startActivity(intent);
+
+            }
+
+            @Override public void onLongItemClick(View view, int position) {
+                // do whatever
+            }
+        }));
+
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listItems.clear();
-                System.out.println("asdasdasd");
                 nameSurname = nameSurnameEditText.getText().toString();
+                listItems.clear();
                 loadRecyclerViewData();
-
-
             }
         });
-
-
-
     }
+
 
     public void loadRecyclerViewData(){
 

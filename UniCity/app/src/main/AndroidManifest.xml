@@ -56,7 +56,8 @@
             android:name="firebase_messaging_auto_init_enabled"
             android:value="true" />
 
-        <activity android:name=".activities.Search.SearchActivity"></activity>
+        <activity android:name=".activities.Search.SearchActivity" />
+        <activity android:name=".activities.Search.UsersProfileActivity"></activity>
     </application>
 
 </manifest>

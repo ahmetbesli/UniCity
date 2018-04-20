@@ -1,6 +1,7 @@
 package com.ahmetgokhan.unicity.activities.Search;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -39,11 +40,14 @@ import java.util.concurrent.ExecutionException;
 
 
 
+
+
+
+
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_search_profiles, parent, false);
-
             return new ViewHolder(v);
         }
 
