@@ -6,11 +6,11 @@
         android:bottomRightRadius="4dp"
         android:topLeftRadius="4dp"
         android:topRightRadius="4dp" />
-
+S
     <stroke
         android:width="0.5dp"
-        android:color="#FFFFFF" />
+        android:color="#ccFFFFFF" />
 
-    <solid android:color="#CCF32fee" />
+    <solid android:color="#FFFFFF" />
 
 </shape>

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
@@ -41,7 +42,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     TextView profile_working_adverts,profile_subscribed_courses;
     ApiInterface apiInterface;
     ImageView go_back_image;
-    Button button;
+    RelativeLayout projects_to_the_list;
+    RelativeLayout subscriptions_to_the_list;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -55,15 +57,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
 
         textViewUniversity = findViewById(R.id.textViewUniversity);
-        button = findViewById(R.id.button_subs);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intt = new Intent(getApplicationContext(),SubscribeActivity.class);
-                startActivity(intt);
-            }
-        });
-
 
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
@@ -80,7 +73,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
           }
         });
 
+        projects_to_the_list = findViewById(R.id.projects_to_the_list);
+        projects_to_the_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        subscriptions_to_the_list = findViewById(R.id.subscriptions_to_the_list);
+        subscriptions_to_the_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+S
 
 
         cover_photo.setOnClickListener(this);
