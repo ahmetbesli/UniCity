@@ -7,12 +7,11 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
+import com.ahmetgokhan.unicity.config.Config;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -20,6 +19,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage message){
+
         String image = message.getNotification().getIcon();
         String title = message.getNotification().getTitle();
         String text = message.getNotification().getBody();
@@ -30,7 +30,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if(obj != null){
             id = Integer.valueOf(obj.toString());
         }
-
         this.sendNotification(new NotificationData(image,id,title,text,sound));
     }
 
