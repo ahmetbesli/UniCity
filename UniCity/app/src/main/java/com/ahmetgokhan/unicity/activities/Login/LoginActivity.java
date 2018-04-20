@@ -19,6 +19,8 @@ import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -65,11 +67,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                     if(response.body().getMessage().equals("true")){
-                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                         editor = getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).edit();
                         editor.putString(Config.TOKEN,response.body().getToken());
                         editor.putBoolean(Config.LOGGING_STATUS,true);
                         editor.apply();
+                        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                        Call<UniSocial> callToken = apiInterface.saveToken(FirebaseInstanceId.getInstance().getToken(),getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
+                        callToken.enqueue(new Callback<UniSocial>() {
+
+                            @Override
+                            public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                                if(response.body().getMessage().equals("true")){
+                                    System.out.println("Token Saved");
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"Email or Password is not correct!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+
+                            @Override
+                            public void onFailure(Call<UniSocial> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
+                            }
+
+                        });
+
+                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(getApplicationContext(),"Email or Password is not correct!",Toast.LENGTH_SHORT).show();

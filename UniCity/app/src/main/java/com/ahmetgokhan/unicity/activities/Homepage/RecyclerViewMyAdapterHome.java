@@ -8,10 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.config.Config;
+import com.ahmetgokhan.unicity.overridden.UniSocial;
+import com.ahmetgokhan.unicity.retrofit.ApiClient;
+import com.ahmetgokhan.unicity.retrofit.ApiInterface;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
  * Created by gokhankilic on 9.03.2018.
@@ -33,25 +41,9 @@ import java.util.List;
 
         @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_advert, parent, false);
-            final Button apply = v.findViewById(R.id.list_view_home_button_apply);
-            Button browse = v.findViewById(R.id.list_view_home_button_browse);
 
-            browse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            apply.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    apply.setText("Apply Sent");
-                }
-            });
             return new ViewHolder(v);
         }
 
@@ -81,9 +73,13 @@ import java.util.List;
             public TextView textViewDescription;
             public TextView textViewAdvertDate;
             public TextView textViewNumberOfPerson;
+            public Button buttonApply;
+            public Button buttonBrowse;
 
             public ViewHolder(View itemView) {
                 super(itemView);
+                buttonApply = itemView.findViewById(R.id.list_view_home_button_apply);
+                buttonBrowse = itemView.findViewById(R.id.list_view_home_button_browse);
                 textViewAdvertId = itemView.findViewById(R.id.advert_id);
                 textViewCourseName = itemView.findViewById(R.id.textViewCourseName);
                 textViewAdvertName = itemView.findViewById(R.id.textViewAdvertName);
@@ -91,6 +87,34 @@ import java.util.List;
                 textViewAdvertDate = itemView.findViewById(R.id.textViewAdvertDate);
                 textViewNumberOfPerson = itemView.findViewById(R.id.textViewNumberOfPerson);
 
+
+                buttonApply.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                        Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
+                        call.enqueue(new Callback<UniSocial>() {
+
+                            @Override
+                            public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+
+                                if(response.body().getMessage().equals("true")){
+                                    System.out.println(".....");
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<UniSocial> call, Throwable t) {
+
+                            }
+                        });
+
+
+
+                        buttonApply.setText("Applied");
+
+                    }
+                });
             }
 
 

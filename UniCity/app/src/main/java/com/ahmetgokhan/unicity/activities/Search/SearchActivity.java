@@ -1,32 +1,20 @@
 package com.ahmetgokhan.unicity.activities.Search;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-
 import com.ahmetgokhan.unicity.R;
-import com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome;
-import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
