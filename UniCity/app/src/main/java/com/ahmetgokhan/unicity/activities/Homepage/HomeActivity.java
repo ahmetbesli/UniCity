@@ -10,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -49,7 +48,7 @@ public class HomeActivity extends AppCompatActivity
     String profilePhotoUrl;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<RecyclerViewListItem> listItems;
+    private List<com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome> listItems;
 
 
 
@@ -109,7 +108,6 @@ public class HomeActivity extends AppCompatActivity
                 emailText.setText(response.body().getEmail());
 
 
-                profilePhotoUrl = Config.BASE_URL + response.body().getProfile_photo();
 
 
                 AsyncTask<String, Void, Bitmap> profileTask = new HomeActivity.BitmapTask().execute(response.body().getProfile_photo());
@@ -227,7 +225,7 @@ public class HomeActivity extends AppCompatActivity
 
                 for (int i = 0; i < response.body().size(); i++) {
 
-                    RecyclerViewListItem listItem = new RecyclerViewListItem(
+                    com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome listItem = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome(
                             response.body().get(i).getCourseName(),
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
@@ -243,7 +241,7 @@ public class HomeActivity extends AppCompatActivity
 
                 }
 
-                adapter = new RecyclerViewMyAdapter(listItems,getApplicationContext());
+                adapter = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewMyAdapterHome(listItems,getApplicationContext());
                 recyclerView.setAdapter(adapter);
             }
 

@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities.Homepage;
+package com.ahmetgokhan.unicity.activities.Profile;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -17,12 +17,12 @@ import java.util.List;
  */
 
 
-    public class RecyclerViewMyAdapter extends RecyclerView.Adapter<RecyclerViewMyAdapter.ViewHolder> {
+    public class RecyclerViewMyAdapterProfile extends RecyclerView.Adapter<RecyclerViewMyAdapterProfile.ViewHolder> {
 
-        private List<RecyclerViewListItem> listItems;
+        private List<RecyclerViewListItemProfile> listItems;
         private Context context;
 
-        public RecyclerViewMyAdapter(List<RecyclerViewListItem> listItems, Context context) {
+        public RecyclerViewMyAdapterProfile(List<RecyclerViewListItemProfile> listItems, Context context) {
             this.listItems = listItems;
             this.context = context;
         }
@@ -33,7 +33,7 @@ import java.util.List;
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_advert, parent, false);
 
             return new ViewHolder(v);
         }
@@ -41,7 +41,7 @@ import java.util.List;
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-            RecyclerViewListItem list_item = listItems.get(position);
+            RecyclerViewListItemProfile list_item = listItems.get(position);
             holder.textViewCourseName.setText(list_item.getCourseName());
             holder.textViewAdvertName.setText(list_item.getAdvertName());
             holder.textViewDescription.setText(list_item.getDescription());

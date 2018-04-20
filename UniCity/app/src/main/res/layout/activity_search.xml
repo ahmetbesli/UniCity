@@ -4,6 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     tools:context=".activities.Search.SearchActivity">
 
+    <EditText
+        android:id="@+id/keywordsEditText"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter a keyword to search people"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/searchImageButton"
+        android:layout_width="46dp"
+        android:layout_height="50dp"
+        android:background="@color/cardview_light_background"
+        app:srcCompat="@drawable/ic_search"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="4dp" />
 </android.support.constraint.ConstraintLayout>

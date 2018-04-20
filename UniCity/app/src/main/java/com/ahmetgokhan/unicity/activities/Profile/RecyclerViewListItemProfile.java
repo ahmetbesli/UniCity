@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities.Homepage;
+package com.ahmetgokhan.unicity.activities.Profile;
 
 
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by gokhankilic on 9.03.2018.
  */
 
-public class RecyclerViewListItem {
+public class RecyclerViewListItemProfile {
     private String courseName;
     private String advertName;
     private String description;
@@ -17,7 +17,7 @@ public class RecyclerViewListItem {
 
 
 
-    public RecyclerViewListItem(String courseName, String advertName, String description, int numberOfPerson, String advertDate) {
+    public RecyclerViewListItemProfile(String courseName, String advertName, String description, int numberOfPerson, String advertDate) {
         this.courseName = courseName;
         this.advertName = advertName;
         this.description = description;
