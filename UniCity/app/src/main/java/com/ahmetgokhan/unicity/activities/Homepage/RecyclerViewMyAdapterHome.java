@@ -3,6 +3,7 @@ package com.ahmetgokhan.unicity.activities.Homepage;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +100,9 @@ import retrofit2.Callback;
                             public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
 
                                 if(response.body().getMessage().equals("true")){
-                                    System.out.println(".....");
+                                    Log.e("djhdkjghdkjgh","merhbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                }else{
+                                    Log.e("responseeeee",response.body().getMessage());
                                 }
                             }
 

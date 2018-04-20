@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         emailText = editTextLogin.getText().toString().trim();
         passwordText = editTextRegister.getText().toString().trim();
         if (isEmailValid(emailText) && isPasswordValid(passwordText)) {
+
             ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
             Call<UniSocial> call = apiInterface.login(emailText, passwordText);
             call.enqueue(new Callback<UniSocial>() {
@@ -67,10 +69,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                     if(response.body().getMessage().equals("true")){
+
                         editor = getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).edit();
                         editor.putString(Config.TOKEN,response.body().getToken());
                         editor.putBoolean(Config.LOGGING_STATUS,true);
+                        editor.putString(Config.USERNAME,response.body().getUsername());
                         editor.apply();
+
                         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
                         Call<UniSocial> callToken = apiInterface.saveToken(FirebaseInstanceId.getInstance().getToken(),getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
                         callToken.enqueue(new Callback<UniSocial>() {
@@ -79,11 +84,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
                                 if(response.body().getMessage().equals("true")){
                                     System.out.println("Token Saved");
+
                                 }else{
                                     Toast.makeText(getApplicationContext(),"Email or Password is not correct!",Toast.LENGTH_SHORT).show();
                                 }
                             }
-
 
                             @Override
                             public void onFailure(Call<UniSocial> call, Throwable t) {

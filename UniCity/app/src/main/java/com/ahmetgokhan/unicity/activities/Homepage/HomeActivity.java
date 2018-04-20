@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
+import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.Search.SearchActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -188,6 +189,9 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_logout) {
+            getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).edit().putBoolean(Config.LOGGING_STATUS,false).apply();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 

@@ -15,5 +15,6 @@ public class Config {
     public static final String BASE_URL = "http://94.54.213.189:5000";
     public static final String LOGGING_STATUS = "Login Status";
     public static final String PROFILE_STATUS = "Profile Status";
+    public static final String USERNAME = "Username";
 
 }
