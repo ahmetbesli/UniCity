@@ -1,5 +1,6 @@
 package com.ahmetgokhan.unicity.activities.Homepage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -91,10 +92,6 @@ public class HomeActivity extends AppCompatActivity
         name_surnameText = (TextView) headerView.findViewById(R.id.name_surname_textView);
         emailText = headerView.findViewById(R.id.emailTextView);
         profilePhoto = headerView.findViewById(R.id.profilePhoto_imageView);
-
-
-
-
 
 
 
@@ -203,6 +200,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class BitmapTask extends AsyncTask<String, Void, Bitmap> {
 
         @Override
@@ -232,7 +230,8 @@ public class HomeActivity extends AppCompatActivity
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
                             response.body().get(i).getNumberOfPerson(),
-                            response.body().get(i).getAdvertDate()
+                            response.body().get(i).getAdvertDate(),
+                            response.body().get(i).getAdvert_id()
 
 
                     );
@@ -245,6 +244,7 @@ public class HomeActivity extends AppCompatActivity
 
                 adapter = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewMyAdapterHome(listItems,getApplicationContext());
                 recyclerView.setAdapter(adapter);
+
             }
 
             @Override

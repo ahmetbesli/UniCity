@@ -1,7 +1,7 @@
 package com.ahmetgokhan.unicity.activities.Homepage;
 
 
-import java.util.Date;
+
 
 /**
  * Created by gokhankilic on 9.03.2018.
@@ -13,16 +13,19 @@ public class RecyclerViewListItemHome {
     private String description;
     private int numberOfPerson;
     private String advertDate;
+    private String advert_id;
 
 
 
 
-    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate) {
+    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate, String advert_id) {
         this.courseName = courseName;
         this.advertName = advertName;
         this.description = description;
         this.numberOfPerson = numberOfPerson;
         this.advertDate = advertDate;
+        this.advert_id = advert_id;
+
     }
     public String getCourseName() {  return courseName; }
 
@@ -43,6 +46,12 @@ public class RecyclerViewListItemHome {
         return advertDate;
     }
 
+    public String getAdvert_id() {
+        return advert_id;
+    }
 
+    public void setAdvert_id(String advert_id) {
+        this.advert_id = advert_id;
+    }
 
 }

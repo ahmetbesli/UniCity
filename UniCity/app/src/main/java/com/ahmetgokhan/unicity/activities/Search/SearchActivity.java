@@ -52,30 +52,33 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems =  new ArrayList<>();
-
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-            @Override public void onItemClick(View view, int position) {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getApplicationContext(),UsersProfileActivity.class);
-                intent.putExtra("username", listItems.get(position).getUserNameHidden());
+                intent.putExtra("username",listItems.get(position).getUserNameHidden());
                 startActivity(intent);
-
             }
 
-            @Override public void onLongItemClick(View view, int position) {
-                // do whatever
+            @Override
+            public void onLongItemClick(View view, int position) {
+
             }
         }));
-
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nameSurname = nameSurnameEditText.getText().toString();
                 listItems.clear();
+                System.out.println("asdasdasd");
+                nameSurname = nameSurnameEditText.getText().toString();
                 loadRecyclerViewData();
+
+
             }
         });
+
     }
+
 
 
     public void loadRecyclerViewData(){

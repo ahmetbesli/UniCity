@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                
+
                 if (getApplicationContext().getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getBoolean(Config.LOGGING_STATUS, false)) {
                     if (getApplicationContext().getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getBoolean(Config.PROFILE_STATUS, false)) {
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
