@@ -16,6 +16,11 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
 
+
+    @FormUrlEncoded
+    @POST("checkToken/")
+    Call<UniSocial> checkToken(@Field("token") String token);
+
     @FormUrlEncoded
     @POST("getProfile/")
     Call<UniSocial> getProfile(@Field("token") String token);

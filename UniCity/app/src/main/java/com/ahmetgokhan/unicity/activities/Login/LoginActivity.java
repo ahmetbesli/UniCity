@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setupUI();
+
     }
 
     private void setupUI() {
@@ -175,6 +176,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return true;
     }
+
+
 
     @Override
     public void onClick(View v) {
