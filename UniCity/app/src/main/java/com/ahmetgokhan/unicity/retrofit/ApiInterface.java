@@ -55,6 +55,10 @@ public interface ApiInterface {
     Call<UniSocial> login(@Field("username") String username, @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("getAdvertsID/")
+    Call<UniSocial> getAdvertsID(@Field("user_id") String user_id);
+
+    @FormUrlEncoded
     @POST("saveToken/")
     Call<UniSocial> saveToken(@Field("firebaseToken") String firebaseToken, @Field("username") String username);
 
@@ -80,6 +84,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("getFaculty/")
     Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
+
+    @FormUrlEncoded
+    @POST("getApplies/")
+    Call<ArrayList<UniSocial>> getApplies(@Field("advert_id") String advert_id);
 
     @FormUrlEncoded
     @POST("updateUser/")

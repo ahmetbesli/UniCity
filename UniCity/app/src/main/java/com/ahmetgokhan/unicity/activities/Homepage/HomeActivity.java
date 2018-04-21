@@ -28,6 +28,7 @@ import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.Search.SearchActivity;
+import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -194,6 +195,8 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(getApplicationContext(), SubscribeActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
 

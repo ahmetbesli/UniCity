@@ -89,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-S
+
 
 
         cover_photo.setOnClickListener(this);

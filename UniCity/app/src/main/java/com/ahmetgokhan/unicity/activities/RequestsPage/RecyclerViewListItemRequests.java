@@ -8,10 +8,23 @@ import android.widget.ImageButton;
  */
 
 public class RecyclerViewListItemRequests {
-    public String getRequesterName() {
-        return requesterName;
-    }
 
+    private String requesterName;
+    private String advertName;
+    private String advert_id;
+    private String requesterID;
+
+
+
+
+
+    public RecyclerViewListItemRequests(String requesterName, String advertName,String advert_id,String requesterID) {
+        this.requesterName = requesterName;
+        this.advertName = advertName;
+        this.advert_id = advert_id;
+        this.requesterID = requesterID;
+
+    }
     public void setRequesterName(String requesterName) {
         this.requesterName = requesterName;
     }
@@ -32,19 +45,19 @@ public class RecyclerViewListItemRequests {
         this.advert_id = advert_id;
     }
 
-    private String requesterName;
-    private String advertName;
-    private String advert_id;
-
-
-
-
-    public RecyclerViewListItemRequests(String requesterName, String advertName,String advert_id) {
-        this.requesterName = requesterName;
-        this.advertName = advertName;
-
-        this.advert_id = advert_id;
-
+    public String getRequesterName() {
+        return requesterName;
     }
+
+    public String getRequesterID() {
+        return requesterID;
+    }
+
+    public void setRequesterID(String requesterID) {
+        this.requesterID = requesterID;
+    }
+
+
+
 
 }
