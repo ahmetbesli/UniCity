@@ -59,7 +59,9 @@
         <activity android:name=".activities.Search.SearchActivity" />
         <activity android:name=".activities.Search.UsersProfileActivity" />
         <activity android:name=".activities.AdvertPage.AdvertPageActivity" />
-        <activity android:name=".activities.RequestsPage.RequestsActivity"></activity>
+        <activity android:name=".activities.RequestsPage.RequestsActivity" />
+        <activity android:name=".activities.ProfileLists.SubscriptionListActivity" />
+        <activity android:name=".activities.ProfileLists.ProjectsListActivity"></activity>
     </application>
 
 </manifest>
