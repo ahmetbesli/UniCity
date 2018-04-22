@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
+import com.ahmetgokhan.unicity.activities.ProfileLists.ProjectsListActivity;
 import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
@@ -79,7 +80,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         projects_to_the_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ProjectsListActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -98,10 +100,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profile_photo.setOnClickListener(this);
 
 
-
-
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-
 
 
         recyclerView = findViewById(R.id.recyclerView);

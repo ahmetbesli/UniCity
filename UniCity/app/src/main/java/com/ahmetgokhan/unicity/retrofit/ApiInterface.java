@@ -114,5 +114,9 @@ public interface ApiInterface {
     @POST("getAdvertApply/")
     Call<UniSocial> getAdvertApply(@Field("token") String token, @Field("advert_id") String advert_id);
 
+    @FormUrlEncoded
+    @POST("getProjectsForProfile/")
+    Call<ArrayList<UniSocial>> getProjectsList(@Field("token") String token);
+
 }
 

@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
         <activity
-            android:name=".activities$Login.SplashScreen"
+            android:name=".activities.Login.SplashScreen"
             android:configChanges="orientation|screenSize"
             android:noHistory="true">
             <intent-filter>
@@ -27,26 +27,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities$Register.RegisterActivity" />
-        <activity android:name=".activities$Profile.ProfileActivity" />
-        <activity android:name=".activities$Advert.AdvertActivityStepOne" />
-        <activity android:name=".activities$Login.LoginActivity"
+        <activity android:name=".activities.Register.RegisterActivity" />
+        <activity android:name=".activities.Profile.ProfileActivity" />
+        <activity android:name=".activities.Advert.AdvertActivityStepOne" />
+        <activity android:name=".activities.Login.LoginActivity"
             android:noHistory="true"/>
-        <activity android:name=".activities$Profile.FullScreenImageActivity" />
-        <activity android:name=".activities$Subscribe.SubscribeActivity" />
-        <activity android:name=".activities$Advert.AdvertActivityStepTwo" />
-        <activity android:name=".activities$Subscribe.SubscribeActivityStepTwo" />
-        <activity android:name=".activities$Subscribe.SubscribeActivityStepThree" />
+        <activity android:name=".activities.Profile.FullScreenImageActivity" />
+        <activity android:name=".activities.Subscribe.SubscribeActivity" />
+        <activity android:name=".activities.Advert.AdvertActivityStepTwo" />
+        <activity android:name=".activities.Subscribe.SubscribeActivityStepTwo" />
+        <activity android:name=".activities.Subscribe.SubscribeActivityStepThree" />
         <activity
-            android:name=".activities$Homepage.HomeActivity"
+            android:name=".activities.Homepage.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".activities$Search.SearchActivity" />
-        <activity android:name=".activities$Search.UsersProfileActivity" />
-        <activity android:name=".activities$AdvertPage.AdvertPageActivity" />
-        <activity android:name=".activities$RequestsPage.RequestsActivity" />
-        <activity android:name=".activities$ProfileLists.SubscriptionListActivity" />
-        <activity android:name=".activities$ProfileLists.ProjectsListActivity"/>
+        <activity android:name=".activities.Search.SearchActivity" />
+        <activity android:name=".activities.Search.UsersProfileActivity" />
+        <activity android:name=".activities.AdvertPage.AdvertPageActivity" />
+        <activity android:name=".activities.RequestsPage.RequestsActivity" />
+        <activity android:name=".activities.ProfileLists.SubscriptionListActivity" />
+        <activity android:name=".activities.ProfileLists.ProjectsListActivity"/>
 
         <service android:name=".overridden.MyFirebaseMessagingService">
             <intent-filter>
