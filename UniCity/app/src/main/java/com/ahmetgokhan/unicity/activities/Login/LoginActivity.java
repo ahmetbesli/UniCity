@@ -77,6 +77,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.putString(Config.USERNAME,response.body().getUsername());
                         editor.apply();
 
+                        System.out.println("TOKEEEEEEN" + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
+
                         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
                         Call<UniSocial> callToken = apiInterface.saveToken(FirebaseInstanceId.getInstance().getToken(),getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
                         callToken.enqueue(new Callback<UniSocial>() {

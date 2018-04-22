@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +35,9 @@ public class RequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<RecyclerViewListItemRequests> listItems;
-    private String user_id;
+    private RecyclerViewListItemRequests recyclerViewListItemRequests;
+    private String advertName,user_id,applierName,applierSurname,advertID,applyID;
+
     private ApiInterface apiInterface;
 
 
@@ -45,13 +48,14 @@ public class RequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewRequests);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems =  new ArrayList<>();
+        loadRecyclerViewData();
         checkToken();
 
-        loadRecyclerViewData();
+
 
     }
 
@@ -64,37 +68,41 @@ public class RequestsActivity extends AppCompatActivity {
     public void loadRecyclerViewData(){
 
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        Call<UniSocial> call = apiInterface.getProfile(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
-        call.enqueue(new Callback<UniSocial>() {
+        Call<ArrayList<UniSocial>>call = apiInterface.getApplies(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
+        call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
-            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+                for (int i = 0; i<response.body().size(); i++){
 
-                user_id = response.body().getUser_id();
+                    recyclerViewListItemRequests = new RecyclerViewListItemRequests(
+                            response.body().get(i).getName() + response.body().get(i).getSurname() + "was applied your below advert",
+                            response.body().get(i).getAdvertName(),
+                            response.body().get(i).getAdvert_id(),
+                            response.body().get(i).getUser_id(),
+                            response.body().get(i).getApply_id(),
+                            response.body().get(i).getProfile_photo()
+                    );
 
-                Call<UniSocial> callAdverts = apiInterface.getAdvertsID(user_id);
-                call.enqueue(new Callback<UniSocial>() {
-                    @Override
-                    public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<UniSocial> call, Throwable t) {
-
-                    }
-                });
-
+                    listItems.add(recyclerViewListItemRequests);
+                    System.out.println( listItems.get(i).getAdvertName());
+                    System.out.println(  listItems.get(i).getRequesterName());
 
 
+                }
+                Log.e("SIZEEEE", String.valueOf(listItems.size()));
+
+                adapter = new RecyclerViewMyAdapterRequests(listItems,getApplicationContext());
+                recyclerView.setAdapter(adapter);
 
 
             }
 
             @Override
-            public void onFailure(Call<UniSocial> call, Throwable t) {
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
 
             }
         });
+
 
 
     }
