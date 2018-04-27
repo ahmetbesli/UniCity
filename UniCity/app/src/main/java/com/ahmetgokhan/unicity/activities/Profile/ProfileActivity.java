@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.ProfileLists.ProjectsListActivity;
-import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -121,8 +119,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     name_surname.setText(response.body().getName() + " " + response.body().getSurname());
                     textViewUniversity.setText(response.body().getUniversity());
                     textViewDepartmant.setText(response.body().getDepartment());
-                    profile_working_adverts.setText("Projects\n" + response.body().getNumber_adverts());
-                    profile_subscribed_courses.setText("Subscriptions\n" + response.body().getNumber_subs());
+                    profile_working_adverts.setText(response.body().getNumber_adverts());
+                    profile_subscribed_courses.setText(response.body().getNumber_subs());
 
                     coverPhotoUrl = Config.BASE_URL + response.body().getCover_photo();
                     profilePhotoUrl = Config.BASE_URL + response.body().getProfile_photo();

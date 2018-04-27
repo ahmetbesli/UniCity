@@ -52,22 +52,6 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
 
 
 
-        System.out.println("TOKEEEN" + getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
-        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        Call<UniSocial> call = apiInterface.updateUser(department, getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
-        call.enqueue(new Callback<UniSocial>() {
-            @Override
-            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<UniSocial> call, Throwable t) {
-
-            }
-        });
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -92,7 +76,6 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
                     data.add(response.body().get(i).getCourses());
                 }
                 listView.setAdapter(new SubscribeAdapterWithButton(getApplicationContext(),R.layout.list_item_with_button,data));
-                checkSituationOfButton();
 
             }
 

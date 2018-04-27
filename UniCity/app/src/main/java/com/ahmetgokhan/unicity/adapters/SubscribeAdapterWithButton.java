@@ -21,11 +21,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class SubscribeAdapterWithButton extends ArrayAdapter<String> {
-    static int x = 0;
+
     private int layout;
     ArrayList<String> equals = new ArrayList<>();
     private List<String> mObjects;
     ViewHolder mainViewholder;
+
 
     public SubscribeAdapterWithButton(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
@@ -39,7 +40,7 @@ public class SubscribeAdapterWithButton extends ArrayAdapter<String> {
 
 
 
-        if (convertView == null && x == 0) {
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(layout, parent, false);
             ViewHolder viewHolder = new ViewHolder();

@@ -2,16 +2,11 @@ package com.ahmetgokhan.unicity.activities.Login;
 
 
 import android.content.Intent;
-
-import android.os.ConditionVariable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
-import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
 

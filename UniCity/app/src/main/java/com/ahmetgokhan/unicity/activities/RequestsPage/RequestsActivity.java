@@ -55,11 +55,7 @@ public class RequestsActivity extends AppCompatActivity {
         loadRecyclerViewData();
         checkToken();
 
-
-
     }
-
-
 
 
 
