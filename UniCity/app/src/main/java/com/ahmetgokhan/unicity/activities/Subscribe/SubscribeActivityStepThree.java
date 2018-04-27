@@ -3,7 +3,10 @@ package com.ahmetgokhan.unicity.activities.Subscribe;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,13 +15,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Search.RecyclerItemClickListener;
 import com.ahmetgokhan.unicity.adapters.SubscribeAdapterWithButton;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
+import com.ahmetgokhan.unicity.activities.Search.RecyclerItemClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,68 +33,100 @@ import retrofit2.Response;
 public class SubscribeActivityStepThree extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<>();
-    private ListView listView;
-    String department;
-    ImageButton profileComplateButton;
-    ArrayList<String> equals = new ArrayList<>();
+    private String department;
+    private RecyclerView recyclerView;
+    private List<RecyclerViewListItemSubscription> listItems;
+    private RecyclerView.Adapter adapter;
+    private ApiInterface apiInterface;
+    String butonText;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe_step_three);
         department = getIntent().getStringExtra("department");
+        recyclerView = findViewById(R.id.recyclerViewSubs);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        listItems =  new ArrayList<>();
 
-        listView = findViewById(R.id.listViewSubscription3);
-        //profileComplateButton = findViewById(R.id.profileComplateButton);
 
-        /*profileComplateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-            }
-        });*/         //AIzaSyBhyh7MUcYAq7NRs3h9ceoicOv79CKgTYw                FCM
+
         generateListContent();
 
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               TextView text = (TextView)parent.getChildAt(position).findViewById(R.id.listViewText);
-               Log.e("text bastıkkkkkk", text.getText().toString());
-            }
-        });
 
 
 
 
     }
     private void generateListContent() {
-        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        Call<ArrayList<UniSocial>> call = apiInterface.getCourses(null,null,department);
-        call.enqueue(new Callback<ArrayList<UniSocial>>() {
+
+        apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+        Call<ArrayList<UniSocial>> call0 = apiInterface.isSubscribed(getApplicationContext().getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""));
+        call0.enqueue(new Callback<ArrayList<UniSocial>>() {
 
             @Override
-            public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response) {
-                Log.e("hello",String.valueOf(response.body().size()));
-                for (int i = 0; i < response.body().size(); i++) {
-                    data.add(response.body().get(i).getCourses());
-                }
-                listView.setAdapter(new SubscribeAdapterWithButton(getApplicationContext(),R.layout.list_item_with_button,data));
+            public void onResponse(Call<ArrayList<UniSocial>> call, final retrofit2.Response<ArrayList<UniSocial>> response) {
+                Call<ArrayList<UniSocial>> call1 = apiInterface.getCourses(null,null,department);
+                call1.enqueue(new Callback<ArrayList<UniSocial>>() {
+
+                    @Override
+                    public void onResponse(Call<ArrayList<UniSocial>> call, retrofit2.Response<ArrayList<UniSocial>> response1) {
+
+
+
+                        for (int i = 0; i < response1.body().size(); i++) {
+
+                            for (int k = 0; k< response.body().size(); k++){
+                                if(response1.body().get(i).getCourses().equals(response.body().get(k).getCourse_name()) ){
+                                    butonText = "Unsubscribe";
+                                    break;
+
+                                }
+                                else{
+                                    butonText = "Subscribe";
+                                }
+
+
+
+                            }
+
+
+
+                            RecyclerViewListItemSubscription recyclerViewListItemSubscription = new RecyclerViewListItemSubscription(response1.body().get(i).getCourses(),butonText);
+                            listItems.add(recyclerViewListItemSubscription);
+
+                        }
+                        adapter = new RecyclerViewMyAdapterSubscription(listItems,getApplicationContext());
+                        recyclerView.setAdapter(adapter);
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
+                        t.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
 
             @Override
             public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
-                t.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Bir hata oluştu, İnternet bağlantınızı ve lokasyon servisinizi kontrol ediniz", Toast.LENGTH_SHORT).show();
+
             }
         });
 
+
+
     }
 
-    public void checkSituationOfButton(){
+   /* public void checkSituationOfButton(){
         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<ArrayList<UniSocial>> call0 = apiInterface.isSubscribed(getApplicationContext().getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""));
         call0.enqueue(new Callback<ArrayList<UniSocial>>() {
@@ -113,7 +151,7 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     public View getViewByPosition(int pos, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
