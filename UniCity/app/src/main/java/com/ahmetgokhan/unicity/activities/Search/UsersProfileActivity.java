@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Chat.ChatActivity;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Profile.FullScreenImageActivity;
@@ -55,6 +56,7 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
     private List<RecyclerViewListItemProfile> listItems;
     private Intent intent;
     private String username;
+    private Button createMessageRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,14 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
         checkToken();
         intent = getIntent();
         username = intent.getStringExtra("username");
-
+        createMessageRoom = findViewById(R.id.createMessageRoom);
+        createMessageRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inttent = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(inttent);
+            }
+        });
         textViewUniversity = findViewById(R.id.textViewUniversity);
         button = findViewById(R.id.button_subs);
         button.setOnClickListener(new View.OnClickListener() {

@@ -97,6 +97,13 @@
                 android:background="@drawable/rounded_corner"
                 />
 
+            <Button
+                android:text="Message"
+                android:id="@+id/createMessageRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"/>
+
             <TextView
                 android:id="@+id/profile_subscribed_courses"
                 android:layout_width="wrap_content"
