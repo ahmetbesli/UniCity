@@ -1,6 +1,9 @@
 package com.ahmetgokhan.unicity.activities.Homepage;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,6 +34,7 @@ import retrofit2.Callback;
 
         private List<com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome> listItems;
         private Context context;
+    com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome list_item;
 
         public RecyclerViewMyAdapterHome(List<com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome> listItems, Context context) {
             this.listItems = listItems;
@@ -51,7 +55,7 @@ import retrofit2.Callback;
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-            com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome list_item = listItems.get(position);
+            list_item= listItems.get(position);
 
             holder.textViewAdvertId.setText(list_item.getAdvert_id());
             holder.textViewCourseName.setText(list_item.getCourseName());
@@ -80,7 +84,7 @@ import retrofit2.Callback;
             public Button buttonApply;
             public Button buttonBrowse;
 
-            public ViewHolder(View itemView) {
+            public ViewHolder(final View itemView) {
                 super(itemView);
                 buttonApply = itemView.findViewById(R.id.list_view_home_button_apply);
                 buttonBrowse = itemView.findViewById(R.id.list_view_home_button_browse);
@@ -95,42 +99,86 @@ import retrofit2.Callback;
                 buttonApply.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+
                         if(buttonApply.getText().equals("Apply")){
 
-                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-                            Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
-                            call.enqueue(new Callback<UniSocial>() {
+                            new AlertDialog.Builder(itemView.getRootView().getContext())
+                                    .setTitle("Are you want to apply this advet ?")
+                                    .setMessage("Click OK button if you want")
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                @Override
-                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                                        }
+                                    })
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                                            Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
+                                            call.enqueue(new Callback<UniSocial>() {
 
-                                    if(response.body().getMessage().equals("true")){
-                                        buttonApply.setText("Unapply");
-                                    }
-                                }
+                                                @Override
+                                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
 
-                                @Override
-                                public void onFailure(Call<UniSocial> call, Throwable t) {
-                                }
-                            });
+                                                    if(response.body().getMessage().equals("true")){
+                                                        buttonApply.setText("Unapply");
+                                                        list_item.setButonText("Unapply");
+
+
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<UniSocial> call, Throwable t) {
+                                                }
+                                            });
+
+
+                                        }
+                                    }).create().show();
+
+
 
                         }else{
-                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-                            Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
-                            call.enqueue(new Callback<UniSocial>() {
+                            new AlertDialog.Builder(itemView.getRootView().getContext())
+                                    .setTitle("Are u sure want to unapply this advert ?")
+                                    .setMessage("Click OK button if you want")
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                @Override
-                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                                        }
+                                    })
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                                            Call<UniSocial> call = apiInterface.unApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
+                                            call.enqueue(new Callback<UniSocial>() {
 
-                                    if(response.body().getMessage().equals("true")){
-                                        buttonApply.setText("Apply");
-                                    }
-                                }
+                                                @Override
+                                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
 
-                                @Override
-                                public void onFailure(Call<UniSocial> call, Throwable t) {
-                                }
-                            });
+                                                    if(response.body().getMessage().equals("true")){
+                                                        buttonApply.setText("Apply");
+                                                        list_item.setButonText("Apply");
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<UniSocial> call, Throwable t) {
+                                                }
+                                            });
+
+
+
+
+
+
+                                        }
+                                    }).create().show();
 
                         }
 

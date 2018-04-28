@@ -100,6 +100,10 @@ public interface ApiInterface {
     Call<ArrayList<UniSocial>> getApplies(@Field("token") String token,@Field("situation") String situation);
 
     @FormUrlEncoded
+    @POST("unApply/")
+    Call<UniSocial> unApply(@Field("token") String token, @Field("advert_id") String advert_id);
+
+    @FormUrlEncoded
     @POST("updateUser/")
     Call<UniSocial> updateUser(@Field("department") String department,
                                @Field("token") String token);
