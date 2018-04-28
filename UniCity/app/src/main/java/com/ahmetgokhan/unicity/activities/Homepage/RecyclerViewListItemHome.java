@@ -15,16 +15,20 @@ public class RecyclerViewListItemHome {
     private String advertDate;
     private String advert_id;
 
+    private String butonText;
 
 
 
-    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate, String advert_id) {
+
+
+    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate, String advert_id,String butonText) {
         this.courseName = courseName;
         this.advertName = advertName;
         this.description = description;
         this.numberOfPerson = numberOfPerson;
         this.advertDate = advertDate;
         this.advert_id = advert_id;
+        this.butonText = butonText;
 
     }
     public String getCourseName() {  return courseName; }
@@ -53,5 +57,10 @@ public class RecyclerViewListItemHome {
     public void setAdvert_id(String advert_id) {
         this.advert_id = advert_id;
     }
+
+    public String getButonText() {  return butonText; }
+
+    public void setButonText(String butonText) {  this.butonText = butonText;  }
+
 
 }

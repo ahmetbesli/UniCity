@@ -97,7 +97,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("getApplies/")
-    Call<ArrayList<UniSocial>> getApplies(@Field("token") String token);
+    Call<ArrayList<UniSocial>> getApplies(@Field("token") String token,@Field("situation") String situation);
 
     @FormUrlEncoded
     @POST("updateUser/")

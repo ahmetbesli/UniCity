@@ -64,7 +64,7 @@ public class RequestsActivity extends AppCompatActivity {
     public void loadRecyclerViewData(){
 
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        Call<ArrayList<UniSocial>>call = apiInterface.getApplies(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
+        Call<ArrayList<UniSocial>>call = apiInterface.getApplies(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""),"1");
         call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
             public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {

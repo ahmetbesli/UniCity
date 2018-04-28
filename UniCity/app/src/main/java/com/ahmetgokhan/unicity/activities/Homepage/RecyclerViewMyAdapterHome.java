@@ -59,6 +59,9 @@ import retrofit2.Callback;
             holder.textViewDescription.setText(list_item.getDescription());
             holder.textViewAdvertDate.setText(list_item.getAdvertDate());
             holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson() + "");
+            holder.buttonApply.setText(list_item.getButonText());
+
+
 
         }
 
@@ -92,32 +95,54 @@ import retrofit2.Callback;
                 buttonApply.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-                        Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
-                        call.enqueue(new Callback<UniSocial>() {
+                        if(buttonApply.getText().equals("Apply")){
 
-                            @Override
-                            public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                            Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
+                            call.enqueue(new Callback<UniSocial>() {
 
-                                if(response.body().getMessage().equals("true")){
-                                    Log.e("djhdkjghdkjgh","merhbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                                }else{
-                                    Log.e("responseeeee",response.body().getMessage());
+                                @Override
+                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+
+                                    if(response.body().getMessage().equals("true")){
+                                        buttonApply.setText("Unapply");
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<UniSocial> call, Throwable t) {
+                                @Override
+                                public void onFailure(Call<UniSocial> call, Throwable t) {
+                                }
+                            });
 
-                            }
-                        });
+                        }else{
+                            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                            Call<UniSocial> call = apiInterface.getAdvertApply(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),textViewAdvertId.getText().toString());
+                            call.enqueue(new Callback<UniSocial>() {
 
+                                @Override
+                                public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
 
+                                    if(response.body().getMessage().equals("true")){
+                                        buttonApply.setText("Apply");
+                                    }
+                                }
 
-                        buttonApply.setText("Applied");
+                                @Override
+                                public void onFailure(Call<UniSocial> call, Throwable t) {
+                                }
+                            });
+
+                        }
 
                     }
                 });
+
+
+
+
+
+
+
             }
 
 

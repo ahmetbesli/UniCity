@@ -53,7 +53,9 @@ public class HomeActivity extends AppCompatActivity
     ImageView profilePhoto;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+
     private List<com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome> listItems;
+    String butonText;
 
 
 
@@ -227,22 +229,42 @@ public class HomeActivity extends AppCompatActivity
 
     public void loadRecyclerViewData(){
 
-        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        System.out.println("TOKEEEN " + getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
+         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<ArrayList<UniSocial>>call = apiInterface.getHomepageAdverts(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
         call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
             public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
 
+
+
                 for (int i = 0; i < response.body().size(); i++) {
 
+                    System.out.println("Situations" + response.body().get(i).getSituation());
+                    if(response.body().get(i).getSituation()==null){
+                        butonText= "Apply";
+                    }
+                    else {
+                        if (response.body().get(i).getSituation().equals("0")) {
+
+                            butonText = "Apply";
+                        } else if (response.body().get(i).getSituation().equals("1")) {
+
+                            butonText = "Applied";
+
+                        } else {
+                            continue;
+                        }
+                    }
+
+                    System.out.println(butonText);
                     com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome listItem = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome(
                             response.body().get(i).getCourseName(),
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
                             response.body().get(i).getNumberOfPerson(),
                             response.body().get(i).getAdvertDate(),
-                            response.body().get(i).getAdvert_id()
+                            response.body().get(i).getAdvert_id(),
+                            butonText
 
 
                     );
