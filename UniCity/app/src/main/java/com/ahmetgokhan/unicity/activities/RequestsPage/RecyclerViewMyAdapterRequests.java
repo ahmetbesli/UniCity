@@ -31,6 +31,7 @@ import java.util.concurrent.ExecutionException;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by gokhankilic on 9.03.2018.
@@ -41,6 +42,7 @@ import retrofit2.Callback;
 
         private List<RecyclerViewListItemRequests> listItems;
         private Context context;
+        ApiInterface apiInterface;
 
         public RecyclerViewMyAdapterRequests(List<RecyclerViewListItemRequests> listItems, Context context) {
             this.listItems = listItems;
@@ -133,14 +135,50 @@ import retrofit2.Callback;
                 acceptButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-                        Call<UniSocial> call = apiInterface.replyApplies("2",applyID.getText().toString().trim());
+                        apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                        Call<UniSocial> call = apiInterface.checkAdvert(advertID.getText().toString());
                         call.enqueue(new Callback<UniSocial>() {
-
                             @Override
-                            public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+                            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+                                System.out.println(response.body().getMessage());
+
+                                if (response.body().getMessage().equals("empty")) {
+                                    System.out.println(response.body().getMessage());
+                                    Call<UniSocial> call1 = apiInterface.replyApplies("2", applyID.getText().toString().trim(), advertID.getText().toString());
+                                    call1.enqueue(new Callback<UniSocial>() {
+
+                                        @Override
+                                        public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
 
 
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<UniSocial> call, Throwable t) {
+
+                                        }
+                                    });
+                                }else{
+                                    System.out.println(response.body().getMessage());
+                                    acceptButton.setVisibility(View.INVISIBLE);
+                                    refuseButton.setVisibility(View.INVISIBLE);
+                                    messageTextView.setText("Advert is full");
+
+                                    Call<UniSocial> call1 = apiInterface.replyApplies("0",applyID.getText().toString().trim(),advertID.getText().toString());
+                                    call1.enqueue(new Callback<UniSocial>() {
+
+                                        @Override
+                                        public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<UniSocial> call, Throwable t) {
+
+                                        }
+                                    });
+                                }
                             }
 
                             @Override
@@ -148,6 +186,7 @@ import retrofit2.Callback;
 
                             }
                         });
+
 
                         acceptButton.setVisibility(View.INVISIBLE);
                         refuseButton.setVisibility(View.INVISIBLE);
@@ -167,7 +206,7 @@ import retrofit2.Callback;
                     @Override
                     public void onClick(View v) {
                         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-                        Call<UniSocial> call = apiInterface.replyApplies("0",applyID.getText().toString().trim());
+                        Call<UniSocial> call = apiInterface.replyApplies("0",applyID.getText().toString().trim(),advertID.getText().toString());
                         call.enqueue(new Callback<UniSocial>() {
 
                             @Override

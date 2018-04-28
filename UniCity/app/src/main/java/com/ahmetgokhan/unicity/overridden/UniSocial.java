@@ -116,6 +116,11 @@ public class UniSocial {
     public String situation;
 
 
+    @SerializedName("numOfPerAccepted")
+    @Expose
+    public String numOfPerAccepted;
+
+
 
     public UniSocial(String message,
                      String name,
@@ -138,7 +143,8 @@ public class UniSocial {
                      String advert_id,
                      String user_id,
                      String apply_id,
-                     String situation
+                     String situation,
+                     String numOfPerAccapted
     ) {
 
         this.course_name = course_name;
@@ -320,6 +326,11 @@ public class UniSocial {
         this.situation = situation;
     }
 
+    public String getNumOfPerAccepted() {
+        return numOfPerAccepted;
+    }
+
+    public void setNumOfPerAccepted(String numOfPerAccepted) {  this.numOfPerAccepted = numOfPerAccepted;  }
 
 
 }

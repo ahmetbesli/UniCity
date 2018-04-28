@@ -93,7 +93,10 @@ public class HomeActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this) {
+
+        });
+
         listItems =  new ArrayList<>();
         loadRecyclerViewData();
 
@@ -235,13 +238,42 @@ public class HomeActivity extends AppCompatActivity
         Call<ArrayList<UniSocial>>call = apiInterface.getHomepageAdverts(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
         call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
-            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+            public void onResponse(Call<ArrayList<UniSocial>> call, final Response<ArrayList<UniSocial>> response) {
 
 
 
-                for (int i = 0; i < response.body().size(); i++) {
+                for (  int i = 0; i < response.body().size(); i++) {
 
-                    System.out.println("Situations" + response.body().get(i).getSituation());
+
+                    if(response.body().get(i).getUser_id().equals(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.USER_ID,""))){
+                        butonText = "Your Advert";
+
+                        com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome listItem = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome(
+                                response.body().get(i).getCourseName(),
+                                response.body().get(i).getAdvertName(),
+                                response.body().get(i).getDescription(),
+                                response.body().get(i).getNumberOfPerson(),
+                                response.body().get(i).getAdvertDate(),
+                                response.body().get(i).getAdvert_id(),
+                                butonText
+
+
+                        );
+                        listItems.add(listItem);
+                        continue;
+
+
+                    }
+
+
+
+                    if(response.body().get(i).getNumOfPerAccepted().equals(response.body().get(i).getNumberOfPerson())){
+
+                        continue;
+
+                    }
+
+
                     if(response.body().get(i).getSituation()==null){
                         butonText= "Apply";
                     }

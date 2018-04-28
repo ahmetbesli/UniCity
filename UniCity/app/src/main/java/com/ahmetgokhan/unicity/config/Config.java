@@ -30,6 +30,7 @@ public class Config {
     public static final String LOGGING_STATUS = "Login Status";
     public static final String PROFILE_STATUS = "Profile Status";
     public static final String USERNAME = "Username";
+    public static final String USER_ID = "user_id";
 
 
 

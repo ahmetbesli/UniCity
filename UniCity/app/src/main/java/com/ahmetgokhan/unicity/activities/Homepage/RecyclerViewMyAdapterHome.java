@@ -50,12 +50,13 @@ import retrofit2.Callback;
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_list_item_advert, parent, false);
 
             return new ViewHolder(v);
+
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-            list_item= listItems.get(position);
+            list_item = listItems.get(position);
 
             holder.textViewAdvertId.setText(list_item.getAdvert_id());
             holder.textViewCourseName.setText(list_item.getCourseName());
@@ -64,6 +65,11 @@ import retrofit2.Callback;
             holder.textViewAdvertDate.setText(list_item.getAdvertDate());
             holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson() + "");
             holder.buttonApply.setText(list_item.getButonText());
+
+
+
+
+
 
 
 
@@ -94,6 +100,10 @@ import retrofit2.Callback;
                 textViewDescription = itemView.findViewById(R.id.textViewDescription);
                 textViewAdvertDate = itemView.findViewById(R.id.textViewAdvertDate);
                 textViewNumberOfPerson = itemView.findViewById(R.id.textViewNumberOfPerson);
+
+
+
+
 
 
                 buttonApply.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +151,11 @@ import retrofit2.Callback;
 
 
 
-                        }else{
+                        }else if(buttonApply.getText().toString().equals("Your Advert")){
+                            Toast.makeText(context,"You can not apply your advert", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else{
                             new AlertDialog.Builder(itemView.getRootView().getContext())
                                     .setTitle("Are u sure want to unapply this advert ?")
                                     .setMessage("Click OK button if you want")

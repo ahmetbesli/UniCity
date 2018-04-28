@@ -69,7 +69,12 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("replyApplies/")
-    Call<UniSocial> replyApplies(@Field("reply") String reply, @Field("applyID") String applyID);
+    Call<UniSocial> replyApplies(@Field("reply") String reply, @Field("applyID") String applyID,@Field("advert_id") String advert_id);
+
+    @FormUrlEncoded
+    @POST("checkAdvert/")
+    Call<UniSocial> checkAdvert(@Field("advert_id") String advert_id);
+
 
 
 
