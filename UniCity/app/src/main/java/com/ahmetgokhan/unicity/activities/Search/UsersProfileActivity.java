@@ -70,6 +70,7 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onClick(View v) {
                 Intent inttent = new Intent(getApplicationContext(), ChatActivity.class);
+                inttent.putExtra("username",username);
                 startActivity(inttent);
             }
         });
@@ -95,6 +96,7 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("username",username);
                 startActivity(intent);
             }
         });
@@ -120,6 +122,7 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
         call.enqueue(new Callback<UniSocial>() {
             @Override
             public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+
                 name_surname.setText(response.body().getName() + " " + response.body().getSurname());
                 textViewUniversity.setText(response.body().getUniversity());
                 textViewDepartmant.setText(response.body().getDepartment());

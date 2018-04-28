@@ -77,6 +77,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <Button
+                android:layout_centerHorizontal="true"
+                android:text="MessageList"
+                android:id="@+id/profile_go_to_messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <RelativeLayout
                 android:id="@+id/projects_to_the_list"
                 android:layout_width="wrap_content"
@@ -87,6 +94,8 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp">
+
+
 
                 <ImageView
                     android:id="@+id/profile_projects_icon_image_id"

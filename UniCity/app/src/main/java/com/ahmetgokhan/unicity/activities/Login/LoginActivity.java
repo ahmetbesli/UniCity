@@ -4,18 +4,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.Register.RegisterActivity;
-import com.ahmetgokhan.unicity.activities.Subscribe.SubscribeActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;

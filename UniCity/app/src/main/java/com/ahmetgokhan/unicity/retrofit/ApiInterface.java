@@ -22,6 +22,18 @@ public interface ApiInterface {
     Call<UniSocial> checkToken(@Field("token") String token);
 
     @FormUrlEncoded
+    @POST("createRoom/")
+    Call<UniSocial> createRoom(@Field("to_username") String username,@Field("token") String token,@Field("room") String room);
+
+    @FormUrlEncoded
+    @POST("roomExits/")
+    Call<UniSocial> roomExits(@Field("to_username") String username,@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("getConversations/")
+    Call<ArrayList<UniSocial>> getConversations(@Field("token") String token);
+
+    @FormUrlEncoded
     @POST("getProfile/")
     Call<UniSocial> getProfile(@Field("token") String token);
 

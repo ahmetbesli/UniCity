@@ -10,10 +10,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Chat.MessageListActivity;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.ProfileLists.ProjectsListActivity;
@@ -45,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     ImageView go_back_image;
     RelativeLayout projects_to_the_list;
     RelativeLayout subscriptions_to_the_list;
+    Button gotoMessages;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -58,7 +61,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         checkToken();
         textViewUniversity = findViewById(R.id.textViewUniversity);
-
+        gotoMessages = findViewById(R.id.profile_go_to_messages);
+        gotoMessages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inttt = new Intent(getApplicationContext(), MessageListActivity.class);
+                startActivity(inttt);
+            }
+        });
         name_surname = findViewById(R.id.textViewName);
         cover_photo =  findViewById(R.id.cover_photo);
         profile_photo =  findViewById(R.id.circleImageView);

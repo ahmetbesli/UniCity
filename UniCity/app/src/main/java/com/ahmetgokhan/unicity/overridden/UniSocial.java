@@ -11,6 +11,10 @@ public class UniSocial {
     @Expose
     public String message;
 
+    @SerializedName("room")
+    @Expose
+    private String room;
+
     @SerializedName("name")
     @Expose
     public String name;
@@ -144,7 +148,11 @@ public class UniSocial {
                      String user_id,
                      String apply_id,
                      String situation,
+<<<<<<< Updated upstream
                      String numOfPerAccapted
+=======
+                     String room
+>>>>>>> Stashed changes
     ) {
 
         this.course_name = course_name;
@@ -168,11 +176,19 @@ public class UniSocial {
         this.user_id = user_id;
         this.apply_id = apply_id;
         this.situation = situation;
+        this.room = room;
 
 
 
     }
 
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
 
     public String getAdvert_id() {
         return advert_id;

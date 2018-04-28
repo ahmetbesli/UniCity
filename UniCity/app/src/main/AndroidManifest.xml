@@ -30,8 +30,9 @@
         <activity android:name=".activities.Register.RegisterActivity" />
         <activity android:name=".activities.Profile.ProfileActivity" />
         <activity android:name=".activities.Advert.AdvertActivityStepOne" />
-        <activity android:name=".activities.Login.LoginActivity"
-            android:noHistory="true"/>
+        <activity
+            android:name=".activities.Login.LoginActivity"
+            android:noHistory="true" />
         <activity android:name=".activities.Profile.FullScreenImageActivity" />
         <activity android:name=".activities.Subscribe.SubscribeActivity" />
         <activity android:name=".activities.Advert.AdvertActivityStepTwo" />
@@ -46,8 +47,8 @@
         <activity android:name=".activities.AdvertPage.AdvertPageActivity" />
         <activity android:name=".activities.RequestsPage.RequestsActivity" />
         <activity android:name=".activities.ProfileLists.SubscriptionListActivity" />
-        <activity android:name=".activities.ProfileLists.ProjectsListActivity"/>
-        <activity android:name=".activities.Chat.ChatActivity"/>
+        <activity android:name=".activities.ProfileLists.ProjectsListActivity" />
+        <activity android:name=".activities.Chat.ChatActivity" />
 
         <service android:name=".overridden.MyFirebaseMessagingService">
             <intent-filter>
@@ -64,9 +65,7 @@
             android:name="firebase_messaging_auto_init_enabled"
             android:value="true" />
 
-
-
-
+        <activity android:name=".activities.Chat.MessageListActivity"></activity>
     </application>
 
 </manifest>
