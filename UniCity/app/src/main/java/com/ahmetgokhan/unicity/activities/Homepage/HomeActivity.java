@@ -244,15 +244,24 @@ public class HomeActivity extends AppCompatActivity
 
                 for (  int i = 0; i < response.body().size(); i++) {
 
+                    if(response.body().get(i).getSituationAdvert().equals("0") || response.body().get(i).getSituationAdvert().equals("2")){
+
+                        continue;
+                    }
+
+                    if(response.body().get(i).getNumberOfPerson()-Integer.valueOf(response.body().get(i).getNumOfPerAccepted())==0){
+                        continue;
+                    }
 
                     if(response.body().get(i).getUser_id().equals(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.USER_ID,""))){
                         butonText = "Your Advert";
+                        System.out.println(butonText);
 
                         com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome listItem = new com.ahmetgokhan.unicity.activities.Homepage.RecyclerViewListItemHome(
                                 response.body().get(i).getCourseName(),
                                 response.body().get(i).getAdvertName(),
                                 response.body().get(i).getDescription(),
-                                response.body().get(i).getNumberOfPerson(),
+                                response.body().get(i).getNumberOfPerson() - Integer.valueOf(response.body().get(i).getNumOfPerAccepted()),
                                 response.body().get(i).getAdvertDate(),
                                 response.body().get(i).getAdvert_id(),
                                 butonText
@@ -274,14 +283,14 @@ public class HomeActivity extends AppCompatActivity
                     }
 
 
-                    if(response.body().get(i).getSituation()==null){
+                    if(response.body().get(i).getSituationApply()==null){
                         butonText= "Apply";
                     }
                     else {
-                        if (response.body().get(i).getSituation().equals("0")) {
+                        if (response.body().get(i).getSituationApply().equals("0")) {
 
                             butonText = "Apply";
-                        } else if (response.body().get(i).getSituation().equals("1")) {
+                        } else if (response.body().get(i).getSituationApply().equals("1")) {
 
                             butonText = "Applied";
 

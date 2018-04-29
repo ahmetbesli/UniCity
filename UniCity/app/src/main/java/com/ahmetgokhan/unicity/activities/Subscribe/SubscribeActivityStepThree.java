@@ -79,8 +79,9 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
 
 
                         for (int i = 0; i < response1.body().size(); i++) {
-
+                            butonText = "Subscribe";
                             for (int k = 0; k< response.body().size(); k++){
+
                                 if(response1.body().get(i).getCourses().equals(response.body().get(k).getCourse_name()) ){
                                     butonText = "Unsubscribe";
                                     break;

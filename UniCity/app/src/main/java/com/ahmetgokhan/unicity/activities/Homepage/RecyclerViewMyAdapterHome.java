@@ -3,6 +3,7 @@ package com.ahmetgokhan.unicity.activities.Homepage;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.AdvertPage.AdvertPageActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -201,7 +203,15 @@ import retrofit2.Callback;
 
 
 
-
+                buttonBrowse.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, AdvertPageActivity.class);
+                        intent.putExtra("advert_id",textViewAdvertId.getText().toString());
+                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
+                });
 
 
 

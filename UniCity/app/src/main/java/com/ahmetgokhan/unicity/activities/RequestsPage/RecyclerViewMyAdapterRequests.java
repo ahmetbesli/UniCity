@@ -77,7 +77,7 @@ import retrofit2.Response;
 
             if(recyclerViewListItemRequests.getApplierProfilePhoto() == ""|| recyclerViewListItemRequests.getApplierProfilePhoto() == null){
 
-                System.out.println("Bos yapma");
+
 
             }
             else {

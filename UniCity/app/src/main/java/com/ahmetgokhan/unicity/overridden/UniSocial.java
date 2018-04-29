@@ -115,14 +115,27 @@ public class UniSocial {
     @Expose
     public String course_name;
 
-    @SerializedName("situation")
+    @SerializedName("situationApply")
     @Expose
-    public String situation;
+    public String situationApply;
+
+
+    @SerializedName("situationAdvert")
+    @Expose
+    public String situationAdvert;
 
 
     @SerializedName("numOfPerAccepted")
     @Expose
     public String numOfPerAccepted;
+
+
+
+
+    @SerializedName("id")
+    @Expose
+    public String id;
+
 
 
 
@@ -143,18 +156,19 @@ public class UniSocial {
                      String number_subs,
                      String courseName,
                      String course_name,
+                     String situationApply,
                      String username,
                      String advert_id,
                      String user_id,
                      String apply_id,
-                     String situation,
-<<<<<<< Updated upstream
-                     String numOfPerAccapted
-=======
-                     String room
->>>>>>> Stashed changes
-    ) {
+                     String situationAdvert,
+                     String id,
+                     String numOfPerAccapted,
 
+                     String room
+
+    ) {
+        this.id = id;
         this.course_name = course_name;
         this.faculty = faculty;
         this.cover_photo = cover_photo;
@@ -175,8 +189,9 @@ public class UniSocial {
         this.advert_id = advert_id;
         this.user_id = user_id;
         this.apply_id = apply_id;
-        this.situation = situation;
+        this.situationApply = getSituationApply();
         this.room = room;
+        this.numOfPerAccepted = numOfPerAccapted;
 
 
 
@@ -334,12 +349,12 @@ public class UniSocial {
 
     public void setApply_id(String apply_id) {  this.apply_id = apply_id; }
 
-    public String getSituation() {
-        return situation;
+    public String getSituationApply() {
+        return situationApply;
     }
 
-    public void setSituation(String situation) {
-        this.situation = situation;
+    public void setSituationApply(String situationApply) {
+        this.situationApply = situationApply;
     }
 
     public String getNumOfPerAccepted() {
@@ -347,6 +362,22 @@ public class UniSocial {
     }
 
     public void setNumOfPerAccepted(String numOfPerAccepted) {  this.numOfPerAccepted = numOfPerAccepted;  }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSituationAdvert() {
+        return situationAdvert;
+    }
+
+    public void setSituationAdvert(String situationAdvert) {
+        this.situationAdvert = situationAdvert;
+    }
 
 
 }

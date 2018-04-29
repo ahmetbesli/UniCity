@@ -113,6 +113,14 @@ public interface ApiInterface {
     Call<ArrayList<UniSocial>> getFaculty(@Field("university") String university);
 
     @FormUrlEncoded
+    @POST("getAdvertPage/")
+    Call<UniSocial> getAdvertPage(@Field("advert_id") String advert_id);
+
+    @FormUrlEncoded
+    @POST("getWorkingUsers/")
+    Call<ArrayList<UniSocial>> getWorkingUsers(@Field("advert_id") String advert_id);
+
+    @FormUrlEncoded
     @POST("getApplies/")
     Call<ArrayList<UniSocial>> getApplies(@Field("token") String token,@Field("situation") String situation);
 
@@ -143,6 +151,14 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("getProjectsForProfile/")
     Call<ArrayList<UniSocial>> getProjectsList(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("removeWorker/")
+    Call<UniSocial> removeWorker(@Field("advert_id") String advert_id,@Field("user_id") String user_id);
+
+    @FormUrlEncoded
+    @POST("updateAdverts/")
+    Call<UniSocial> updateAdverts(@Field("reply") String reply,@Field("advert_id") String advert_id);
 
 }
 
