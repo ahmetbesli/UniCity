@@ -55,7 +55,7 @@ public class SubscribeActivity extends AppCompatActivity {
 
                 for (int i = 0; i < response.body().size(); i++) {
 
-                    data.add(response.body().get(i).getFaculty());
+                    data.add(response.body().get(i).getFaculties());
 
                 }
                 listView.setAdapter(new SubscribeAdapter(getApplicationContext(),R.layout.list_item,data));

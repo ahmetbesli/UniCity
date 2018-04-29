@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/for_snackbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/cover_photo_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/click_to_upload_cover_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/rounded_corner_edit" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_menu_camera" />
+            </FrameLayout>
+        </RelativeLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/circleImageView_edit"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-60dp"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="0.9dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/circleImageView_edit_camera"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-110dp"
+            android:background="@drawable/rounded_corner_edit"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="0.9dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-80dp"
+            android:src="@drawable/ic_menu_camera" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Name"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/update_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="7dp"
+                android:backgroundTint="@color/colorBlack"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Surname"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/update_profile_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="7dp"
+                android:backgroundTint="@color/colorBlack"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Faculty"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/faculty_profile_edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="@color/colorBlack"
+                android:focusableInTouchMode="false"
+                android:textColor="@color/colorBlack">
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Department"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/department_profile_edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="@color/colorBlack"
+                android:focusableInTouchMode="false"
+                android:textColor="@color/colorBlack">
+
+            </EditText>
+
+
+        </LinearLayout>
+        <Button
+
+            android:id="@+id/button_edit_profile_complete"
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>

@@ -93,10 +93,7 @@ public class HomeActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this) {
-
-        });
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems =  new ArrayList<>();
         loadRecyclerViewData();
 

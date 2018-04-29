@@ -74,9 +74,13 @@ public class UniSocial {
     @Expose
     public String profile_photo;
 
-    @SerializedName("faculties")
+    @SerializedName("faculty")
     @Expose
     public String faculty;
+
+    @SerializedName("faculties")
+    @Expose
+    public String faculties;
 
     @SerializedName("departments")
     @Expose
@@ -164,10 +168,11 @@ public class UniSocial {
                      String situationAdvert,
                      String id,
                      String numOfPerAccapted,
-
+                     String faculties,
                      String room
 
     ) {
+        this.faculties = faculties;
         this.id = id;
         this.course_name = course_name;
         this.faculty = faculty;
@@ -189,12 +194,22 @@ public class UniSocial {
         this.advert_id = advert_id;
         this.user_id = user_id;
         this.apply_id = apply_id;
-        this.situationApply = getSituationApply();
+        this.situationApply = situationApply;
         this.room = room;
         this.numOfPerAccepted = numOfPerAccapted;
+        this.situationAdvert = situationAdvert;
+        this.advertDate = advertDate;
 
 
 
+    }
+
+    public String getFaculties() {
+        return faculties;
+    }
+
+    public void setFaculties(String faculties) {
+        this.faculties = faculties;
     }
 
     public String getRoom() {

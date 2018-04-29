@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorPrimary">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,20 +36,37 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="-60dp"
-            app:civ_border_color="@color/colorAccent"
+            app:civ_border_color="@color/colorWhite"
             app:civ_border_width="0.9dp">
 
         </de.hdodenhof.circleimageview.CircleImageView>
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:text="@string/name"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
+        <LinearLayout
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/colorBlack"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/profile_update_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/settings_icon" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewUniversity"
@@ -58,7 +75,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/name"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="15sp" />
 
         <TextView
@@ -68,109 +85,24 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/name"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="12sp" />
 
-
-        <RelativeLayout
+         <LinearLayout
+             android:layout_marginTop="7dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_centerHorizontal="true"
-                android:text="MessageList"
-                android:id="@+id/profile_go_to_messages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RelativeLayout
-                android:id="@+id/projects_to_the_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp">
-
-
-
-                <ImageView
-                    android:id="@+id/profile_projects_icon_image_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/profile_projects_icon"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="15sp" />
-                <TextView
-                    android:id="@+id/profile_working_adverts"
-                    android:textColor="@color/colorBlack"
-                    android:text="@string/app_name"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_toRightOf="@+id/profile_projects_icon_image_id"
-                    android:layout_toEndOf="@+id/profile_projects_icon_image_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/subscriptions_to_the_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp">
-
-                <ImageView
-                    android:id="@+id/profile_subscription_icon_image_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/profile_subscription_icon"
-                     />
-
-                <TextView
-                    android:id="@+id/profile_subscribed_courses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginStart="2dp"
-                    android:layout_toRightOf="@+id/profile_subscription_icon_image_id"
-                    android:layout_toEndOf="@+id/profile_subscription_icon_image_id"
-                    android:text="@string/app_name"
-                    android:textColor="@color/colorBlack" />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            android:layout_height="2dp"
+            android:background="#F5F5F5"/>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite">
 
 
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="20dp"
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

@@ -1,7 +1,10 @@
 package com.ahmetgokhan.unicity.retrofit;
 
+import android.graphics.Bitmap;
+
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -15,7 +18,9 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
-
+    @FormUrlEncoded
+    @POST("updateProfile/")
+    Call<UniSocial> updateProfile(@Field("name") String name,@Field("surname") String surname, @Field("department") String department, @Field("profile_photo") String profile_photo, @Field("cover_photo") String cover_photo,@Field("token") String token);
 
     @FormUrlEncoded
     @POST("checkToken/")

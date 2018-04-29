@@ -87,7 +87,7 @@ public class AdvertActivityStepTwo extends AppCompatActivity {
 
                 for (int i = 0; i < response.body().size(); i++) {
 
-                    faculties.add(response.body().get(i).getFaculty());
+                    faculties.add(response.body().get(i).getFaculties());
 
 
                 }

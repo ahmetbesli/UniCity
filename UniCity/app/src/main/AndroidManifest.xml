@@ -65,7 +65,8 @@
             android:name="firebase_messaging_auto_init_enabled"
             android:value="true" />
 
-        <activity android:name=".activities.Chat.MessageListActivity"></activity>
+        <activity android:name=".activities.Chat.MessageListActivity" />
+        <activity android:name=".activities.Profile.ProfileActivityEdit"></activity>
     </application>
 
 </manifest>
