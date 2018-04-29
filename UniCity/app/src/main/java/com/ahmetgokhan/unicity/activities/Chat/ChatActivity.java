@@ -72,7 +72,8 @@ public class ChatActivity extends AppCompatActivity {
 
                             final JSONObject json = new JSONObject();
                             try {
-                                json.put("username", "mehmet");
+
+                                json.put("username", getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.NAME,"") + " " + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.SURNAME,""));
                                 json.put("room", room_id);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -136,7 +137,8 @@ public class ChatActivity extends AppCompatActivity {
 
                                 final JSONObject json = new JSONObject();
                                 try {
-                                    json.put("username", "ahmet");
+
+                                    json.put("username", getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.NAME,"") + " " + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.SURNAME,""));
                                     json.put("room", response.body().getRoom());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -175,7 +177,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     }
                 } else {
-                    Log.e("logggggeerrr","oda oluşturuyor");
+
 
                     try {
 
@@ -212,7 +214,8 @@ public class ChatActivity extends AppCompatActivity {
                                 });
                                 final JSONObject json = new JSONObject();
                                 try {
-                                    json.put("username", "ahmet");
+
+                                    json.put("username", getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.NAME,"") + " " + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.SURNAME,""));
                                     json.put("room", jsonRoom);
                                 } catch (JSONException e) {
                                     e.printStackTrace();

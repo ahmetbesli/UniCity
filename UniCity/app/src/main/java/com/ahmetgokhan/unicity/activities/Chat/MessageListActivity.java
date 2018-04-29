@@ -49,7 +49,7 @@ public class MessageListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<UniSocial>>  call, Response<ArrayList<UniSocial>>  response) {
                 for(int i = 0; i < response.body().size(); i++){
-                    arrayList.add(new MessageListData("ahmet","bbbb",response.body().get(i).getRoom()));
+                    arrayList.add(new MessageListData(response.body().get(i).getName() + " " + response.body().get(i).getSurname(),"You have a message!",response.body().get(i).getRoom(),response.body().get(i).getProfile_photo()));
                 }
 
                 messageList.setAdapter(messageListAdapter);

@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
+import com.ahmetgokhan.unicity.activities.Chat.MessageListActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.RequestsPage.RequestsActivity;
@@ -76,8 +77,8 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), MessageListActivity.class);
+                startActivity(intent);
             }
         });
 

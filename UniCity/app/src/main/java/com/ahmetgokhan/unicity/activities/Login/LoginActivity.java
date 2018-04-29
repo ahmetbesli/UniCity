@@ -73,6 +73,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.putBoolean(Config.LOGGING_STATUS,true);
                         editor.putString(Config.USERNAME,response.body().getUsername());
                         editor.putString(Config.USER_ID,response.body().getUser_id());
+                        editor.putString(Config.NAME,response.body().getName());
+                        editor.putString(Config.SURNAME,response.body().getSurname());
                         editor.apply();
 
                         System.out.println("TOKEEEEEEN" + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
