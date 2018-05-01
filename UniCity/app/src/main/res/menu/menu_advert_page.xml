@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:id="@+id/deleteAdver"
+        android:iconTint="@color/cardview_light_background"
+        android:icon="@drawable/ic_delete_advert"
         android:title="Delete Advert" />
-    <item android:id="@+id/finishaAdvert"
+    <item android:id="@+id/finishAdvert"
+        android:icon="@drawable/ic_finish_advert"
         android:title="Finish Advert" />
+    <item android:id="@+id/editAdvert"
+        android:icon="@drawable/ic_edit_advert"
+        android:title="Edit Advert" />
 
 </menu>

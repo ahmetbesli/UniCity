@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:background="#FDFDF1"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/cardview_light_background">
 
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FDFDF1"
+        android:background="@color/cardview_light_background"
         tools:context=".activities.AdvertPage.AdvertPageActivity">
-
 
 
         <ImageView
@@ -18,71 +18,81 @@
             android:layout_width="match_parent"
             android:layout_height="193dp"
             android:src="@drawable/kadirhasadvert" />
+
         <ImageButton
             android:id="@+id/options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="47dp"
+            android:layout_height="39dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-
-            android:src="@drawable/ic_menu_camera"
-            />
+            android:layout_alignParentTop="true"
+            android:background="#80FFFFFF"
+            android:src="@drawable/ic_menu_advert" />
 
         <TextView
             android:id="@+id/titleAdvert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/coverPhoto"
-            android:text="Engineering Design Project Elektrik"
+            android:layout_marginBottom="20dp"
             android:paddingBottom="10dp"
+            android:text="Engineering Design Project Elektrik"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
-            android:fontFamily="serif-monospace"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textStyle="bold" />
-
-
 
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_below="@+id/titleAdvert"
-
             android:text="Engineering Design Project ElektrikEngineering Design Project ElektrikEngineering Designroject ElektrikEngineering Design Project ElektrikEngineerin Project ElektrikEngineering Design Project ElektrikEngineering Design Project Elektrik"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/numberOfPerson"
-            android:textColor="#ff9966"
-            android:layout_below="@id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="5 person needs"/>
-
-        <TextView
-            android:id="@+id/creater"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:fontFamily="serif"
-            android:gravity="end"
-            android:text="Created by Gökhan Kılıç"
-            android:textAlignment="textEnd"
             android:textColor="@color/colorBlack"
-            android:textStyle="italic" />
+            android:textSize="16dp" />
+
+
+        <RelativeLayout
+            android:id="@+id/createrPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/description"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePhoto"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignLeft="@+id/nameCreator" />
+
+            <TextView
+                android:id="@+id/nameCreator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingLeft="40dp"
+                android:text="Gökhan Kılıç"
+                android:textColor="@color/colorBlack" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/whoisworking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/creater"
+            android:layout_below="@+id/createrPerson"
             android:gravity="start"
             android:text="Who is working on this advert now ?"
             android:textAlignment="textStart"
-            android:textColor="@color/colorAccent"
+            android:textColor="#104472"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
@@ -90,26 +100,29 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
 
-            android:layout_below="@+id/whoisworking" />
+            android:layout_below="@+id/whoisworking"
+            android:layout_marginBottom="20dp" />
 
         <RelativeLayout
-            android:layout_below="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerView"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/clickButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:layout_centerInParent="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:gravity="start"
                 android:paddingLeft="25dp"
                 android:paddingStart="25dp"
                 android:text="If you want to apply click button"
-                android:gravity="start"
-               />
+                android:textColor="@color/colorBlack"
+                android:textSize="12dp"
+                android:textStyle="italic" />
 
             <Button
                 android:id="@+id/applyButton"
@@ -120,12 +133,13 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
 
-                android:text="Apply" />
+                android:background="@color/cardview_light_background"
+                android:text="Apply"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
-
-
 
 
     </RelativeLayout>

@@ -158,6 +158,11 @@ public interface ApiInterface {
     Call<ArrayList<UniSocial>> getProjectsList(@Field("token") String token);
 
     @FormUrlEncoded
+    @POST("getProfileFromUserID/")
+    Call<UniSocial> getProfileFromUserID(@Field("user_id") String user_id);
+
+
+    @FormUrlEncoded
     @POST("removeWorker/")
     Call<UniSocial> removeWorker(@Field("advert_id") String advert_id,@Field("user_id") String user_id);
 

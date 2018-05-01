@@ -1,7 +1,12 @@
 package com.ahmetgokhan.unicity.activities.AdvertPage;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,9 +30,13 @@ import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,11 +46,13 @@ public class AdvertPageActivity extends AppCompatActivity {
     private TextView advertTitle;
     private TextView discription;
     private TextView numberOfPerson;
+    private TextView nameCreator;
+    CircleImageView profilePhoto;
     private TextView creator;
     private Button applyButton;
     private ImageButton options;
     private String advertID;
-    private ApiInterface apiInterface;
+    private  ApiInterface apiInterface;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
@@ -60,21 +71,152 @@ public class AdvertPageActivity extends AppCompatActivity {
         intent = getIntent();
         advertTitle = (TextView)findViewById(R.id.titleAdvert);
         discription = findViewById(R.id.description);
-        numberOfPerson = findViewById(R.id.numberOfPerson);
-        creator = findViewById(R.id.creater);
+
         applyButton = findViewById(R.id.applyButton);
         options = findViewById(R.id.options);
+        nameCreator = findViewById(R.id.nameCreator);
+        profilePhoto = findViewById(R.id.profilePhoto);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        Log.d("USER ID ",intent.getStringExtra("user_id") );
+
+
+
         listItems =  new ArrayList<>();
+        applyButton.setText(intent.getStringExtra("buttonText"));
+
+        apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+        Call<UniSocial> callCreator = apiInterface.getProfileFromUserID(intent.getStringExtra("user_id"));
+        callCreator.enqueue(new Callback<UniSocial>() {
+            @Override
+            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+                nameCreator.setText(response.body().getName() + " " + response.body().getSurname());
+
+                AsyncTask<String, Void, Bitmap> profileTask =  new BitmapTask().execute(response.body().getProfile_photo());
+
+                try {
+
+                    profilePhoto.setImageBitmap(profileTask.get());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UniSocial> call, Throwable t) {
+
+            }
+        });
+
+
+
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(applyButton.getText().equals("Apply")){
+
+                    new AlertDialog.Builder(AdvertPageActivity.this)
+                            .setTitle("Are you want to apply this advet ?")
+                            .setMessage("Click OK button if you want")
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                                    Call<UniSocial> call = apiInterface.getAdvertApply(getApplicationContext().getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),intent.getStringExtra("advert_id"));
+                                    call.enqueue(new Callback<UniSocial>() {
+
+                                        @Override
+                                        public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+
+                                            if(response.body().getMessage().equals("true")){
+                                                applyButton.setText("Unapply");
+
+
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<UniSocial> call, Throwable t) {
+                                        }
+                                    });
+
+
+                                }
+                            }).create().show();
+
+
+
+                }else if(applyButton.getText().toString().equals("Your Advert")){
+                    Toast.makeText(getApplicationContext(),"You can not apply your advert", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    new AlertDialog.Builder(AdvertPageActivity.this)
+                            .setTitle("Are u sure want to unapply this advert ?")
+                            .setMessage("Click OK button if you want")
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+                                    Call<UniSocial> call = apiInterface.unApply(getApplicationContext().getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.TOKEN,""),intent.getStringExtra("advert_id"));
+                                    call.enqueue(new Callback<UniSocial>() {
+
+                                        @Override
+                                        public void onResponse(Call<UniSocial> call, retrofit2.Response<UniSocial> response) {
+
+                                            if(response.body().getMessage().equals("true")){
+                                                applyButton.setText("Apply");
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<UniSocial> call, Throwable t) {
+                                        }
+                                    });
+
+
+
+
+
+
+                                }
+                            }).create().show();
+
+                }
+
+            }
+
+        });
+
 
         options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(AdvertPageActivity.this, options);
+
+                final PopupMenu popup = new PopupMenu(getApplicationContext(), options);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.menu_advert_page, popup.getMenu());
 
@@ -110,7 +252,7 @@ public class AdvertPageActivity extends AppCompatActivity {
                                     else {
                                         message = "Your advert was deleted succesfully";
                                     }
-                                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT);
+                                    advertTitle.setText(message);
                                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
 
@@ -147,7 +289,7 @@ public class AdvertPageActivity extends AppCompatActivity {
                 discription.setText(response.body().getDescription());
                 int numberOfPersonAccepted = Integer.parseInt(response.body().getNumOfPerAccepted());
                 System.out.println(numberOfPersonAccepted  + " ");
-                numberOfPerson.setText("" + (response.body().getNumberOfPerson() - numberOfPersonAccepted));
+               // numberOfPerson.setText("" + (response.body().getNumberOfPerson() - numberOfPersonAccepted));
                 advertID = response.body().getAdvert_id();
                 getApplication().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).edit().putString(Config.CREATOR_ID,response.body().getUser_id()).apply();
 
@@ -224,6 +366,20 @@ public class AdvertPageActivity extends AppCompatActivity {
 
     }
 
+
+    private class BitmapTask extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                return BitmapFactory.decodeStream(new URL(Config.BASE_URL + strings[0]).openStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+    }
 
 
 

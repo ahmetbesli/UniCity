@@ -15,13 +15,15 @@ public class RecyclerViewListItemHome {
     private String advertDate;
     private String advert_id;
 
+
+    private String user_id;
     private String butonText;
 
 
 
 
 
-    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate, String advert_id,String butonText) {
+    public RecyclerViewListItemHome(String courseName, String advertName, String description, int numberOfPerson, String advertDate, String advert_id,String user_id,String butonText) {
         this.courseName = courseName;
         this.advertName = advertName;
         this.description = description;
@@ -29,6 +31,7 @@ public class RecyclerViewListItemHome {
         this.advertDate = advertDate;
         this.advert_id = advert_id;
         this.butonText = butonText;
+        this.user_id = user_id;
 
     }
     public String getCourseName() {  return courseName; }
@@ -61,6 +64,13 @@ public class RecyclerViewListItemHome {
     public String getButonText() {  return butonText; }
 
     public void setButonText(String butonText) {  this.butonText = butonText;  }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+
+
 
 
 }

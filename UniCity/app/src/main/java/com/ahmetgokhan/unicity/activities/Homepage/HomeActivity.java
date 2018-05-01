@@ -262,6 +262,7 @@ public class HomeActivity extends AppCompatActivity
                                 response.body().get(i).getNumberOfPerson() - Integer.valueOf(response.body().get(i).getNumOfPerAccepted()),
                                 response.body().get(i).getAdvertDate(),
                                 response.body().get(i).getAdvert_id(),
+                                response.body().get(i).getUser_id(),
                                 butonText
 
 
@@ -305,6 +306,7 @@ public class HomeActivity extends AppCompatActivity
                             response.body().get(i).getNumberOfPerson(),
                             response.body().get(i).getAdvertDate(),
                             response.body().get(i).getAdvert_id(),
+                            response.body().get(i).getUser_id(),
                             butonText
 
 

@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -22,10 +25,15 @@ import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by gokhankilic on 9.03.2018.
@@ -56,7 +64,7 @@ import retrofit2.Callback;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
             list_item = listItems.get(position);
 
@@ -67,7 +75,35 @@ import retrofit2.Callback;
             holder.textViewAdvertDate.setText(list_item.getAdvertDate());
             holder.textViewNumberOfPerson.setText(list_item.getNumberOfPerson() + "");
             holder.buttonApply.setText(list_item.getButonText());
+            holder.user_id.setText(list_item.getUser_id());
 
+
+            ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
+            Call<UniSocial> call = apiInterface.getProfileFromUserID(holder.user_id.getText().toString());
+            call.enqueue(new Callback<UniSocial>() {
+                @Override
+                public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+                    holder.createrNameAdvert.setText(response.body().getName() + " " + response.body().getSurname());
+
+                    AsyncTask<String, Void, Bitmap> profileTask =  new BitmapTask().execute(response.body().getProfile_photo());
+
+                    try {
+
+                       holder.profilePhotoAdvert.setImageBitmap(profileTask.get());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<UniSocial> call, Throwable t) {
+
+                }
+            });
 
 
 
@@ -84,9 +120,12 @@ import retrofit2.Callback;
 
         public class ViewHolder extends RecyclerView.ViewHolder{
             public TextView textViewAdvertId;
+            public TextView createrNameAdvert;
+            public CircleImageView profilePhotoAdvert;
             public TextView textViewCourseName;
             public TextView textViewAdvertName;
             public TextView textViewDescription;
+            public TextView user_id;
             public TextView textViewAdvertDate;
             public TextView textViewNumberOfPerson;
             public Button buttonApply;
@@ -102,6 +141,9 @@ import retrofit2.Callback;
                 textViewDescription = itemView.findViewById(R.id.textViewDescription);
                 textViewAdvertDate = itemView.findViewById(R.id.textViewAdvertDate);
                 textViewNumberOfPerson = itemView.findViewById(R.id.textViewNumberOfPerson);
+                user_id = itemView.findViewById(R.id.user_id);
+                createrNameAdvert = itemView.findViewById(R.id.nameCreatorAdvert);
+                profilePhotoAdvert = itemView.findViewById(R.id.profilePhotoAdvert);
 
 
 
@@ -208,8 +250,13 @@ import retrofit2.Callback;
                     public void onClick(View v) {
                         Intent intent = new Intent(context, AdvertPageActivity.class);
                         intent.putExtra("advert_id",textViewAdvertId.getText().toString());
+                        intent.putExtra("buttonText",buttonApply.getText().toString());
+                        intent.putExtra("user_id",user_id.getText().toString());
+
                         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
+
+
                     }
                 });
 
@@ -218,7 +265,24 @@ import retrofit2.Callback;
             }
 
 
+
+
         }
+
+
+    private class BitmapTask extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                return BitmapFactory.decodeStream(new URL(Config.BASE_URL + strings[0]).openStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+    }
 
 
 
