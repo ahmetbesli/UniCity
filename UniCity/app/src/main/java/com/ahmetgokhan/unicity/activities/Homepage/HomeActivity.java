@@ -107,30 +107,30 @@ public class HomeActivity extends AppCompatActivity
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<UniSocial> call = apiInterface.getProfile(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
         call.enqueue(new Callback<UniSocial>() {
-            @Override
-            public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
+                @Override
+                public void onResponse(Call<UniSocial> call, Response<UniSocial> response) {
 
-                name_surnameText.setText(response.body().getName());
-                emailText.setText(response.body().getEmail());
-
-
+                    name_surnameText.setText(response.body().getName());
+                    emailText.setText(response.body().getEmail());
 
 
-                AsyncTask<String, Void, Bitmap> profileTask = new HomeActivity.BitmapTask().execute(response.body().getProfile_photo());
 
 
-                try {
+                    AsyncTask<String, Void, Bitmap> profileTask = new HomeActivity.BitmapTask().execute(response.body().getProfile_photo());
 
-                    profilePhoto.setImageBitmap(profileTask.get());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+
+                    try {
+
+                        profilePhoto.setImageBitmap(profileTask.get());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    catch (Exception e){}
+
+
                 }
-                  catch (Exception e){}
-
-
-            }
 
 
 

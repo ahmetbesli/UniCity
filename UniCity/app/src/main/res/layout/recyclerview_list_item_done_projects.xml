@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corner"
+    android:layout_margin="10dp"
+    android:padding="10dp">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/logoadvert" />
+            <TextView
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_dark"
+                android:text="Kadir Has University"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/done_projects_advert_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack" />
+        <TextView
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:id="@+id/done_projects_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/colorBlack" />
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/done_projects_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/colorBlack" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/done_projects_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="@string/app_name"
+                android:textColor="@color/colorBlack" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#737477"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/colorBlack"
+            android:text="Browse"/>
+
+        <TextView
+            android:id="@+id/done_projects_advert_id_hidden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>
+
+

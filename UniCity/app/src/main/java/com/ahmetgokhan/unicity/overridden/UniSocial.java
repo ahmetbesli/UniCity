@@ -7,9 +7,25 @@ import java.util.Date;
 
 public class UniSocial {
 
+    @SerializedName("from_username")
+    @Expose
+    public String from_username;
+
+    @SerializedName("thread_id")
+    @Expose
+    public String thread_id;
+
+    @SerializedName("date")
+    @Expose
+    public String date;
+
     @SerializedName("message")
     @Expose
     public String message;
+
+    @SerializedName("from_name")
+    @Expose
+    public String from_name;
 
     @SerializedName("room")
     @Expose
@@ -141,67 +157,108 @@ public class UniSocial {
     public String id;
 
 
-
-
-    public UniSocial(String message,
+    public UniSocial(String from_username,
+                     String thread_id,
+                     String date,
+                     String message,
+                     String from_name,
+                     String room,
                      String name,
-                     String surname,
-                     String email,
                      String token,
-                     String department,
                      String universities,
+                     String university,
                      String advertName,
                      String description,
+                     int numberOfPerson,
+                     String courseName,
+                     String advertDate,
+                     String user_id,
+                     String surname,
+                     String email,
                      String cover_photo,
                      String profile_photo,
                      String faculty,
-                     String number_adverts,
-                     String advertDate,
+                     String faculties,
+                     String departments,
+                     String courses,
+                     String department,
                      String number_subs,
-                     String courseName,
-                     String course_name,
-                     String situationApply,
+                     String number_adverts,
                      String username,
                      String advert_id,
-                     String user_id,
                      String apply_id,
+                     String course_name,
+                     String situationApply,
                      String situationAdvert,
-                     String id,
-                     String numOfPerAccapted,
-                     String faculties,
-                     String room
-
-    ) {
-        this.faculties = faculties;
-        this.id = id;
-        this.course_name = course_name;
-        this.faculty = faculty;
-        this.cover_photo = cover_photo;
-        this.profile_photo = profile_photo;
+                     String numOfPerAccepted,
+                     String id) {
+        this.from_username = from_username;
+        this.thread_id = thread_id;
+        this.date = date;
         this.message = message;
-        this.universities = universities;
+        this.from_name = from_name;
+        this.room = room;
         this.name = name;
         this.token = token;
+        this.universities = universities;
+        this.university = university;
         this.advertName = advertName;
         this.description = description;
+        this.numberOfPerson = numberOfPerson;
+        this.courseName = courseName;
+        this.advertDate = advertDate;
+        this.user_id = user_id;
         this.surname = surname;
         this.email = email;
+        this.cover_photo = cover_photo;
+        this.profile_photo = profile_photo;
+        this.faculty = faculty;
+        this.faculties = faculties;
+        this.departments = departments;
+        this.courses = courses;
         this.department = department;
-        this.number_adverts = number_adverts;
         this.number_subs = number_subs;
-        this.courseName = courseName;
+        this.number_adverts = number_adverts;
         this.username = username;
         this.advert_id = advert_id;
-        this.user_id = user_id;
         this.apply_id = apply_id;
+        this.course_name = course_name;
         this.situationApply = situationApply;
-        this.room = room;
-        this.numOfPerAccepted = numOfPerAccapted;
         this.situationAdvert = situationAdvert;
-        this.advertDate = advertDate;
+        this.numOfPerAccepted = numOfPerAccepted;
+        this.id = id;
+    }
 
+    public String getFrom_username() {
+        return from_username;
+    }
 
+    public void setFrom_username(String from_username) {
+        this.from_username = from_username;
+    }
 
+    public String getThread_id() {
+        return thread_id;
+    }
+
+    public void setThread_id(String thread_id) {
+        this.thread_id = thread_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getFrom_name() {
+        return from_name;
+    }
+
+    public void setFrom_name(String from_name) {
+        this.from_name = from_name;
     }
 
     public String getFaculties() {

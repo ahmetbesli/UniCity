@@ -1,22 +1,26 @@
 package com.ahmetgokhan.unicity.retrofit;
 
-import android.graphics.Bitmap;
-
 import com.ahmetgokhan.unicity.overridden.UniSocial;
-
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
+
+    @FormUrlEncoded
+    @POST("getMessageList/")
+    Call<ArrayList<UniSocial>> getMessageList(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("getDoneProjectsForProfile/")
+    Call<ArrayList<UniSocial>> getDoneProjects(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("getCreatedProjectsForProfile/")
+    Call<ArrayList<UniSocial>> getCreatedProjects(@Field("token") String token);
 
     @FormUrlEncoded
     @POST("updateProfile/")
@@ -28,15 +32,15 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("createRoom/")
-    Call<UniSocial> createRoom(@Field("to_username") String username,@Field("token") String token,@Field("room") String room);
+    Call<UniSocial> createRoom(@Field("to_username") String username,@Field("token") String token, @Field("name") String name);
 
     @FormUrlEncoded
     @POST("roomExits/")
     Call<UniSocial> roomExits(@Field("to_username") String username,@Field("token") String token);
 
     @FormUrlEncoded
-    @POST("getConversations/")
-    Call<ArrayList<UniSocial>> getConversations(@Field("token") String token);
+    @POST("getMessages/")
+    Call<ArrayList<UniSocial>> getConversations(@Field("thread_id") String thread_id);
 
     @FormUrlEncoded
     @POST("getProfile/")

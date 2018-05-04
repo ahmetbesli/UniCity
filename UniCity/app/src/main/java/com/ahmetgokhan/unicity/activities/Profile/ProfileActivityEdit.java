@@ -219,13 +219,13 @@ public class ProfileActivityEdit extends AppCompatActivity {
     protected String encoder(String x){
         BitmapFactory.Options options = new BitmapFactory.Options();
 
-        options.inSampleSize = 4;
+        options.inSampleSize = 1;
         options.inPurgeable = true;
         Bitmap bm = BitmapFactory.decodeFile(x,options);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        bm.compress(Bitmap.CompressFormat.JPEG,75,baos);
+        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
 
         byte[] byteImage_photo = baos.toByteArray();
 

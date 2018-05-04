@@ -1,20 +1,27 @@
 package com.ahmetgokhan.unicity.activities.Chat;
 
-
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class MessageListData {
 
     private String name;
     private String message;
-    private String chat_room;
+    private String thread_id;
     private String circleImageView;
+    private String from_name;
 
-    public MessageListData(String name, String message,String chat_room,String circleImageView) {
+    public MessageListData(String name, String message, String thread_id, String circleImageView,String from_name) {
         this.name = name;
         this.message = message;
-        this.chat_room = chat_room;
+        this.thread_id = thread_id;
         this.circleImageView = circleImageView;
+        this.from_name = from_name;
+    }
+
+    public String getFrom_name() {
+        return from_name;
+    }
+
+    public void setFrom_name(String from_name) {
+        this.from_name = from_name;
     }
 
     public String getCircleImageView() {
@@ -25,12 +32,12 @@ public class MessageListData {
         this.circleImageView = circleImageView;
     }
 
-    public String getChat_room() {
-        return chat_room;
+    public String getThread_id() {
+        return thread_id;
     }
 
-    public void setChat_room(String chat_room) {
-        this.chat_room = chat_room;
+    public void setThread_id(String thread_id) {
+        this.thread_id = thread_id;
     }
 
     public String getName() {

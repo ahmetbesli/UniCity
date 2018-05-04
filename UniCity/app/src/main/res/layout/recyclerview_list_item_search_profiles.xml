@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="132dp"
-        android:layout_margin="10dp">
+        android:layout_height="80dp"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,13 +18,12 @@
            >
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profilePhotoImageView"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
-                app:civ_border_color="@color/colorAccent"
-                app:civ_border_width="0.9dp"></de.hdodenhof.circleimageview.CircleImageView>
+                app:civ_border_width="0.9dp">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
 
 
 
@@ -35,42 +34,39 @@
                 android:paddingLeft="5dp"
                 android:layout_gravity="center">
 
-                <TextView
-                    android:id="@+id/userNameHidden"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
 
                 <TextView
                     android:id="@+id/nameSurnameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
                     android:text="Gökhan Kılıç"
                     android:textColor="@color/colorBlack"
-                    android:textSize="22sp" />
-
-
-                <TextView
-                    android:id="@+id/departmentNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignStart="@+id/nameSurnameTextView"
-                    android:layout_marginBottom="16dp"
-                    android:text="Bilgisayar Mühendisliği"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/uniTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/departmentNameTextView"
-                    android:layout_centerVertical="true"
                     android:text="Kadir Has Üniversitesi"
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/departmentNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bilgisayar Mühendisliği"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+
+
+                <TextView
+                    android:id="@+id/userNameHidden"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

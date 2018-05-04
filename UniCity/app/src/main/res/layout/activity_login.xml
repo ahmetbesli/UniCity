@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal|center_vertical"
-    android:background="@color/colorPrimary"
+    android:id="@+id/login_anim_layout"
+    android:background="@drawable/my_bg_anim"
     android:orientation="vertical"
     tools:context="com.ahmetgokhan.unicity.activities.Login.LoginActivity">
 
@@ -28,21 +29,26 @@
         android:inputType="textPassword" />
 
     <Button
+        android:layout_marginTop="3dp"
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_login" />
+        android:textSize="16sp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#7EDAE0"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="@string/button_login"
+        android:textColor="#E3E3E3"/>
 
     <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/text_no_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_screen_no_account" />
 
-    <TextView
-        android:id="@+id/createAdvert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Advert"/>
+
 
 </LinearLayout>

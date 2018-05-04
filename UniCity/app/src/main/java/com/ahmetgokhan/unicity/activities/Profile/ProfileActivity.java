@@ -5,14 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TabHost;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Chat.MessageListActivity;
@@ -48,20 +56,22 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     TextView profile_working_adverts, profile_subscribed_courses;
     ApiInterface apiInterface;
     ImageView go_back_image;
-    RelativeLayout projects_to_the_list;
-    RelativeLayout subscriptions_to_the_list;
-    Button gotoMessages;
-
-
-
     ImageView settings_icon;
-
+    LinearLayout scrollView;
+    AnimationDrawable animationDrawable;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
     private RecyclerView recyclerView;
+    private RecyclerView recyclerViewWorkingProjects;
+    private RecyclerView recyclerViewDoneProjects;
+
     private RecyclerView.Adapter adapter;
-    private List<RecyclerViewListItemProfile> listItems;
+    private RecyclerView.Adapter adapterWorking;
+    private RecyclerView.Adapter adapterDone;
+    private List<RecyclerViewListItemCreated> listItems = new ArrayList<>();
+    private List<RecyclerViewListItemWorking> listItemsWorking = new ArrayList<>();
+    private List<RecyclerViewListItemDone> listItemsDone = new ArrayList<>();
 
 
     @Override
@@ -69,6 +79,74 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         checkToken();
+        scrollView = findViewById(R.id.scrollProfile);
+        animationDrawable = (AnimationDrawable) scrollView.getBackground();
+        animationDrawable.setEnterFadeDuration(500);
+        animationDrawable.setExitFadeDuration(500);
+        animationDrawable.start();
+
+
+        TabHost host = findViewById(R.id.tabHost);
+        host.setup();
+
+        //Tab 1
+        host.setBackgroundColor(Color.BLACK);
+        TabHost.TabSpec spec = host.newTabSpec("Created Projects");
+        spec.setContent(R.id.tab1);
+
+        spec.setIndicator("Created Projects");
+        host.addTab(spec);
+
+        //Tab 2
+        spec = host.newTabSpec("Working Projects");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Working Projects");
+        host.addTab(spec);
+
+        //Tab 3
+        spec = host.newTabSpec("Done Projects");
+        spec.setContent(R.id.tab3);
+        spec.setIndicator("Done Projects");
+        host.addTab(spec);
+        int tabCount = host.getTabWidget().getTabCount();
+        for (int i = 0; i < tabCount; i++) {
+            final View view = host.getTabWidget().getChildTabViewAt(i);
+            if ( view != null ) {
+
+                view.getLayoutParams().height *= 0.96;
+
+
+                final View textView = view.findViewById(android.R.id.title);
+                if ( textView instanceof TextView ) {
+
+                    ((TextView) textView).setGravity(Gravity.CENTER);
+
+                    ((TextView) textView).setSingleLine(false);
+
+                    textView.getLayoutParams().height = 100;
+                    textView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                }
+            }
+        }
+
+
+
+
+        host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if (tabId.equals("Working Projects")) {
+                    listItemsWorking.clear();
+                    loadRecyclerViewDataWorking();
+                } else if (tabId.equals("Done Projects")) {
+                    listItemsDone.clear();
+                    loadRecyclerViewDataDone();
+                }
+            }
+        });
+
+
+
         settings_icon = findViewById(R.id.profile_update_icon);
         settings_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +156,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         textViewUniversity = findViewById(R.id.textViewUniversity);
-        //gotoMessages = findViewById(R.id.profile_go_to_messages);
-        /*gotoMessages.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent inttt = new Intent(getApplicationContext(), MessageListActivity.class);
-                startActivity(inttt);
-            }
-        });*/
         name_surname = findViewById(R.id.textViewName);
         cover_photo = findViewById(R.id.cover_photo);
         profile_photo = findViewById(R.id.circleImageView);
@@ -101,22 +171,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        /*projects_to_the_list = findViewById(R.id.projects_to_the_list);
-        projects_to_the_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProjectsListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        subscriptions_to_the_list = findViewById(R.id.subscriptions_to_the_list);
-        subscriptions_to_the_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
+        getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).edit().putBoolean(Config.PROFILE_STATUS,true).apply();
 
 
         cover_photo.setOnClickListener(this);
@@ -126,7 +181,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
 
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerViewWorkingProjects = findViewById(R.id.recyclerViewWorkingProejcts);
+        recyclerViewWorkingProjects.setHasFixedSize(true);
+        recyclerViewWorkingProjects.setLayoutManager(new LinearLayoutManager(getApplicationContext()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+
+        recyclerViewDoneProjects = findViewById(R.id.recyclerViewDoneProejcts);
+        recyclerViewDoneProjects.setHasFixedSize(true);
+        recyclerViewDoneProjects.setLayoutManager(new LinearLayoutManager(getApplicationContext()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+
+        recyclerView = findViewById(R.id.recyclerViewProjects);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()) {
             @Override
@@ -135,7 +208,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        listItems = new ArrayList<>();
+
         loadRecyclerViewData();
 
 
@@ -217,29 +290,32 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void loadRecyclerViewData(){
 
-        Call<ArrayList<UniSocial>>call = apiInterface.getAdverts();
+    public void loadRecyclerViewData() {
+
+        Call<ArrayList<UniSocial>> call = apiInterface.getCreatedProjects(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
         call.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
             public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
 
                 for (int i = 0; i < response.body().size(); i++) {
 
-                    RecyclerViewListItemProfile listItem = new RecyclerViewListItemProfile(
-                        response.body().get(i).getCourseName(),
-                        response.body().get(i).getAdvertName(),
-                        response.body().get(i).getDescription(),
-                        response.body().get(i).getNumberOfPerson(),
-                        response.body().get(i).getAdvertDate()
-                );
+                    RecyclerViewListItemCreated listItem = new RecyclerViewListItemCreated(
+                            response.body().get(i).getAdvert_id(),
+                            response.body().get(i).getAdvertName(),
+                            response.body().get(i).getDescription(),
+                            String.valueOf(response.body().get(i).getNumberOfPerson()),
+                            response.body().get(i).getAdvertDate(),
+                            response.body().get(i).getCourseName()
+                    );
 
                     listItems.add(listItem);
 
                 }
 
-                adapter = new RecyclerViewMyAdapterProfile(listItems,getApplicationContext());
+                adapter = new RecyclerViewAdapterCreated(listItems, getApplicationContext());
                 recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -248,9 +324,80 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
+    }
+    public void loadRecyclerViewDataWorking(){
 
+        Call<ArrayList<UniSocial>>call0 = apiInterface.getProjectsList(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
+        call0.enqueue(new Callback<ArrayList<UniSocial>>() {
+            @Override
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+
+                for (int i = 0; i < response.body().size(); i++) {
+
+                    RecyclerViewListItemWorking listItem = new RecyclerViewListItemWorking(
+                            response.body().get(i).getAdvert_id(),
+                            response.body().get(i).getAdvertName(),
+                            response.body().get(i).getDescription(),
+                            String.valueOf(response.body().get(i).getNumberOfPerson()),
+                            response.body().get(i).getAdvertDate(),
+                            response.body().get(i).getCourseName()
+                    );
+
+                    listItemsWorking.add(listItem);
+
+                }
+
+                adapterWorking = new RecyclerViewAdapterWorking(listItemsWorking,getApplicationContext());
+                recyclerViewWorkingProjects.setAdapter(adapterWorking);
+                adapterWorking.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
+                Log.e("sdkgjdlkg","sadsadasdsa");
+
+            }
+        });
 
     }
+    public void loadRecyclerViewDataDone(){
+
+        Call<ArrayList<UniSocial>>call0 = apiInterface.getDoneProjects(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
+        call0.enqueue(new Callback<ArrayList<UniSocial>>() {
+            @Override
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+
+                for (int i = 0; i < response.body().size(); i++) {
+
+                    RecyclerViewListItemDone listItem = new RecyclerViewListItemDone(
+                            response.body().get(i).getAdvert_id(),
+                            response.body().get(i).getAdvertName(),
+                            response.body().get(i).getDescription(),
+                            String.valueOf(response.body().get(i).getNumberOfPerson()),
+                            response.body().get(i).getAdvertDate(),
+                            response.body().get(i).getCourseName()
+                    );
+
+                    listItemsDone.add(listItem);
+
+                }
+
+                adapterDone = new RecyclerViewAdapterDone(listItemsDone,getApplicationContext());
+                recyclerViewDoneProjects.setAdapter(adapterDone);
+                adapterDone.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<UniSocial>> call, Throwable t) {
+                Log.e("sdkgjdlkg","sadsadasdsa");
+
+            }
+        });
+
+    }
+
+
+
     public void checkToken(){
         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<UniSocial> callToken = apiInterface.checkToken(getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));

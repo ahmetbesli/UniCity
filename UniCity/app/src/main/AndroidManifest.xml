@@ -48,7 +48,8 @@
         <activity android:name=".activities.RequestsPage.RequestsActivity" />
         <activity android:name=".activities.ProfileLists.SubscriptionListActivity" />
         <activity android:name=".activities.ProfileLists.ProjectsListActivity" />
-        <activity android:name=".activities.Chat.ChatActivity" />
+        <activity android:name=".activities.Chat.ChatActivity"
+            android:theme="@style/NoActionBar"/>
 
         <service android:name=".overridden.MyFirebaseMessagingService">
             <intent-filter>

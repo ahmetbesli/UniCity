@@ -2,15 +2,18 @@ package com.ahmetgokhan.unicity.activities.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.activities.Register.RegisterActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -30,10 +33,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     String emailText;
     String passwordText;
     TextView noAccount;
-    TextView createAdvert;
+
     Character[] bannedChars = {'[', ']', ':', ';', '|', '=', '+', '?', '<', '>', '*', '\'', '[', ']', '|', '=', '+',  '*', '\\', '"'};
     Character[] bannedNumbers = {'1','2','3','4','5','6','7','8','9','0'};
     SharedPreferences.Editor editor;
+    LinearLayout linearLayout;
+    AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +49,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void setupUI() {
+        linearLayout = findViewById(R.id.login_anim_layout);
+        animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
+
+
+
         editTextLogin = findViewById(R.id.editTextLogin);
         editTextRegister = findViewById(R.id.editTextRegister);
         buttonLogin = findViewById(R.id.button_login);
         noAccount = findViewById(R.id.text_no_account);
-        createAdvert = findViewById(R.id.createAdvert);
-        createAdvert.setOnClickListener(this);
         noAccount.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
 
@@ -77,7 +88,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.putString(Config.SURNAME,response.body().getSurname());
                         editor.apply();
 
-                        System.out.println("TOKEEEEEEN" + getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
 
                         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
                         Call<UniSocial> callToken = apiInterface.saveToken(FirebaseInstanceId.getInstance().getToken(),getApplicationContext().getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
@@ -100,8 +110,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         });
 
-                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
-                        startActivity(intent);
+
+                            if (getApplicationContext().getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getBoolean(Config.PROFILE_STATUS, false)) {
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                                startActivity(intent);
+                            }
+
                     }else{
                         Toast.makeText(getApplicationContext(),"Email or Password is not correct!",Toast.LENGTH_SHORT).show();
                     }
@@ -190,10 +207,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.text_no_account:
                 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.createAdvert:
-                Intent intq = new Intent(getApplicationContext(),AdvertActivityStepOne.class);
-                startActivity(intq);
                 break;
             default:
                 break;

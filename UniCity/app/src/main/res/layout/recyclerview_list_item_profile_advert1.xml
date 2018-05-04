@@ -118,21 +118,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="56dp"
                     android:layout_marginRight="56dp"
-                    android:layout_toLeftOf="@+id/list_view_home_button_apply"
-                    android:layout_toStartOf="@+id/list_view_home_button_apply"
                     android:text="Browse" />
-
-                <Button
-                    android:id="@+id/list_view_home_button_apply"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="71dp"
-                    android:layout_marginRight="71dp"
-                    android:text="Apply" />
 
             </RelativeLayout>
 

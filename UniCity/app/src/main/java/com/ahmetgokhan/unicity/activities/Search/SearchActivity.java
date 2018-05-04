@@ -49,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getApplicationContext(),UsersProfileActivity.class);
                 intent.putExtra("username",listItems.get(position).getUserNameHidden());
+                intent.putExtra("name",listItems.get(position).getNameSurname());
                 startActivity(intent);
             }
 

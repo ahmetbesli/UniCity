@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.ahmetgokhan.unicity.R;
-import com.ahmetgokhan.unicity.activities.Profile.ProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
 
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         AsyncTask<String, Void, Bitmap> profileTask = new MessageListAdapter.BitmapTask().execute(list_item.getCircleImageView());
         holder.textViewName.setText(list_item.getName());
         holder.textViewMessage.setText(list_item.getMessage());
-        holder.textViewChatRoom.setText(list_item.getChat_room());
+        holder.textViewChatRoom.setText(list_item.getThread_id());
         try {
             holder.circleImageView.setImageBitmap(profileTask.get());
         } catch (InterruptedException e) {

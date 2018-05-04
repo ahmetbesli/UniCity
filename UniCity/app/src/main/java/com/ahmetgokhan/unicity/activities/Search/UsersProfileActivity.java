@@ -65,12 +65,15 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
         checkToken();
         intent = getIntent();
         username = intent.getStringExtra("username");
+
         createMessageRoom = findViewById(R.id.createMessageRoom);
         createMessageRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent inttent = new Intent(getApplicationContext(), ChatActivity.class);
+                inttent.putExtra("name",name_surname.getText().toString());
                 inttent.putExtra("username",username);
+                inttent.putExtra("photo",profilePhotoUrl);
                 startActivity(inttent);
             }
         });
