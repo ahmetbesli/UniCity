@@ -1,29 +1,22 @@
 package com.ahmetgokhan.unicity.activities.Chat;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toolbar;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.socket.client.Socket;
 import io.socket.client.IO;
@@ -31,23 +24,15 @@ import io.socket.emitter.Emitter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import com.ahmetgokhan.unicity.R;
-import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
-import com.ahmetgokhan.unicity.activities.Search.UsersProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
 import com.ahmetgokhan.unicity.retrofit.ApiInterface;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.net.URL;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -65,24 +50,47 @@ public class ChatActivity extends AppCompatActivity {
     CircleImageView circleImageView;
     String photo_url;
     TextView chatUserName;
+    ImageView chatSettings;
+    PopupMenu popupMenu;
 
 
     @Override
     protected void onStart() {
         super.onStart();
         circleImageView = findViewById(R.id.imageUserChat);
-
+        chatSettings = findViewById(R.id.chat_settings);
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider));
         recyclerView = findViewById(R.id.recyclerViewChat);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(itemDecorator);
-        to_username = getIntent().getStringExtra("username");
-        photo_url = getIntent().getStringExtra("photo");//***
+        to_username = getIntent().getStringExtra("username");   //get from intent..
+        photo_url = getIntent().getStringExtra("photo");        //get from intent..
 
         AsyncTask<String, Void, Bitmap> profileTask = new ChatActivity.BitmapTask().execute(photo_url);
 
-
+        chatSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupMenu = new PopupMenu(ChatActivity.this, chatSettings);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_chat, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.goToProfile:
+                                break;
+                            case R.id.sendChatEmail:
+                                break;
+                            default:
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
         try {
             circleImageView.setImageBitmap(profileTask.get());
         } catch (InterruptedException e) {
@@ -141,15 +149,12 @@ public class ChatActivity extends AppCompatActivity {
                                     }).on("checkSituationChat", new Emitter.Listener() {
                                         @Override
                                         public void call(Object... args) {
-                                            System.out.println(args[0].toString());
                                             thread_id = (String) args[0];
-                                            System.out.println(thread_id);
                                         }
                                     }).on("sendMessage", new Emitter.Listener() {
                                         @Override
                                         public void call(Object... args) {
                                             final JSONObject message = (JSONObject) args[0];
-                                            System.out.println(message);
                                             try {
                                                 if (message.getString("thread_id").equals(thread_id_sql)) {
                                                     ChatMessage cht = new ChatMessage(message.getString("from_name"), message.getString("message"), message.getString("date"));
@@ -244,9 +249,8 @@ public class ChatActivity extends AppCompatActivity {
                         }).on("checkSituationChat", new Emitter.Listener() {
                             @Override
                             public void call(Object... args) {
-                                System.out.println(args[0].toString());
                                 thread_id = (String) args[0];
-                                System.out.println(thread_id);
+
                             }
                         }).on("sendMessage", new Emitter.Listener() {
                             @Override
@@ -256,8 +260,6 @@ public class ChatActivity extends AppCompatActivity {
                                 try {
                                     if (message.getString("thread_id").equals(thread_id_sql)) {
                                         ChatMessage cht = new ChatMessage(message.getString("from_name"), message.getString("message"), message.getString("date"));
-                                        System.out.println(getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getString(Config.NAME, "") + " " + getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getString(Config.SURNAME, ""));
-                                        System.out.println(message.getString("from_name"));
                                         if(message.getString("from_name").trim().equals(getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getString(Config.NAME, "") + " " + getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getString(Config.SURNAME, "").trim())){
                                             cht.setOther(1);
                                         }else{
@@ -315,9 +317,11 @@ public class ChatActivity extends AppCompatActivity {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (socket != null && !getMessage.getText().toString().equals("")) {
-                    final JSONObject json = new JSONObject();
+                if (socket != null && getMessage.getText().toString().length() != 0) {
+                    System.out.println("socket null değil, mesaj boş değil");
+                    JSONObject json = new JSONObject();
                     try {
+
                         json.put("thread_id", thread_id);
                         json.put("from_username", getApplicationContext().getSharedPreferences(Config.APP_NAME, MODE_PRIVATE).getString(Config.USERNAME, ""));
                         json.put("to_username", to_username);
