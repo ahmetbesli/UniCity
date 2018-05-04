@@ -72,7 +72,7 @@ public class RequestsActivity extends AppCompatActivity {
                 for (int i = 0; i<response.body().size(); i++){
 
                     recyclerViewListItemRequests = new RecyclerViewListItemRequests(
-                            response.body().get(i).getName() + response.body().get(i).getSurname() + "was applied your below advert",
+                            response.body().get(i).getName() + response.body().get(i).getSurname() + " was applied your advert above",
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getAdvert_id(),
                             response.body().get(i).getUser_id(),

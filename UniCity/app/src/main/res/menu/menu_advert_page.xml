@@ -3,7 +3,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/deleteAdver"
-        android:iconTint="@color/cardview_light_background"
         android:icon="@drawable/ic_delete_advert"
         android:title="Delete Advert" />
     <item android:id="@+id/finishAdvert"

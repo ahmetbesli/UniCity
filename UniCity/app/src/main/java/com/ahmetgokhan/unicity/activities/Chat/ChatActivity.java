@@ -1,6 +1,7 @@
 package com.ahmetgokhan.unicity.activities.Chat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -25,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Search.UsersProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -79,6 +81,9 @@ public class ChatActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.goToProfile:
+                                Intent intt = new Intent(getApplicationContext(), UsersProfileActivity.class);
+                                intt.putExtra("username",to_username);
+                                startActivity(intt);
                                 break;
                             case R.id.sendChatEmail:
                                 break;

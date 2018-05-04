@@ -47,7 +47,6 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
     TextView profile_working_adverts, profile_subscribed_courses;
     ApiInterface apiInterface;
     ImageView go_back_image;
-    Button button;
 
     private String coverPhotoUrl;
     private String profilePhotoUrl;
@@ -78,21 +77,13 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
             }
         });
         textViewUniversity = findViewById(R.id.textViewUniversity);
-        button = findViewById(R.id.button_subs);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intt = new Intent(getApplicationContext(), SubscribeActivity.class);
-                startActivity(intt);
-            }
-        });
+
 
 
         name_surname = findViewById(R.id.textViewName);
         cover_photo = findViewById(R.id.cover_photo);
         profile_photo = findViewById(R.id.circleImageView);
-        profile_working_adverts = findViewById(R.id.profile_working_adverts);
-        profile_subscribed_courses = findViewById(R.id.profile_subscribed_courses);
+
         textViewDepartmant = findViewById(R.id.textViewDepartment);
         go_back_image = findViewById(R.id.go_back_home_profile_arrow);
         go_back_image.setOnClickListener(new View.OnClickListener() {
@@ -129,8 +120,7 @@ public class UsersProfileActivity extends AppCompatActivity implements View.OnCl
                 name_surname.setText(response.body().getName() + " " + response.body().getSurname());
                 textViewUniversity.setText(response.body().getUniversity());
                 textViewDepartmant.setText(response.body().getDepartment());
-                profile_working_adverts.setText("Projects\n" + response.body().getNumber_adverts());
-                profile_subscribed_courses.setText("Subscriptions\n" + response.body().getNumber_subs());
+
 
                 coverPhotoUrl = Config.BASE_URL + response.body().getCover_photo();
                 profilePhotoUrl = Config.BASE_URL + response.body().getProfile_photo();

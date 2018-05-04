@@ -52,8 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     ImageView cover_photo;
     CircleImageView profile_photo;
-    TextView name_surname, textViewUniversity, textViewDepartmant, subscribedCourses;
-    TextView profile_working_adverts, profile_subscribed_courses;
+    TextView name_surname, textViewUniversity, textViewDepartmant;
     ApiInterface apiInterface;
     ImageView go_back_image;
     ImageView settings_icon;
@@ -159,8 +158,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         name_surname = findViewById(R.id.textViewName);
         cover_photo = findViewById(R.id.cover_photo);
         profile_photo = findViewById(R.id.circleImageView);
-        profile_working_adverts = findViewById(R.id.profile_working_adverts);
-        profile_subscribed_courses = findViewById(R.id.profile_subscribed_courses);
+
         textViewDepartmant = findViewById(R.id.textViewDepartment);
         go_back_image = findViewById(R.id.go_back_home_profile_arrow);
         go_back_image.setOnClickListener(new View.OnClickListener() {
