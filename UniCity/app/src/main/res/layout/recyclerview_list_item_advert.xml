@@ -95,7 +95,16 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_marginTop="7dp"
+                android:background="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </LinearLayout>
+
             <RelativeLayout
+                android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_gravity="center">
@@ -104,29 +113,35 @@
                     android:id="@+id/user_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"/>
+                    android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/list_view_home_button_browse"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="56dp"
-                    android:layout_marginRight="56dp"
-                    android:layout_toLeftOf="@+id/list_view_home_button_apply"
-                    android:layout_toStartOf="@+id/list_view_home_button_apply"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:textColor="@color/colorBlack"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:text="Browse" />
+
+                <LinearLayout
+                    android:background="@color/colorBlack"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="1dp"
+                    android:layout_height="50dp">
+                </LinearLayout>
+
 
                 <Button
                     android:id="@+id/list_view_home_button_apply"
-                    android:layout_width="wrap_content"
-
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="71dp"
-                    android:layout_marginRight="71dp"
+
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:textColor="@color/colorBlack"
                     android:text="Apply" />
 
             </RelativeLayout>
