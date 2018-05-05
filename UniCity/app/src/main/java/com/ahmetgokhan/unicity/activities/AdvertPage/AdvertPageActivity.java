@@ -19,13 +19,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
-import com.ahmetgokhan.unicity.activities.RequestsPage.RecyclerViewListItemAdvertPage;
+
 import com.ahmetgokhan.unicity.activities.RequestsPage.RecyclerViewListItemRequests;
 import com.ahmetgokhan.unicity.activities.RequestsPage.RecyclerViewMyAdapterRequests;
 import com.ahmetgokhan.unicity.config.Config;
@@ -51,13 +52,15 @@ public class AdvertPageActivity extends AppCompatActivity {
     private TextView numberOfPerson;
     private TextView nameCreator;
     CircleImageView profilePhoto;
-    private TextView creator;
+    private TextView whoisworking;
     private Button applyButton;
     private ImageButton options;
     private String advertID;
     private  ApiInterface apiInterface;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private ImageButton deleteWorkerButton;
+    RelativeLayout applyLayout;
 
     private List<RecyclerViewListItemAdvertPage> listItems;
     Intent intent;
@@ -74,11 +77,12 @@ public class AdvertPageActivity extends AppCompatActivity {
         intent = getIntent();
         advertTitle = (TextView)findViewById(R.id.titleAdvert);
         discription = findViewById(R.id.description);
-
+        applyLayout = findViewById(R.id.applyLayout);
         applyButton = findViewById(R.id.applyButton);
         options = findViewById(R.id.options);
         nameCreator = findViewById(R.id.nameCreator);
         profilePhoto = findViewById(R.id.profilePhoto);
+        whoisworking = findViewById(R.id.whoisworking);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -90,6 +94,15 @@ public class AdvertPageActivity extends AppCompatActivity {
 
         listItems =  new ArrayList<>();
         applyButton.setText(intent.getStringExtra("buttonText"));
+
+        if(applyButton.getText().toString().equals("Done")){
+
+            applyLayout.setVisibility(View.INVISIBLE);
+            whoisworking.setText("Who was worked on this advert");
+
+
+
+        }
 
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<UniSocial> callCreator = apiInterface.getProfileFromUserID(intent.getStringExtra("user_id"));
@@ -353,6 +366,7 @@ public class AdvertPageActivity extends AppCompatActivity {
                             intent.getStringExtra("advert_id"),
                             getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.CREATOR_ID,""),
                             response.body().get(i).getProfile_photo()
+
                     );
 
                     listItems.add(recyclerViewListItemAdvertPage);

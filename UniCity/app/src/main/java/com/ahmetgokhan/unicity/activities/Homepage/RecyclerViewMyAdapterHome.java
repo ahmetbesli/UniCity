@@ -80,6 +80,7 @@ import retrofit2.Response;
             holder.user_id.setText(list_item.getUser_id());
 
 
+
             ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
             Call<UniSocial> call = apiInterface.getProfileFromUserID(holder.user_id.getText().toString());
             call.enqueue(new Callback<UniSocial>() {
@@ -133,6 +134,7 @@ import retrofit2.Response;
             public Button buttonApply;
             public Button buttonBrowse;
 
+
             public ViewHolder(final View itemView) {
                 super(itemView);
                 buttonApply = itemView.findViewById(R.id.list_view_home_button_apply);
@@ -146,6 +148,7 @@ import retrofit2.Response;
                 user_id = itemView.findViewById(R.id.user_id);
                 createrNameAdvert = itemView.findViewById(R.id.nameCreatorAdvert);
                 profilePhotoAdvert = itemView.findViewById(R.id.profilePhotoAdvert);
+
 
 
 

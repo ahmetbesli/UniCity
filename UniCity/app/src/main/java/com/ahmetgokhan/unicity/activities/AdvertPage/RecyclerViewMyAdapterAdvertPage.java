@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
-import com.ahmetgokhan.unicity.activities.RequestsPage.RecyclerViewListItemAdvertPage;
+
 import com.ahmetgokhan.unicity.activities.RequestsPage.RecyclerViewMyAdapterRequests;
 import com.ahmetgokhan.unicity.activities.Subscribe.RecyclerViewListItemSubscription;
 import com.ahmetgokhan.unicity.config.Config;
@@ -76,6 +76,7 @@ import retrofit2.Response;
             final RecyclerViewListItemAdvertPage list_item = listItems.get(position);
 
             holder.workerName.setText(list_item.getWorkerName());
+
 
             if(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.CREATOR_ID,"")
                     .equals(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.USER_ID,""))){

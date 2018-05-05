@@ -8,15 +8,17 @@ public class RecyclerViewListItemCreated {
     private String NumberOfPerson;
     private String Date;
     private String CourseName;
+    private String user_id;
 
 
-    public RecyclerViewListItemCreated(String advert_id, String advertName, String description, String numberOfPerson, String date, String courseName) {
+    public RecyclerViewListItemCreated(String advert_id, String advertName, String description, String numberOfPerson, String date, String courseName, String user_id) {
         this.advert_id = advert_id;
         this.advertName = advertName;
         Description = description;
         NumberOfPerson = numberOfPerson;
         Date = date;
         CourseName = courseName;
+        this.user_id = user_id;
     }
 
     public String getDescription() {
@@ -66,4 +68,13 @@ public class RecyclerViewListItemCreated {
     public void setAdvertName(String advertName) {
         this.advertName = advertName;
     }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
 }

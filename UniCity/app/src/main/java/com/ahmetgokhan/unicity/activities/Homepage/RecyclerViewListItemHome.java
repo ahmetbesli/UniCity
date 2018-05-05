@@ -15,7 +15,7 @@ public class RecyclerViewListItemHome {
     private String advertDate;
     private String advert_id;
 
-
+    private String situationAdvert;
     private String user_id;
     private String butonText;
 
@@ -32,6 +32,7 @@ public class RecyclerViewListItemHome {
         this.advert_id = advert_id;
         this.butonText = butonText;
         this.user_id = user_id;
+
 
     }
     public String getCourseName() {  return courseName; }
@@ -68,6 +69,9 @@ public class RecyclerViewListItemHome {
     public String getUser_id() {
         return user_id;
     }
+
+
+
 
 
 

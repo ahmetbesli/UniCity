@@ -80,6 +80,7 @@
             android:background="#737477"/>
 
         <Button
+            android:id="@+id/browseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -88,6 +89,12 @@
 
         <TextView
             android:id="@+id/done_projects_advert_id_hidden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/done_projects_user_id_hidden"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone" />

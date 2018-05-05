@@ -104,6 +104,7 @@
             android:layout_marginBottom="20dp" />
 
         <RelativeLayout
+            android:id="@+id/applyLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/recyclerView"

@@ -1,14 +1,17 @@
 package com.ahmetgokhan.unicity.activities.Profile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.AdvertPage.AdvertPageActivity;
 
 import java.util.List;
 
@@ -43,6 +46,7 @@ public class RecyclerViewAdapterWorking extends RecyclerView.Adapter<RecyclerVie
         holder.textViewNumberOfPerson.setText("Applicable for: " + list_item.getNumberOfPerson());
         holder.textViewDate.setText("Created at: " + list_item.getDate());
         holder.textViewCourseName.setText(list_item.getCourseName());
+        holder.textViewUser_id.setText(list_item.getUser_id());
 
 
     }
@@ -61,6 +65,8 @@ public class RecyclerViewAdapterWorking extends RecyclerView.Adapter<RecyclerVie
         private TextView textViewNumberOfPerson;
         private TextView textViewDate;
         private TextView textViewCourseName;
+        private TextView textViewUser_id;
+        private Button browseButton;
 
 
         public ViewHolder(View itemView) {
@@ -71,6 +77,21 @@ public class RecyclerViewAdapterWorking extends RecyclerView.Adapter<RecyclerVie
             textViewNumberOfPerson = itemView.findViewById(R.id.working_projects_number_of_person);
             textViewAdvertName = itemView.findViewById(R.id.working_projects_advert_name);
             textViewAdvertId = itemView.findViewById(R.id.working_projects_advert_id_hidden);
+            textViewUser_id = itemView.findViewById(R.id.working_projects_user_id_hidden);
+            browseButton = itemView.findViewById(R.id.browseButton);
+
+            browseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, AdvertPageActivity.class);
+                    intent.putExtra("advert_id",textViewAdvertId.getText().toString());
+                    intent.putExtra("buttonText","Applied");
+                    intent.putExtra("user_id",textViewUser_id.getText().toString());
+
+                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
 
 
         }

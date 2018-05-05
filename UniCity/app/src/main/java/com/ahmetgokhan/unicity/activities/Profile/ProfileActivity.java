@@ -304,7 +304,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             response.body().get(i).getDescription(),
                             String.valueOf(response.body().get(i).getNumberOfPerson()),
                             response.body().get(i).getAdvertDate(),
-                            response.body().get(i).getCourseName()
+                            response.body().get(i).getCourseName(),
+                            response.body().get(i).getUser_id()
                     );
 
                     listItems.add(listItem);
@@ -338,7 +339,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             response.body().get(i).getDescription(),
                             String.valueOf(response.body().get(i).getNumberOfPerson()),
                             response.body().get(i).getAdvertDate(),
-                            response.body().get(i).getCourseName()
+                            response.body().get(i).getCourseName(),
+                            response.body().get(i).getUser_id()
                     );
 
                     listItemsWorking.add(listItem);
@@ -373,7 +375,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             response.body().get(i).getDescription(),
                             String.valueOf(response.body().get(i).getNumberOfPerson()),
                             response.body().get(i).getAdvertDate(),
-                            response.body().get(i).getCourseName()
+                            response.body().get(i).getCourseName(),
+                            response.body().get(i).getUser_id()
                     );
 
                     listItemsDone.add(listItem);

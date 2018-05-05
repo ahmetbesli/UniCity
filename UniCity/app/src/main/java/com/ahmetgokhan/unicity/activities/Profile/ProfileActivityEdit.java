@@ -225,7 +225,7 @@ public class ProfileActivityEdit extends AppCompatActivity {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        bm.compress(Bitmap.CompressFormat.JPEG,70,baos);
 
         byte[] byteImage_photo = baos.toByteArray();
 

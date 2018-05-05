@@ -1,4 +1,4 @@
-package com.ahmetgokhan.unicity.activities.RequestsPage;
+package com.ahmetgokhan.unicity.activities.AdvertPage;
 
 
 /**
@@ -19,12 +19,17 @@ public class RecyclerViewListItemAdvertPage {
 
 
 
+
+
+
+
     public RecyclerViewListItemAdvertPage(String workerName, String workerID, String advert_id,String creatorID,String workerProfilePhoto) {
         this.workerID = workerID;
         this.advert_id = advert_id;
         this.workerName = workerName;
         this.creatorID = creatorID;
         this.workerProfilePhoto = workerProfilePhoto;
+
 
 
     }
@@ -68,6 +73,8 @@ public class RecyclerViewListItemAdvertPage {
     public void setWorkerProfilePhoto(String workerProfilePhoto) {
         this.workerProfilePhoto = workerProfilePhoto;
     }
+
+
 
 
 

@@ -48,6 +48,7 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
             holder.textViewNumberOfPerson.setText("Applicable for: " + list_item.getNumberOfPerson());
             holder.textViewDate.setText("Created at: " + list_item.getDate());
             holder.textViewCourseName.setText(list_item.getCourseName());
+            holder.textViewUser_id.setText(list_item.getUser_id());
 
 
 
@@ -67,6 +68,7 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
             private TextView textViewNumberOfPerson;
             private TextView textViewDate;
             private TextView textViewCourseName;
+            private TextView textViewUser_id;
             private Button browseButton;
 
 
@@ -79,10 +81,20 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
                 textViewAdvertName = itemView.findViewById(R.id.created_projects_advert_name);
                 textViewAdvertId = itemView.findViewById(R.id.created_projects_advert_id_hidden);
                 browseButton = itemView.findViewById(R.id.browseButton);
+                textViewUser_id = itemView.findViewById(R.id.created_projects_user_id_hidden);
 
                 browseButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        Intent intent = new Intent(context, AdvertPageActivity.class);
+                        intent.putExtra("advert_id",textViewAdvertId.getText().toString());
+                        intent.putExtra("buttonText","Your Advert");
+                        intent.putExtra("user_id",textViewUser_id.getText().toString());
+
+                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+
 
                     }
                 });
