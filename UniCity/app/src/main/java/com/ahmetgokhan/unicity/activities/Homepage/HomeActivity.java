@@ -322,8 +322,6 @@ public class HomeActivity extends AppCompatActivity
 
                     );
 
-                    System.out.println(response.body().get(i).getAdvertDate());
-
                     listItems.add(listItem);
 
                 }

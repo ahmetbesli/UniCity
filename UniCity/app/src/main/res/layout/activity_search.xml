@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_light_background"
+    android:orientation="vertical"
     tools:context=".activities.Search.SearchActivity">
 
     <RelativeLayout
@@ -19,59 +19,50 @@
             android:layout_alignParentTop="true"
             android:background="#FB0818">
 
-        <ImageView
-            android:id="@+id/backToHomeButon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/arrow_left" />
+            <ImageView
+                android:id="@+id/backToHomeButon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left" />
 
 
+            <EditText
+                android:id="@+id/nameSurnameEditText"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:clickable="true"
+                android:ems="10"
+                android:hint="Search people"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/nameSurnameEditText"
+            <ImageView
 
-                    android:layout_marginStart="30dp"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:clickable="true"
-                    android:ems="10"
-                    android:hint="Search people"
-                    android:layout_marginLeft="30dp"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="@color/colorWhite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-
-                    android:id="@+id/searchBtn"
-                    android:clickable="true"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_search_user"
-                    android:layout_marginTop="10dp"
-                    />
-
+                android:id="@+id/searchBtn"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:src="@drawable/ic_search_user" />
 
 
         </android.support.v7.widget.Toolbar>
     </RelativeLayout>
 
 
-
-
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        >
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
