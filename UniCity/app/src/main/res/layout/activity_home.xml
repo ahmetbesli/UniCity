@@ -42,7 +42,7 @@
         android:background="@color/colorWhite"
         android:fitsSystemWindows="true"
         app:itemTextColor="@color/colorBlack"
-        app:itemIconTint="@color/colorBlack"
+        app:itemIconTint="#FF0000"
         app:itemTextAppearance="@color/colorBlack"
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer" />

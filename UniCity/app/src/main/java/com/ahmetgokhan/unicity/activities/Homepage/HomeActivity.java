@@ -223,6 +223,10 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), RequestsActivity.class);
             startActivity(intent);
 
+        }else if (id == R.id.nav_message) {
+            Intent intent = new Intent(getApplicationContext(), MessageListActivity.class);
+            startActivity(intent);
+
         }
 
 
