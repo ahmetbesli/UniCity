@@ -8,7 +8,7 @@
     android:background="@color/cardview_light_background"
     tools:context=".activities.Search.SearchActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -25,53 +25,44 @@
             android:layout_height="40dp"
             android:src="@drawable/arrow_left" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginStart="40dp"
-            android:text="Search"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/nameSurnameEditText"
+
+                    android:layout_marginStart="30dp"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:hint="Search people"
+                    android:layout_marginLeft="30dp"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorWhite"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+
+                    android:id="@+id/searchBtn"
+                    android:clickable="true"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_search_user"
+                    android:layout_marginTop="10dp"
+                    />
+
+
 
         </android.support.v7.widget.Toolbar>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="50dp">
 
-    <EditText
-        android:id="@+id/nameSurnameEditText"
-        android:paddingLeft="10dp"
-        android:layout_width="294dp"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:ems="10"
-        android:hint="Search people"
-        android:layout_marginLeft="10dp"
-        android:inputType="textPersonName"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/searchBtn"
-        android:clickable="true"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_search_user"
-        android:layout_marginTop="10dp"
-        />
-
-    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
