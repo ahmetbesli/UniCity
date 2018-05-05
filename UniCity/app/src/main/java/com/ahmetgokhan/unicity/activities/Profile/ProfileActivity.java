@@ -89,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         host.setup();
 
         //Tab 1
-        host.setBackgroundColor(Color.BLACK);
+        host.setBackgroundColor(Color.parseColor("#FA5858"));
         TabHost.TabSpec spec = host.newTabSpec("Created Projects");
         spec.setContent(R.id.tab1);
 

@@ -130,7 +130,7 @@
                         android:id="@+id/tab1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#F2F5A9"
+                        android:background="#FBFBEF"
                         android:orientation="vertical">
 
 
@@ -149,7 +149,7 @@
                         android:id="@+id/tab2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#2E9AFE"
+                        android:background="#E0ECF8"
                         android:orientation="vertical">
                         <View
                             android:layout_width="1dp"
@@ -172,7 +172,7 @@
                         android:id="@+id/tab3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#BCA9F5"
+                        android:background="#E3F6CE"
                         android:orientation="vertical">
                         <View
                             android:layout_width="1dp"
