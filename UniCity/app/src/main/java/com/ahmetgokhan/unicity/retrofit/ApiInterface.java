@@ -11,6 +11,18 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @FormUrlEncoded
+    @POST("getDoneProjectsForProfileUsers/")
+    Call<ArrayList<UniSocial>> getDoneProjectsForProfileUsers(@Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("getCreatedProjectsForProfileUsers/")
+    Call<ArrayList<UniSocial>> getCreatedProjectsForProfileUsers(@Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("getWorkingProjectsForProfileUsers/")
+    Call<ArrayList<UniSocial>> getWorkingProjectsForProfileUsers(@Field("username") String username);
+
+    @FormUrlEncoded
     @POST("getMessageList/")
     Call<ArrayList<UniSocial>> getMessageList(@Field("token") String token);
 

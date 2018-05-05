@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/my_bg_anim">
@@ -41,16 +41,33 @@
 
             app:civ_border_width="0.9dp">
         </de.hdodenhof.circleimageview.CircleImageView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="17dp"
+                android:layout_marginStart="17dp"
+                android:id="@+id/textViewName"
+                android:text="@string/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+            <ImageView
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginStart="7dp"
+                android:src="@android:drawable/ic_dialog_email"
+                android:layout_toRightOf="@+id/textViewName"
+                android:layout_toEndOf="@+id/textViewName"
+                android:id="@+id/createMessageRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:text="@string/name"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textViewUniversity"
@@ -72,37 +89,104 @@
             android:textSize="12sp"
             />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:text="Message"
-                android:id="@+id/createMessageRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"/>
-
-
-        </RelativeLayout>
-
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite">
+            android:layout_height="2dp"
+            android:layout_marginTop="7dp"
+            android:background="#F5F5F5" />
 
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
+        <TabHost
+            android:id="@+id/tabHost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            </android.support.v7.widget.RecyclerView>
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TabWidget>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#F2F5A9"
+                        android:orientation="vertical">
 
 
-        </LinearLayout>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewProjectsUsers"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp">
+
+                        </android.support.v7.widget.RecyclerView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#2E9AFE"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/black" />
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewWorkingProejctsUsers"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp">
+
+                        </android.support.v7.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#BCA9F5"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:background="@android:color/black" />
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewDoneProejctsUsers"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp">
+
+                        </android.support.v7.widget.RecyclerView>
+
+
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
     </LinearLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
