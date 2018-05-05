@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background">
+    android:background="#EFF5FB">
+
 
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
+        android:background="#EFF5FB"
         tools:context=".activities.AdvertPage.AdvertPageActivity">
 
 
@@ -17,17 +18,45 @@
             android:id="@+id/coverPhoto"
             android:layout_width="match_parent"
             android:layout_height="193dp"
+            android:layout_marginTop="49dp"
             android:src="@drawable/kadirhasadvert" />
 
-        <ImageButton
-            android:id="@+id/options"
-            android:layout_width="47dp"
-            android:layout_height="39dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBarAdvertPage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
-            android:background="#80FFFFFF"
-            android:src="@drawable/ic_menu_advert" />
+            android:background="#FB0818">
+
+            <ImageView
+                android:id="@+id/backToHomeButon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:text="Advert Page"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/options"
+                android:layout_width="47dp"
+                android:layout_height="39dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="150dp"
+                android:src="@drawable/ic_menu_advertpage" />
+
+
+        </android.support.v7.widget.Toolbar>
+
 
         <TextView
             android:id="@+id/titleAdvert"
@@ -35,10 +64,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/coverPhoto"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
             android:paddingBottom="10dp"
             android:text="Engineering Design Project Elektrik"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack"
+            android:textColor="#214e2b"
             android:textSize="22dp"
             android:textStyle="bold" />
 
@@ -48,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleAdvert"
+            android:layout_marginBottom="20dp"
             android:text="Engineering Design Project ElektrikEngineering Design Project ElektrikEngineering Designroject ElektrikEngineering Design Project ElektrikEngineerin Project ElektrikEngineering Design Project ElektrikEngineering Design Project Elektrik"
             android:textColor="@color/colorBlack"
             android:textSize="16dp" />
@@ -65,8 +96,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePhoto"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignLeft="@+id/nameCreator" />
 
             <TextView
@@ -77,8 +108,10 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:paddingLeft="40dp"
+                android:paddingRight="10dp"
                 android:text="Gökhan Kılıç"
-                android:textColor="@color/colorBlack" />
+                android:textColor="#888d10"
+                android:textSize="18dp" />
 
         </RelativeLayout>
 
@@ -97,26 +130,25 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
 
             android:layout_below="@+id/whoisworking"
             android:layout_marginBottom="20dp" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/applyLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/recyclerView"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/clickButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
+
                 android:gravity="start"
                 android:paddingLeft="25dp"
                 android:paddingStart="25dp"
@@ -129,18 +161,15 @@
                 android:id="@+id/applyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
 
-                android:background="@color/cardview_light_background"
+                android:background="#EFF5FB"
                 android:text="Apply"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#229e00"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

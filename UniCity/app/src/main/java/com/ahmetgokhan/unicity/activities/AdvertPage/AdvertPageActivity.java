@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -54,13 +56,13 @@ public class AdvertPageActivity extends AppCompatActivity {
     CircleImageView profilePhoto;
     private TextView whoisworking;
     private Button applyButton;
-    private ImageButton options;
+    private ImageView options;
     private String advertID;
     private  ApiInterface apiInterface;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private ImageButton deleteWorkerButton;
-    RelativeLayout applyLayout;
+    private ImageView backToHome;
+    LinearLayout applyLayout;
 
     private List<RecyclerViewListItemAdvertPage> listItems;
     Intent intent;
@@ -83,7 +85,14 @@ public class AdvertPageActivity extends AppCompatActivity {
         nameCreator = findViewById(R.id.nameCreator);
         profilePhoto = findViewById(R.id.profilePhoto);
         whoisworking = findViewById(R.id.whoisworking);
-
+        backToHome = findViewById(R.id.backToHomeButon);
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
