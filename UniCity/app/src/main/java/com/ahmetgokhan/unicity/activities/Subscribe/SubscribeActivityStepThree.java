@@ -1,6 +1,7 @@
 package com.ahmetgokhan.unicity.activities.Subscribe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +12,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Search.RecyclerItemClickListener;
 import com.ahmetgokhan.unicity.adapters.SubscribeAdapterWithButton;
 import com.ahmetgokhan.unicity.config.Config;
@@ -39,12 +42,15 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private ApiInterface apiInterface;
     String butonText;
+    ImageView backToHome;
 
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe_step_three);
+
+        backToHome = findViewById(R.id.backToHomeButon);
         department = getIntent().getStringExtra("department");
         recyclerView = findViewById(R.id.recyclerViewSubs);
         recyclerView.setHasFixedSize(true);
@@ -58,7 +64,13 @@ public class SubscribeActivityStepThree extends AppCompatActivity {
 
 
 
-
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

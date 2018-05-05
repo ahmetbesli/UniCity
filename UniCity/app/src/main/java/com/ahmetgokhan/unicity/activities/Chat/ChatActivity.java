@@ -26,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Search.UsersProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
@@ -54,6 +55,7 @@ public class ChatActivity extends AppCompatActivity {
     TextView chatUserName;
     ImageView chatSettings;
     PopupMenu popupMenu;
+
 
 
     @Override
@@ -319,6 +321,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
+
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -343,6 +346,8 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @SuppressLint("StaticFieldLeak")
     private class BitmapTask extends AsyncTask<String, Void, Bitmap> {

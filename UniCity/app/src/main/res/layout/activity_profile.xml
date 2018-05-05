@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
-        android:background="@drawable/my_pro_anim"
+        android:background="#FFFFFF"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
@@ -130,7 +130,7 @@
                         android:id="@+id/tab1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#40739e"
+                        android:background="#F2F5A9"
                         android:orientation="vertical">
 
 
@@ -149,7 +149,7 @@
                         android:id="@+id/tab2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#40739e"
+                        android:background="#2E9AFE"
                         android:orientation="vertical">
                         <View
                             android:layout_width="1dp"
@@ -172,7 +172,7 @@
                         android:id="@+id/tab3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#40739e"
+                        android:background="#BCA9F5"
                         android:orientation="vertical">
                         <View
                             android:layout_width="1dp"

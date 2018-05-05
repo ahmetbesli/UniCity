@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.adapters.SubscribeAdapter;
 import com.ahmetgokhan.unicity.config.Config;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import retrofit2.Call;
@@ -24,13 +26,14 @@ public class SubscribeActivity extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<>();
     private ListView listView;
+    ImageView backToHome;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe);
         listView = findViewById(R.id.listViewSubscription1);
-        Toast.makeText(this, "Lets complate your profile", Toast.LENGTH_SHORT).show();
+        backToHome = findViewById(R.id.backToHomeButon);
         generateListContent();
         checkToken();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,7 +44,17 @@ public class SubscribeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
 
     private void generateListContent() {

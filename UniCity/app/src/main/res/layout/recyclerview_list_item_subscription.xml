@@ -25,7 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:text="Bilgisayar Programlama I"
-                android:textColor="#6f1414"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
             <Button

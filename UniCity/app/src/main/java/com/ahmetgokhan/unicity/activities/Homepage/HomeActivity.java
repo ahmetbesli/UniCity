@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ApiInterface apiInterface;
     TextView emailText,name_surnameText;
-    ImageView profilePhoto;
+    ImageView profilePhoto,refreshButton;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
@@ -101,8 +101,15 @@ public class HomeActivity extends AppCompatActivity
         name_surnameText = (TextView) headerView.findViewById(R.id.name_surname_textView);
         emailText = headerView.findViewById(R.id.emailTextView);
         profilePhoto = headerView.findViewById(R.id.profilePhoto_imageView);
+        refreshButton = findViewById(R.id.refreshButton);
 
-
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listItems.clear();
+                loadRecyclerViewData();
+            }
+        });
 
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         Call<UniSocial> call = apiInterface.getProfile(getSharedPreferences(Config.APP_NAME, Context.MODE_PRIVATE).getString(Config.TOKEN,""));
@@ -154,6 +161,13 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        listItems.clear();
+        loadRecyclerViewData();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
@@ -168,7 +182,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.refreshButton) {
             return true;
         }
 

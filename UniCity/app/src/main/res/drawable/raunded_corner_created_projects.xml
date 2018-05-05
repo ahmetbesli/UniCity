@@ -9,8 +9,8 @@
 
     <stroke
         android:width="0.5dp"
-        android:color="#F8E0E6" />
+        android:color="#F7F8E0" />
 
-    <solid android:color="#F8E0E6" />
+    <solid android:color="#F7F8E0" />
 
 </shape>

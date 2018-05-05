@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_corner"
+    android:background="@drawable/raunded_corner_created_projects"
     android:layout_margin="10dp"
     android:padding="10dp">
 
@@ -11,7 +11,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/raunded_corner_created_projects"
         android:orientation="vertical"
         >
         <LinearLayout
@@ -88,6 +88,7 @@
             android:background="#737477"/>
 
         <Button
+            android:id="@+id/browseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.Button.Borderless"

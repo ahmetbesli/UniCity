@@ -9,6 +9,7 @@ public class RecyclerViewListItemCreated {
     private String Date;
     private String CourseName;
 
+
     public RecyclerViewListItemCreated(String advert_id, String advertName, String description, String numberOfPerson, String date, String courseName) {
         this.advert_id = advert_id;
         this.advertName = advertName;

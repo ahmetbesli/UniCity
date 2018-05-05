@@ -81,7 +81,7 @@
                     android:id="@+id/textViewNumberOf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number Of person : "
+                    android:text="Applicable for: "
                     android:layout_marginLeft="100dp"
                     android:textColor="@color/colorBlack" />
 

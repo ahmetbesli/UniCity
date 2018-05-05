@@ -79,10 +79,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         checkToken();
         scrollView = findViewById(R.id.scrollProfile);
-        animationDrawable = (AnimationDrawable) scrollView.getBackground();
+/*        animationDrawable = (AnimationDrawable) scrollView.getBackground();
         animationDrawable.setEnterFadeDuration(500);
         animationDrawable.setExitFadeDuration(500);
-        animationDrawable.start();
+        animationDrawable.start();*/
 
 
         TabHost host = findViewById(R.id.tabHost);

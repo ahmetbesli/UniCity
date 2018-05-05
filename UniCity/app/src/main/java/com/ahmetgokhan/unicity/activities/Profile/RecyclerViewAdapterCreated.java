@@ -1,14 +1,17 @@
 package com.ahmetgokhan.unicity.activities.Profile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.AdvertPage.AdvertPageActivity;
 
 import java.util.List;
 
@@ -47,6 +50,7 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
             holder.textViewCourseName.setText(list_item.getCourseName());
 
 
+
         }
 
         @Override
@@ -63,6 +67,7 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
             private TextView textViewNumberOfPerson;
             private TextView textViewDate;
             private TextView textViewCourseName;
+            private Button browseButton;
 
 
             public ViewHolder(View itemView) {
@@ -73,6 +78,14 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
                 textViewNumberOfPerson = itemView.findViewById(R.id.created_projects_number_of_person);
                 textViewAdvertName = itemView.findViewById(R.id.created_projects_advert_name);
                 textViewAdvertId = itemView.findViewById(R.id.created_projects_advert_id_hidden);
+                browseButton = itemView.findViewById(R.id.browseButton);
+
+                browseButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
 
 
             }

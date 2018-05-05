@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuPopupHelper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
@@ -211,14 +214,23 @@ public class AdvertPageActivity extends AppCompatActivity {
         });
 
 
+
+
         options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
 
-                final PopupMenu popup = new PopupMenu(getApplicationContext(), options);
+
+
+
+                 PopupMenu popup = new PopupMenu(getApplicationContext(), options);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.menu_advert_page, popup.getMenu());
+
+
+
+
 
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

@@ -1,5 +1,6 @@
 package com.ahmetgokhan.unicity.activities.Homepage;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -255,6 +257,7 @@ import retrofit2.Response;
 
                         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
+
 
 
                     }

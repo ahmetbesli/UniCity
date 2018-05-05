@@ -5,7 +5,7 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayoutChatBox"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:orientation="vertical"

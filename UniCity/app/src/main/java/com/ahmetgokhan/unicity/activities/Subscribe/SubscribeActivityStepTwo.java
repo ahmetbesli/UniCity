@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.adapters.SubscribeAdapter;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
 import com.ahmetgokhan.unicity.retrofit.ApiClient;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import retrofit2.Call;
@@ -23,6 +25,7 @@ public class SubscribeActivityStepTwo extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<>();
     private ListView listView;
+    ImageView backToHome;
     String faculty;
 
     @Override
@@ -31,14 +34,24 @@ public class SubscribeActivityStepTwo extends AppCompatActivity {
         setContentView(R.layout.activity_subscribe_step_two);
         faculty = getIntent().getStringExtra("faculty");
         listView = findViewById(R.id.listViewSubscription2);
+        backToHome = findViewById(R.id.backToHomeButon);
+
+
         generateListContent();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("AAAAAAAAAAA : " + data.get(position));
                 Intent intent = new Intent(getApplicationContext(),SubscribeActivityStepThree.class);
                 intent.putExtra("department",data.get(position));
+                startActivity(intent);
+            }
+        });
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });

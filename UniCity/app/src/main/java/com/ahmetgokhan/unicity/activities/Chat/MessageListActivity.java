@@ -8,9 +8,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Search.RecyclerItemClickListener;
 import com.ahmetgokhan.unicity.activities.Search.UsersProfileActivity;
 import com.ahmetgokhan.unicity.config.Config;
@@ -28,6 +30,7 @@ import retrofit2.Response;
 
 public class MessageListActivity extends AppCompatActivity {
     RecyclerView messageList;
+    ImageView backToHome;
     ArrayList<MessageListData> arrayList = new ArrayList<>();
     MessageListAdapter messageListAdapter;
 
@@ -46,6 +49,16 @@ public class MessageListActivity extends AppCompatActivity {
         messageList.setLayoutManager(new LinearLayoutManager(this));
         messageList.addItemDecoration(itemDecorator);
         messageListAdapter = new MessageListAdapter(arrayList,getApplicationContext());
+
+        backToHome = findViewById(R.id.backToHomeBtn);
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ApiInterface apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);

@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
@@ -29,7 +31,7 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private List<RecyclerViewListItemSearch> listItems;
     private EditText nameSurnameEditText;
-    private Button searchButton;
+    private ImageView searchButton;
     private String nameSurname;
 
 
@@ -62,7 +64,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 listItems.clear();
-                System.out.println("asdasdasd");
                 nameSurname = nameSurnameEditText.getText().toString();
                 loadRecyclerViewData();
 
