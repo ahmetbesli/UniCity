@@ -77,6 +77,12 @@ import retrofit2.Response;
 
             holder.workerName.setText(list_item.getWorkerName());
 
+            if(list_item.getButonText().equals("Done")){
+
+                holder.deleteWorker.setVisibility(View.INVISIBLE);
+
+            }
+
 
             if(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.CREATOR_ID,"")
                     .equals(context.getSharedPreferences(Config.APP_NAME,Context.MODE_PRIVATE).getString(Config.USER_ID,""))){

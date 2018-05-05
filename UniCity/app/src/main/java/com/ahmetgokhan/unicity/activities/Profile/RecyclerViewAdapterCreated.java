@@ -91,7 +91,6 @@ public class RecyclerViewAdapterCreated extends RecyclerView.Adapter<RecyclerVie
                         intent.putExtra("advert_id",textViewAdvertId.getText().toString());
                         intent.putExtra("buttonText","Your Advert");
                         intent.putExtra("user_id",textViewUser_id.getText().toString());
-
                         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
 

@@ -13,6 +13,7 @@ public class RecyclerViewListItemAdvertPage {
     private String advert_id;
     private String creatorID;
     private String workerProfilePhoto;
+    private String butonText;
 
 
 
@@ -23,12 +24,13 @@ public class RecyclerViewListItemAdvertPage {
 
 
 
-    public RecyclerViewListItemAdvertPage(String workerName, String workerID, String advert_id,String creatorID,String workerProfilePhoto) {
+    public RecyclerViewListItemAdvertPage(String workerName, String workerID, String advert_id,String creatorID,String workerProfilePhoto,String butonText) {
         this.workerID = workerID;
         this.advert_id = advert_id;
         this.workerName = workerName;
         this.creatorID = creatorID;
         this.workerProfilePhoto = workerProfilePhoto;
+        this.butonText = butonText;
 
 
 
@@ -74,6 +76,9 @@ public class RecyclerViewListItemAdvertPage {
         this.workerProfilePhoto = workerProfilePhoto;
     }
 
+    public String getButonText() {
+        return butonText;
+    }
 
 
 

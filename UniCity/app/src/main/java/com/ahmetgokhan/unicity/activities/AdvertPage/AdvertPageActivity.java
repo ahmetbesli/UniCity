@@ -365,7 +365,8 @@ public class AdvertPageActivity extends AppCompatActivity {
                             response.body().get(i).getUser_id(),
                             intent.getStringExtra("advert_id"),
                             getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.CREATOR_ID,""),
-                            response.body().get(i).getProfile_photo()
+                            response.body().get(i).getProfile_photo(),
+                            intent.getStringExtra("buttonText")
 
                     );
 

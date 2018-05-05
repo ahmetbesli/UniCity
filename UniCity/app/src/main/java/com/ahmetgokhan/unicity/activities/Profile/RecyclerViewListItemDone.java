@@ -10,11 +10,11 @@ public class RecyclerViewListItemDone {
     private String CourseName;
     private String user_id;
 
-    public RecyclerViewListItemDone(String advert_id, String advertName, String description, String numberOfPerson, String date, String courseName,String user_id) {
+    public RecyclerViewListItemDone(String advert_id, String advertName, String description, String date, String courseName,String user_id) {
         this.advert_id = advert_id;
         this.advertName = advertName;
         Description = description;
-        NumberOfPerson = numberOfPerson;
+
         Date = date;
         CourseName = courseName;
         this.user_id = user_id;

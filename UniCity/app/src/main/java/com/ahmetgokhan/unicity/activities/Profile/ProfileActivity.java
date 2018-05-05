@@ -107,6 +107,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         spec.setContent(R.id.tab3);
         spec.setIndicator("Done Projects");
         host.addTab(spec);
+
         int tabCount = host.getTabWidget().getTabCount();
         for (int i = 0; i < tabCount; i++) {
             final View view = host.getTabWidget().getChildTabViewAt(i);
@@ -127,7 +128,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
             }
         }
-
 
 
 
@@ -302,7 +302,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             response.body().get(i).getAdvert_id(),
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
-                            String.valueOf(response.body().get(i).getNumberOfPerson()),
+                            String.valueOf(response.body().get(i).getNumberOfPerson() - Integer.parseInt(response.body().get(i).getNumOfPerAccepted())),
                             response.body().get(i).getAdvertDate(),
                             response.body().get(i).getCourseName(),
                             response.body().get(i).getUser_id()
@@ -337,7 +337,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             response.body().get(i).getAdvert_id(),
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
-                            String.valueOf(response.body().get(i).getNumberOfPerson()),
+                            String.valueOf(response.body().get(i).getNumberOfPerson() - Integer.parseInt(response.body().get(i).getNumOfPerAccepted())),
                             response.body().get(i).getAdvertDate(),
                             response.body().get(i).getCourseName(),
                             response.body().get(i).getUser_id()
@@ -362,22 +362,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
     public void loadRecyclerViewDataDone(){
 
-        Call<ArrayList<UniSocial>>call0 = apiInterface.getDoneProjects(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
-        call0.enqueue(new Callback<ArrayList<UniSocial>>() {
+        Call<ArrayList<UniSocial>>call2 = apiInterface.getDoneProjects(getSharedPreferences(Config.APP_NAME,MODE_PRIVATE).getString(Config.TOKEN,""));
+        call2.enqueue(new Callback<ArrayList<UniSocial>>() {
             @Override
-            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response) {
+            public void onResponse(Call<ArrayList<UniSocial>> call, Response<ArrayList<UniSocial>> response2) {
 
-                for (int i = 0; i < response.body().size(); i++) {
+                for (int i = 0; i < response2.body().size(); i++) {
 
                     RecyclerViewListItemDone listItem = new RecyclerViewListItemDone(
-                            response.body().get(i).getAdvert_id(),
-                            response.body().get(i).getAdvertName(),
-                            response.body().get(i).getDescription(),
-                            String.valueOf(response.body().get(i).getNumberOfPerson()),
-                            response.body().get(i).getAdvertDate(),
-                            response.body().get(i).getCourseName(),
-                            response.body().get(i).getUser_id()
+                            response2.body().get(i).getAdvert_id(),
+                            response2.body().get(i).getAdvertName(),
+                            response2.body().get(i).getDescription(),
+                            response2.body().get(i).getAdvertDate(),
+                            response2.body().get(i).getCourseName(),
+                            response2.body().get(i).getUser_id()
                     );
+
+
 
                     listItemsDone.add(listItem);
 
