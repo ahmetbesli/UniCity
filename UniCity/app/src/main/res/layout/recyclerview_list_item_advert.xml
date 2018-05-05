@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F2F2F2"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -22,15 +22,29 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profilePhotoAdvert"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
+                    android:layout_width="52dp"
+                    android:layout_height="52dp" />
 
                 <TextView
                     android:id="@+id/nameCreatorAdvert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="45dp"
+                    android:layout_marginTop="1dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="65dp"
                     android:text="Gökhan Kılıç"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:layout_below="@+id/nameCreatorAdvert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="15sp"
+
+                    android:layout_marginLeft="65dp"
+                    android:text="Kadir Has University"
                     android:textColor="@color/colorBlack" />
 
             </RelativeLayout>
@@ -47,7 +61,7 @@
                 android:id="@+id/textViewAdvertName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F2F2F2"
+
                 android:text="Heading"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textColor="@color/colorBlack" />
@@ -56,7 +70,7 @@
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F2F2F2"
+
                 android:maxLines="1"
                 android:text="Description"
                 android:textColor="@color/colorBlack" />
@@ -82,9 +96,10 @@
 
                 <TextView
                     android:id="@+id/textViewNumberOf"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
+                    android:layout_marginLeft="150dp"
                     android:text="Applicable for: "
                     android:textColor="@color/colorBlack" />
 
