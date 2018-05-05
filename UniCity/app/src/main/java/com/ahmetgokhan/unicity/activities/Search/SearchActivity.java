@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
@@ -33,6 +34,7 @@ public class SearchActivity extends AppCompatActivity {
     private EditText nameSurnameEditText;
     private ImageView searchButton;
     private String nameSurname;
+    private ImageView backToHome;
 
 
     @Override
@@ -41,6 +43,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         checkToken();
         nameSurnameEditText = findViewById(R.id.nameSurnameEditText);
+        backToHome = findViewById(R.id.backToHomeButon);
         searchButton = findViewById(R.id.searchBtn);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -68,6 +71,14 @@ public class SearchActivity extends AppCompatActivity {
                 loadRecyclerViewData();
 
 
+            }
+        });
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
 

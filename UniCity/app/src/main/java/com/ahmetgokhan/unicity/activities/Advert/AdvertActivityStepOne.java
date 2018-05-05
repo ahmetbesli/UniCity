@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.config.Config;
 import com.ahmetgokhan.unicity.overridden.UniSocial;
@@ -22,6 +23,7 @@ public class AdvertActivityStepOne extends AppCompatActivity {
 
     EditText advertName,description,university,name,numbOfPerson;
     ImageView createAdvertButton;
+    ImageView backToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,15 @@ public class AdvertActivityStepOne extends AppCompatActivity {
         description = findViewById(R.id.description);
         createAdvertButton = findViewById(R.id.createAdvertButton);
         numbOfPerson = findViewById(R.id.numbOfPerson);
+        backToHome = findViewById(R.id.backToHomeButon);
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         createAdvertButton.setOnClickListener(new View.OnClickListener() {

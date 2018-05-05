@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ahmetgokhan.unicity.R;
+import com.ahmetgokhan.unicity.activities.Homepage.HomeActivity;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
 import com.ahmetgokhan.unicity.activities.Search.RecyclerItemClickListener;
 import com.ahmetgokhan.unicity.activities.Search.RecyclerViewListItemSearch;
@@ -37,6 +39,7 @@ public class RequestsActivity extends AppCompatActivity {
     private List<RecyclerViewListItemRequests> listItems;
     private RecyclerViewListItemRequests recyclerViewListItemRequests;
     private String advertName,user_id,applierName,applierSurname,advertID,applyID;
+    ImageView backToHome;
 
     private ApiInterface apiInterface;
 
@@ -48,12 +51,21 @@ public class RequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
 
+        backToHome = findViewById(R.id.backToHomeButon);
         recyclerView = findViewById(R.id.recyclerViewRequests);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems =  new ArrayList<>();
         loadRecyclerViewData();
         checkToken();
+
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
