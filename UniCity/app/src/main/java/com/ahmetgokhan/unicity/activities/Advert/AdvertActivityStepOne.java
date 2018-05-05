@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.ahmetgokhan.unicity.R;
 import com.ahmetgokhan.unicity.activities.Login.LoginActivity;
@@ -20,7 +21,7 @@ import retrofit2.Callback;
 public class AdvertActivityStepOne extends AppCompatActivity {
 
     EditText advertName,description,university,name,numbOfPerson;
-    Button createAdvertButton;
+    ImageView createAdvertButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

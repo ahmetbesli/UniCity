@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 public class AdvertActivityStepTwo extends AppCompatActivity {
 
     String description, advertName, selectedFaculty, selectedDepartment, courseName;
-    Button createAdvertButton;
+    ImageView createAdvertButton;
     TextView selectedCourseText;
     int numberOfPerson;
     ArrayList<String> faculties;

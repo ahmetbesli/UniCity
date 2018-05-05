@@ -4,8 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#ffffff"
     tools:context="com.ahmetgokhan.unicity.activities.Advert.AdvertActivityStepOne">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBarCreateAdvert"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#FB0818">
+
+        <ImageView
+            android:id="@+id/backToHomeButon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:text="Create Advert"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </android.support.v7.widget.Toolbar>
 
     <EditText
         android:id="@+id/advertName"
@@ -14,11 +40,13 @@
         android:layout_above="@+id/numbOfPerson"
         android:layout_alignLeft="@+id/numbOfPerson"
         android:layout_alignStart="@+id/numbOfPerson"
+        android:backgroundTint="@color/colorBlack"
         android:layout_marginBottom="14dp"
         android:ems="10"
         android:hint="Advert Name"
         android:inputType="textPersonName"
-        android:textColor="@android:color/holo_green_dark" />
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/colorBlack" />
 
     <EditText
         android:id="@+id/description"
@@ -26,10 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:backgroundTint="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
-        android:textColor="@android:color/holo_green_dark" />
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/numbOfPerson"
@@ -40,18 +70,20 @@
         android:layout_alignStart="@+id/description"
         android:layout_marginBottom="12dp"
         android:ems="10"
+        android:textColorHint="@color/colorBlack"
         android:hint="Number of persons"
         android:inputType="number"
-        android:textColor="@android:color/holo_green_dark" />
+        android:backgroundTint="@color/colorBlack"
+        android:textColor="@android:color/black" />
 
-    <Button
+    <ImageView
         android:id="@+id/createAdvertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Next"
-        android:textColor="@android:color/holo_green_dark" />
+        android:clickable="true"
+        android:src="@drawable/ic_next_button" />
 
 </RelativeLayout>

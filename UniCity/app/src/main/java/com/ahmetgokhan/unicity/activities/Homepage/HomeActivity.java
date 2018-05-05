@@ -225,6 +225,7 @@ public class HomeActivity extends AppCompatActivity
 
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -317,7 +318,7 @@ public class HomeActivity extends AppCompatActivity
                             response.body().get(i).getCourseName(),
                             response.body().get(i).getAdvertName(),
                             response.body().get(i).getDescription(),
-                            response.body().get(i).getNumberOfPerson(),
+                            response.body().get(i).getNumberOfPerson() - Integer.parseInt(response.body().get(i).getNumOfPerAccepted()),
                             response.body().get(i).getAdvertDate(),
                             response.body().get(i).getAdvert_id(),
                             response.body().get(i).getUser_id(),

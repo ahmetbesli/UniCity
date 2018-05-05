@@ -9,11 +9,11 @@
         android:layout_margin="10dp">
 
         <LinearLayout
-            android:padding="10dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:background="@color/cardview_light_background"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <RelativeLayout
                 android:id="@+id/creatorPerson"
@@ -27,11 +27,11 @@
 
                 <TextView
                     android:id="@+id/nameCreatorAdvert"
-                    android:layout_marginLeft="45dp"
-                    android:textColor="@color/colorBlack"
-                    android:text="Gökhan Kılıç"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:text="Gökhan Kılıç"
+                    android:textColor="@color/colorBlack" />
 
             </RelativeLayout>
 
@@ -41,34 +41,36 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Software Engineering"
-                android:textColor="@android:color/black" />
+                android:textColor="#0B615E" />
 
             <TextView
                 android:id="@+id/textViewAdvertName"
-                android:text="Heading"
-                android:textColor="@color/colorBlack"
-                android:background="@color/cardview_light_background"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2"
+                android:text="Heading"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:id="@+id/textViewDescription"
-                android:textColor="@color/colorBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cardview_light_background"
-                android:text="Description" />
+                android:background="#F2F2F2"
+                android:maxLines="1"
+                android:text="Description"
+                android:textColor="@color/colorBlack" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/advert_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
 
                 <TextView
@@ -82,8 +84,8 @@
                     android:id="@+id/textViewNumberOf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Applicable for: "
                     android:layout_marginLeft="100dp"
+                    android:text="Applicable for: "
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -91,61 +93,59 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="#088A29" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="7dp"
-                android:background="@color/colorBlack"
                 android:layout_width="match_parent"
-                android:layout_height="1dp">
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/colorBlack">
 
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_marginTop="5dp"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_gravity="center">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/user_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/list_view_home_button_browse"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:textColor="@color/colorBlack"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="Browse" />
+                    android:layout_alignParentStart="true"
+                    android:text="Browse"
+                    android:textColor="#610B4B" />
 
                 <LinearLayout
-                    android:background="@color/colorBlack"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="1dp"
-                    android:layout_height="50dp">
-                </LinearLayout>
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorBlack"></LinearLayout>
 
 
                 <Button
                     android:id="@+id/list_view_home_button_apply"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
 
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:textColor="@color/colorBlack"
-                    android:text="Apply" />
+                    android:layout_alignParentRight="true"
+                    android:text="Apply"
+                    android:textColor="#08298A" />
 
             </RelativeLayout>
-
 
 
         </LinearLayout>
